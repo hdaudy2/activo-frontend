@@ -1,0 +1,34 @@
+/* .ColumnsAutomatic {
+    background-color: #e9ecf3;
+    text-align: center;
+    color: #e9ecf3;
+} */
+
+::ng-deep .dx-data-row .cell-highlighted {
+    background-color: rgb(219, 219, 219);
+
+}
+ 
+::ng-deep .dx-header-row .cell-highlighted {
+    color: rgb(0, 0, 0);
+    font-style: italic;
+    font-weight: bold;
+}
+::ng-deep .dx-header-row .cell-header {
+    color: rgb(255, 254, 254);
+    font-style: italic;
+    font-weight: bold;
+    background-color: #233456;
+
+}
+::ng-deep .dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-edit .dx-icon-comment{  
+    filter: grayscale(100%);  
+    color: red;  
+  }  
+/* .redClass .dx-icon-add:before {  
+    color: red;  
+  }   */
+/* ::ng-deep #gridContainer {
+    max-height: 2500px;
+
+  } */

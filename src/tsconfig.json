@@ -1,0 +1,40 @@
+  {
+  "compilerOptions": {
+    // "enableIvy": true,
+    // "fullTemplateTypeCheck": false,   
+    "declaration": false,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": [ "es6", "dom", "es2020.string" ],
+    "mapRoot": "./",
+    "module": "es2020",
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "outDir": "../dist/out-tsc",
+    "sourceMap": true,
+    "target": "es5",
+    "typeRoots": [
+      "../node_modules/@types"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "globalize": ["node_modules/globalize/dist/globalize"],
+      "globalize/*": ["node_modules/globalize/dist/globalize/*"],
+      "cldr": ["node_modules/cldrjs/dist/cldr"],
+      "cldr/*": ["node_modules/cldrjs/dist/cldr/*" ],
+      "@abp/*": [ "../node_modules/abp-ng2-module/dist/src/*" ],
+      "@app/*": [ "./app/*" ],
+      "@shared/*": [ "./shared/*" ],
+      "@node_modules/*": [ "../node_modules/*" ]
+    }
+  },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts",
+    "typings.d.ts"
+  ]
+}

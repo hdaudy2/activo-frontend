@@ -1,0 +1,133 @@
+ <form [formGroup]="HolidayCalendarForm" #holidayCalendarForm="ngForm"> 
+
+<section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+
+
+
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+
+
+                <div class="row md-0 px-3 pb-2 ">
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Date">Date</label>
+                        <input type="date" formControlName="Date" class="form-control form-control-sm col-md-12"
+                            id="Date" />
+                    </div>
+
+                    <div class="col-md-8">
+                        <label class="mb-0" for="Description">Description</label>
+                        <input type="text" formControlName="Description" class="form-control form-control-sm col-md-12"
+                            id="Description" />
+                    </div>
+
+                </div>
+
+                <div class="row md-0 px-3 pb-2 ">
+
+                <div class="col-md-4"> 
+                    <label class="mb-0" for="HolidayTypeId">
+                    {{ "Holiday Type" }}
+                </label>
+                <select class="form-control form-control-sm col-md-12 " formControlName="HolidayTypeId" required
+                id="HolidayTypeId" 
+                required [ngClass]="{ 'is-invalid': submitted && f.HolidayTypeId.errors }">
+                <option *ngFor="let item of HolidayTypeList" [value]="item.id">
+                  {{ item.name }}
+                </option>
+            </select>
+            <div *ngIf="submitted && f.HolidayTypeId.errors" class="invalid-feedback">
+                <div *ngIf="f.HolidayTypeId.errors.required">Holiday Type is required</div>
+                </div>
+            </div> 
+
+                
+                    <div class="col-md-8">
+                        <button type="button" class="btn-sm btn btn-primary float-right mx-0 px-4 mt-2 pt-2 pb-2 mt-3 "
+                            (click)="NewRecord()">New</button>
+                        <button type="button" class="btn-sm btn-success btn float-right mx-2 px-3 mt-2 pt-2 pb-2 mt-3"
+                            (click)="onSubmit()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body table-responsive p-0">
+
+
+
+                        <dx-data-grid id="dataGrid" [rowAlternationEnabled]="true" [showRowLines]="true"
+                            [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="HolidayCalendarList | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }" keyExpr="id">
+                            <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+
+                            <dxi-column dataField="date" caption="Date" dataType="date"></dxi-column>
+                            <dxi-column dataField="description" caption="Description"></dxi-column>
+                            <dxi-column dataField="holidayName" caption="HolidayName"></dxi-column>
+
+
+
+
+
+                            <dxi-column type="buttons" caption="Action">
+                                <dxi-button icon="edit" [onClick]="edit" [(visible)]="isAddShown"  hint="Edit"></dxi-button>
+
+                                <dxi-button icon="deleterow" [onClick]="delete" [(visible)]="isAddShown" hint="Delete"></dxi-button>
+
+
+
+                            </dxi-column>
+
+
+
+
+
+
+                        </dx-data-grid>
+                        <div class="card-footer table-card-footer pb-0 border-top">
+                            <div class="row">
+                                <div class="col-sm-2 col-12 text-sm-left text-center">
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+
+
+                                    </button>
+
+                                </div>
+                                <div class="col-sm-6 col-12">
+
+                                </div>
+                                <div class="col-sm-4 col-12">
+                                    <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                    </pagination-controls>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+</form>

@@ -1,0 +1,89 @@
+
+<dx-data-grid [dataSource]="tasksDataSource" [showBorders]="true" [columnAutoWidth]="true"
+  [rowAlternationEnabled]="true" [showRowLines]="true">
+  <dxi-column dataField="remarksDate" dataType="date" ></dxi-column>
+  <dxi-column dataField="remarksBy" dataType="string"></dxi-column>
+  <dxi-column dataField="remarks" dataType="string"></dxi-column>
+
+  <dxi-column type="buttons" caption="Download File">
+  <dxi-button hint="Download File" icon="download" [onClick]="Downloadfile" [visible]="DownloadViaible">
+ 
+  </dxi-button>
+</dxi-column>
+  <dxi-column type="buttons" caption="Action">
+    <dxi-button icon="edit"   hint="Edit" [onClick]="addComments" hint="Add Comment" [(visible)]="editButton">
+     
+    </dxi-button>
+    <dxi-button icon="deleterow"   hint="Delete"[onClick]="delete"[(visible)]="editButton" ></dxi-button>
+
+
+
+
+  </dxi-column>
+
+</dx-data-grid>
+<form [formGroup]="QcCommentsForm" #qcCommentsForm="ngForm">
+
+
+  <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+    <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Comment</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+            <div class="card mx-2 pt-3 pb-2">
+              <div class="row">
+                <!-- <div class="col-sm-12"> -->
+
+              <div class="col-md-10 mx-2 ">
+                <label class="mb-0" for="Comment">Comment</label>
+                <textarea type="text" formControlName="Comment" class="form-control float-right  form-control-sm col-md-12"
+                  id="Comment" required [ngClass]="{ 'is-invalid': submitted && f.QcStatusId.errors }"></textarea>
+             
+                  <div *ngIf="submitted && f.Comment.errors" class="invalid-feedback">
+                    <div *ngIf="f.Comment.errors.required">Status  is required</div>
+                </div>
+                </div>
+              <div class="col-md-10 mx-2">
+                <label class="mb-0" for="QcStatusId">
+                    {{ "Status" }}
+                </label>
+
+                <select formControlName="QcStatusId"  class="form-control" id="QcStatusId" required [ngClass]="{ 'is-invalid': submitted && f.QcStatusId.errors }">
+                    <option *ngFor="let item of QcStatusList" [value]="item.id">
+                      {{item.name }}
+                    </option>
+                  </select>
+                  <div *ngIf="submitted && f.QcStatusId.errors" class="invalid-feedback">
+                    <div *ngIf="f.QcStatusId.errors.required">Status  is required</div>
+                </div>
+            </div>
+            
+
+          
+            <!-- </div> -->
+            </div>
+            </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" (click)="closePopup()">
+              Close
+            </button>
+            <button type="button" class=" btn-success btn " (click)="saveComment()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+</form>

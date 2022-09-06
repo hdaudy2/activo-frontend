@@ -1,0 +1,577 @@
+<nav>
+
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <!-- <a class="nav-item nav-link" id="nav-profile-tab" href="#" style=" color: white;background-color: #304570;border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/security-module/user-remarks?')"
+      
+        data-toggle="tab" role="tab"
+        aria-controls="nav-profile" aria-selected="false">Authorizer Remarks </a> -->
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+            aria-selected="true">Project Detail</a>
+
+            <!-- <a class="nav-item nav-link" *ngIf="qcbtn" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/stock-management/indenting-maker-list?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Audit Documents Tamplates</a> -->
+
+        <a class="nav-item nav-link" *ngIf="qcbtn" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/sales/qc-master-list?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">QC</a>
+
+            <a class="nav-item nav-link" *ngIf="ProjectCompleted" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #1d690a;border-color: whitesmoke;"
+             data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">{{ApprovalStatus}}</a>
+
+
+
+
+
+    </div>
+</nav>
+
+
+<form [formGroup]="ClientVisitForm" #clientVisitForm="ngForm">
+
+
+
+    <!-- <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+
+        
+        <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+    
+            <div class="row md-0 mb-1 mt-0">
+                <div class="col-sm-12 px-0">
+                    <div class="alert alert-info alert-dismissible center" style="text-align: center">
+                        <h4 style="text-align: center ;font-family: 'Times New Roman'; font-weight: bold;">AUDIT</h4>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+        <!-- <h4 *ngIf="ProjectCompleted" class="col-md-3"
+        style="text-align: center;background-color: rgb(8, 87, 44);color: white ;font-family: 'Times New Roman'; font-weight: bold; ">
+        {{ApprovalStatus}}</h4> -->
+
+       
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <!-- <button type="button"*ngIf="ProjectCompleted"  class="btn-sm btn-success float-left mx-0  mt-0 pt-2 pb-2" style="font-weight: bold">{{ApprovalStatus}}
+                    </button> -->
+                    <!-- <h3
+                        style="text-align: center; color: rgb(35 52 86) ;font-family: 'Times New Roman'; font-weight: bold; ">
+                        Audit</h3> -->
+                    <b> <a class="nav-item nav-link active float-right" id="nav-profile-tab"
+                            [routerLink]="['/app/pages/sales/audit-plan-list']" data-toggle="tab" data-toggle="tab"
+                            role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                            aria-selected="false"><i class="fa fa-arrow-circle-left"></i> Back</a></b>
+                   
+                               
+
+                   <h4
+                        style="text-align: center; color: rgb(35 52 86) ;font-family: 'Times New Roman'; font-weight: bold; text-decoration: underline">
+                        Audit Visit Details</h4>
+                        <!-- <label class="mb-0" for="VisitStatusId">
+                            {{ "Status : " }}
+                        </label> -->
+                    
+                    <!-- <div class="row" style="background-color: rgb(45 67 114)">
+  
+                            <div class="col-md-12 nav-user-menu"  style=" color: white;background-color: rgb(35 52 86);border-color: whitesmoke; border-radius: 50px;  display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin: 5px 0px 5px 0px;
+                            
+                            "> 
+                            
+                            <li class="nav-item dropdown nav-user-menu" dropdown>
+                            
+                             
+                              <a href="javascript:;" class="nav-link" dropdownToggle>
+                                <img 
+                                  class=" user-image img-circle  mb-1 elevation-2"
+                                  src=" \assets\img\user.png"
+                                  alt="User Image"
+                                />
+                              </a>
+                              
+                              <div class="dropdown-menu dropdown-menu-right" *dropdownMenu style="z-index: 9;">
+                                <a class="dropdown-item" [routerLink]="['update-password']">
+                                  <i class="fas fa-user-edit"></i> {{ "Reset Password" | localize }}
+                                </a>
+                                <a class="dropdown-item" href="javascript:;" (click)="logout()">
+                                  <i class="fas fa-sign-out-alt"></i> {{ "Logout" | localize }}
+                                </a>
+                              </div>
+                            </li>
+                            </div>
+                            </div> -->
+                </div>
+
+
+
+
+                <div class="row col-md-12 mt-1 mx-2">
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Project : " }}
+                        </label>
+                        {{Projectcode}}
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitTypeId">
+                            {{ "Visit Level : " }}
+                        </label>
+
+                        {{visitLevel}}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitStatusId">
+                            {{ "Visit Staus : " }}
+                        </label>
+                        {{visitstatus}}
+
+                    </div>
+                </div>
+                <div class="row col-md-12 mx-2">
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Justified Person : " }}
+                        </label>
+                        {{JustifiedPersonName}}
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitTypeId">
+                            {{ "Technical Expert : " }}
+                        </label>
+
+                        {{TechnicalExpertName}}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitStatusId">
+                            {{ "Duration : " }}
+                        </label>
+                        {{Duration}}
+
+                    </div>
+                </div>
+                <div class="row col-md-12 mx-2">
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Visit Date : " }}
+                        </label>
+                        {{VisitDate}}
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitTypeId">
+                            {{ "Start Date: " }}
+                        </label>
+
+                        {{StartDate}}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitStatusId">
+                            {{ "End Date : " }}
+                        </label>
+                        {{EndDate}}
+
+                    </div>
+                </div>
+                <div class="row col-md-12 mx-2">
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "LeadAuditorName : " }}
+                        </label>
+                        {{LeadAuditorName}}
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitTypeId">
+                            {{ "Auditor-1: " }}
+                        </label>
+
+                        {{Auditor1Name}}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitStatusId">
+                            {{ "Auditor-2 : " }}
+                        </label>
+                        {{Auditor2Name}}
+
+                    </div>
+                </div>
+                <div class="row col-md-12 mx-2">
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Auditor-3 : " }}
+                        </label>
+                        {{Auditor3Name}}
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitTypeId">
+                            {{ "Auditor-4: " }}
+                        </label>
+
+                        {{Auditor4Name}}
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="VisitStatusId">
+                            {{ "Auditor-5 : " }}
+                        </label>
+                        {{Auditor5Name}}
+
+                    </div>
+                </div>
+                <div class="row col-md-12 mx-2">
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Reviewer : " }}
+                        </label>
+                        {{ReviewerName}}
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Review Date : " }}
+                        </label>
+                        {{ReviewDate}}
+
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Submision Date : " }}
+                        </label>
+                        {{SubmisionDate}}
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Remarks : " }}
+                        </label>
+                        {{VerificationLevel}}
+
+                    </div>
+                    <div class="col-md-6">
+                        <button   type="button" class="btn-sm btn btn-success  mb-2 float-left"
+                        (click)="DownloadAuditPlan()">   <i class="fa fa-download"></i> Download Audit Plan</button>
+
+                        <button type="button"
+                        class="btn-sm btn-danger btn float-left mx-1 " *ngIf="auditcompletebtn"  (click)="AuditComplete()">Audit Conducted</button>
+                        <button type="button"
+                        class="btn-sm btn-primary btn float-left mx-1 " *ngIf="auditpendingbtn">Audit Pending</button>
+                      
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <button type="button" class="btn-sm btn btn-success  mb-2 float-left"
+                            (click)="DownloadAuditPlan()"> <i class="fa fa-download"></i> Download Audit Plan</button>
+                        <button type="button" class="btn-sm btn-danger btn float-left mx-1 " *ngIf="auditcompletebtn"
+                            (click)="AuditComplete()">Audit Complete</button>
+
+                    </div> -->
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+        <div *ngIf="SLCPdiv">
+            <app-slcp [id]="projectId">
+
+            </app-slcp>
+        </div>
+        <div *ngIf="Higgdiv">
+            <app-higg [id]="projectId">
+
+            </app-higg>
+        </div>
+        <div *ngIf="Sa8000div">
+            <app-project-sa8000 [id]="projectId" 
+            [AuditId]="AuditVisitId"
+            >
+
+            </app-project-sa8000>
+        </div>
+        <!-- <div class="modal center modal-dialog-lg" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+            <div class="modal-dialog " role="document">
+              <div class="modal-content">
+               
+                <div class="modal-body modal">
+                  <div class="container-fluid">
+                  <div class="card mx-2 pt-3 pb-2">
+                    <app-slcp  
+                    [id]="projectId">
+            
+                </app-slcp>
+                  </div>
+                  </div>
+                </div>
+
+                  
+
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="closePopup()">
+                        Close
+                      </button>
+                 
+                 
+                 
+                </div>
+              </div>
+              </div>
+            </div> -->
+
+
+        <!-- <div class="modal center" tabindex="-1" style="width: 1500px;" role="dialog" [ngStyle]="{'display':displayStyle}">
+            <div class="modal-dialog" role="document" style="width: 1500px;align-items: center;">
+                <div class="modal-content" style="width: 1500px; align-items: center;">
+
+                    <div class="modal-body" style="width: 1500px; align-items: center;">
+                      
+                        <app-slcp [id]="projectId">
+
+                        </app-slcp>
+
+                        <button type="button" class="btn btn-danger float-right" (click)="closePopup()">
+                            Close
+                        </button>
+                      
+                    </div>
+
+
+
+
+                  
+                </div>
+            </div>
+        </div> -->
+
+
+    </section>
+</form>
+<form [formGroup]="AuditReportForm" #auditReportForm="ngForm">
+
+
+    <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+
+
+
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h3
+                        style="text-align: center; color: rgb(35 52 86) ;font-family: 'Times New Roman'; font-weight: bold; text-decoration: underline">
+                        Audit Report</h3>
+                       
+                </div>
+                <!-- <div class="row md-0 px-3 pb-2 ">
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Project Code: " }}
+                        </label>
+                        {{Projectcode}}
+
+                    </div>
+
+                    <div class="col-md-8">
+                        <label class="mb-0" for="Code">
+                            {{ "Standard : " }}
+                        </label>
+                        {{StandardName}}
+
+                    </div>
+                </div> -->
+                <!-- <form [formGroup]> -->
+                <div class="row md-0 px-3 pb-2" *ngIf="btnSave">
+
+
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="AuditDocumentTypeId">Document Type</label>
+                        <select class="form-control form-control-sm col-md-12 " formControlName="AuditDocumentTypeId"
+                            required [ngClass]="{ 'is-invalid': submitted && f.AuditDocumentTypeId.errors }"
+                            id="AuditDocumentTypeId">
+                            <option *ngFor="let item of DocumentsTypeList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.AuditDocumentTypeId.errors" class="invalid-feedback">
+                            <div *ngIf="f.AuditDocumentTypeId.errors.required">Document is required</div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+
+                        <label class="mb-0" for="file">Upload Document (PDF)</label>
+                        <input type="file" class="form-control-sm col-md-12 " id="File"
+                            (change)="handlefileInput($event)" name="File" formControlName="File">
+
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <label class="mb-0" for="VisitStatusId">
+                            {{ "Status : " }}
+                        </label>
+                        {{ApprovalStatus}}
+
+                    </div>
+                   
+                </div>
+                <div class="row md-0 px-3 pb-2" *ngIf="btnSave">
+
+                <div class="col-md-12" *ngIf="!ProjectCompleted">
+                        
+                    <button type="button"   class="btn-sm btn btn-primary float-right mt-4 "
+                    (click)="NewRecord()">New</button>
+
+                <button type="button"  class="btn-sm btn-success btn float-right mx-1  mt-4  "
+                    (click)="onSubmit()">Save</button>
+                <button type="button" *ngIf="SubmitReview" class="btn-sm btn-success btn float-right mx-1  mt-4  "
+                    (click)="onSubmitForReview()">Submit For Review</button>
+                   
+                </div>
+                </div>
+                <!-- <div class=" col-md-12 mx-2" *ngIf="btnSave">
+
+                     <button type="button" class="btn-sm btn btn-primary float-right mx-1  mt-4 " (click)="openPopup()">
+                        <i class="fa fa-download"></i>Download Documents
+                    </button> 
+                  
+
+                </div> -->
+
+                <div class="card-body table-responsive px-2">
+
+
+
+                    <dx-data-grid id="gridContainer" class="mx-3" [showBorders]="true" [rowAlternationEnabled]="true" [showRowLines]="true"
+                        [showColumnLines]="false" [allowColumnReordering]="true" [dataSource]="DocumentsList" 
+                      
+                      keyExpr="id">
+                      <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                       
+                        <dxi-column dataField="auditDocumentName" caption="Document Type" cssClass="cell-header"></dxi-column>
+                        <dxi-column dataField="createdDate" dataType="date" caption="Uploaded Date" cssClass="cell-header">
+                        </dxi-column>
+                        <dxi-column dataField="documentFilePath" caption="Uploaded File Name" cssClass="cell-header"></dxi-column>
+                        <dxi-column type="buttons" caption="Download" cssClass="cell-header">
+                            <dxi-button hint="Download File" icon="download" [onClick]="Downloadfile">
+                            </dxi-button>
+                        </dxi-column>
+
+
+
+
+                        <dxi-column type="buttons" caption="Action"cssClass="cell-header">
+                            <dxi-button icon="edit" [onClick]="edit"></dxi-button>
+
+                            <dxi-button icon="deleterow" [onClick]="delete"></dxi-button>
+
+
+                           
+                        </dxi-column>
+
+
+
+
+
+
+                    </dx-data-grid>
+                   
+                 
+
+
+
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" >
+                        
+                            <h3
+                                style="text-align: center; color: rgb(35 52 86) ;font-family: 'Times New Roman'; font-weight: bold;margin-top: 10px; text-decoration: underline">
+                                Audit Documents Template</h3>
+                      
+                        <div class="card-body table-responsive p-0">
+                            <dx-data-grid id="gridContainer" class="mx-3 mb-3"   [showBorders]="true" [rowAlternationEnabled]="true" [showRowLines]="true"
+                                [columnAutoWidth]="true"   [showColumnLines]="false"
+                                [showRowLines]="true" [allowColumnReordering]="true"
+                                [dataSource]="LibraryList" keyExpr="id">
+
+                                <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                                </dxo-search-panel>
+                                <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+                                <dxi-column dataField="title" caption="Title" cssClass="cell-header"></dxi-column>
+                                <dxi-column dataField="version" caption="Version" cssClass="cell-header"></dxi-column>
+                                <dxi-column dataField="description" caption="Description" cssClass="cell-header"></dxi-column>
+
+                                <dxi-column type="buttons" caption="Action" cssClass="cell-header">
+
+                                    <dxi-button hint="Download File" icon="download" [onClick]="DownloadLibraryfile">
+                                    </dxi-button>
+
+                                </dxi-column>
+
+
+
+
+
+
+
+                            </dx-data-grid>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+
+
+</form>
+<br> <br>

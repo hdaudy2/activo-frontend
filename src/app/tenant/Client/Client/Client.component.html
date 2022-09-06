@@ -1,0 +1,103 @@
+<form [formGroup]="AddNewDataForm" (ngSubmit)="OnServiceRequestFormSubmit()">
+  <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+      <div class="row">
+        <div class="col header">
+          <div>
+            <span class="header__heading">Add Client</span>
+          </div>
+          <div>
+            <button type="submit" class="btn btn__primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header">
+          <!-- Field Row Start -->
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0" for="code">Code</label>
+              <input type="text" formControlName="code" class="form-control col-md-12" />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="name">Name</label>
+              <input type="text" formControlName="name" class="form-control col-md-12" />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="phoneNumber">Telephone-No</label>
+              <input type="text" formControlName="phoneNumber" (keypress)="KeyPress($event)"
+                class="form-control form-control-sm col-md-12" maxlength="12" placeholder="000-000-0000"
+                id="phoneNumber" />
+            </div>
+          </div>
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0" for="contactPerson">Contact Person Name</label>
+              <input type="text" formControlName="contactPerson" class="form-control col-md-12" />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="mobileNumber">Contact Person Number</label>
+              <input type="text" formControlName="mobileNumber" class="form-control col-md-12" />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="email">Email Address</label>
+              <input type="text" formControlName="email" class="form-control col-md-12" />
+            </div>
+          </div>
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0">Country</label>
+              <select class="form-control form-control-sm col-md-12" formControlName="countryId"
+                (change)="onCountryChange($event.target.value)">
+                <option [ngValue]="null">Choose Country</option>
+                <option *ngFor="let country of CountryList" [value]="country.id">
+                  {{ country.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0">State</label>
+              <select class="form-control form-control-sm col-md-12" formControlName="stateId"
+                (change)="onStateChange($event.target.value)">
+                <option [ngValue]="null">Choose State</option>
+                <option *ngFor="let state of StateList" [value]="state.id">
+                  {{ state.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0">City</label>
+              <select class="form-control form-control-sm col-md-12" formControlName="cityId">
+                <option [ngValue]="null">Choose City</option>
+                <option *ngFor="let city of CityList" [value]="city.id">
+                  {{ city.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0" for="website">WebSite</label>
+              <input type="text" formControlName="website" class="form-control col-md-12" />
+            </div>
+            <div class="col-md-8">
+              <label class="mb-0" for="address1">Address</label>
+              <input type="text" formControlName="address1" class="form-control col-md-12" />
+            </div>
+          </div>
+          <!-- Field Row: End -->
+          <!-- Field Row Start -->
+
+          <!-- Field Row End -->
+          <!-- Button Row Start -->
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

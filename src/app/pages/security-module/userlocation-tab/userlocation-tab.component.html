@@ -1,0 +1,101 @@
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;" [routerLink]="['/app/pages/security-module/user-with-locations-task-board']" data-toggle="tab"  role="tab" aria-controls="nav-profile" aria-selected="false">List View</a>
+        
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;" [routerLink]="['/app/pages/security-module/user-with-locations']" data-toggle="tab"  role="tab" aria-controls="nav-profile" aria-selected="false">User  </a>
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"  role="tab" aria-controls="nav-home" aria-selected="true">User Location</a>
+    </div>
+  </nav>
+ 
+  <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+        
+        <!-- <div class="row md-0 mb-1 mt-0">
+            <div class="col-sm-12 px-0 pb-0">
+                <div class="alert alert-info alert-dismissible  rounded-0">
+                    <h6><i class="fa fa-database"></i> User Location</h6>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+  </section>
+
+
+
+<section class="content px-2 mt-3">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row md-0 mb-1 mt-0">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue"  >
+                                    <i class="fas fa-search"></i>
+                                </button>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-2">
+        <div class="row md-0 mb-1 mt-0">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="w-25">Location</th>
+                                    <th class="w-25">Branch Code </th>
+                                    <th class="w-25">IsAllowed</th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr >
+                                    <td> <label>M.A JINNAH RD</label></td>
+                                  
+                                    <td> 16351</td>
+                                    <td> <div class="custom-control custom-checkbox mx-1">
+                                        <input type="checkbox" class="custom-control-input" />
+                                        <h6 class="custom-control-label"></h6>
+                                    </div></td>
+                               
+                               
+                                   
+                                </tr>
+                                <tr >
+                                    <td> <label>ABDULLAH HAROON RD</label></td>
+                                  
+                                    <td> 6546</td>
+                                    <td> <div class="custom-control custom-checkbox mx-1">
+                                        <input type="checkbox" class="custom-control-input" />
+                                        <h6 class="custom-control-label"></h6>
+                                    </div></td>
+                               
+                               
+                                   
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div></div></div>
+    
+
+
+
+
+
+</section>
+
+
+    

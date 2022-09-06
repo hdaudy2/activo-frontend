@@ -1,0 +1,467 @@
+
+
+
+
+<form [formGroup]="ClientVisitForm" #clientVisitForm="ngForm">
+    <section class="content-header pt-0 pb-0  mx-0 mb-0 md-0">
+        <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+        
+            <div class="row md-0 mb-1 mt-0">
+                <div class="col-sm-12 px-0">
+                    <div class="alert alert-info alert-dismissible">
+                        <h6>Operations | Client Visit Detail</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+<section class="content pt-0 pb-0 mx-2 mb-0 md-0">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                   
+                        <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+                       
+                            <div class="row col-md-12 mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <!-- <label class="mb-0" for="Code">
+                                        {{ "Project Code: " }}
+                                    </label>
+                                    {{Projectcode}} -->
+            
+                                    <label class="mb-0" for="ProjectCode">Project Code</label>
+                                    <input type="text" formControlName="ProjectCode" class="form-control form-control-sm col-md-12" id="Projectcode"/>
+
+
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <label class="mb-0" for="Code">
+                                        {{ "Project" }}
+                                    </label>
+                                    <select formControlName="ProjectId"  class="form-control" id="ProjectId"  >
+                                        <option *ngFor="let item of projyctcodelist" [value]="item.id">
+                                          {{item.projectCode }}
+                                        </option>
+                                      </select>
+                                     
+                                </div> -->
+
+
+                                <!-- <div class="col-md-4">
+                                    <label class="mb-0" for="VisitTypeId">
+                                        {{ "Visit Type" }}
+                                    </label>
+
+                                    <select formControlName="VisitTypeId"  class="form-control" id="VisitTypeId" required [ngClass]="{ 'is-invalid': submitted && f.VisitTypeId.errors }">
+                                        <option *ngFor="let item of VisitTypeList" [value]="item.id">
+                                          {{item.name }}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="submitted && f.VisitTypeId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.VisitTypeId.errors.required">Visit Type  is required</div>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="VisitLevelId">
+                                        {{ "Visit Level" }}
+                                    </label>
+
+                                    <select formControlName="VisitLevelId"  class="form-control" id="VisitLevelId" required [ngClass]="{ 'is-invalid': submitted && f.VisitLevelId.errors }">
+                                        <option *ngFor="let item of VisitLevelList" [value]="item.id">
+                                          {{item.name }}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="submitted && f.VisitLevelId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.VisitLevelId.errors.required">Visit Status is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="VisitStatusId">
+                                        {{ "Status" }}
+                                    </label>
+
+                                    <select formControlName="VisitStatusId"  class="form-control" id="VisitStatusId" required [ngClass]="{ 'is-invalid': submitted && f.VisitStatusId.errors }">
+                                        <option *ngFor="let item of VisitStatusList" [value]="item.id">
+                                          {{item.name }}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="submitted && f.VisitStatusId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.VisitStatusId.errors.required">Visit Status is required</div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    
+               
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- <div class="input-group">
+                                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                                            <div class="input-group-prepend">
+                                                <button type="button" class="btn bg-blue">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                                
+                                            </div>
+                                        </div> -->
+
+                        <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                                role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                                aria-selected="false">VISIT DETAILS </a></b>
+                        <div class="container-fluid mb-2">
+
+                            <div class="row mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="JustifiedPersonId">
+                                        {{ "Justified Person" }}
+                                    </label>
+
+                                    <select formControlName="JustifiedPersonId"  class="form-control" id="JustifiedPersonId">
+                                        <option *ngFor="let item of TechnicalExpertList" [value]="item.id">
+                                          {{item.fullName }}
+                                        </option>
+                                      </select>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="TechnicalExpertId">
+                                        {{ "Technical Expert" }}
+                                    </label>
+
+                                    <select formControlName="TechnicalExpertId"  class="form-control" id="TechnicalExpertId">
+                                        <option *ngFor="let item of TechnicalExpertList" [value]="item.id">
+                                          {{item.fullName }}
+                                        </option>
+                                      </select>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Duration">Duration</label>
+                                    <input type="text" formControlName="Duration" class="form-control form-control-sm col-md-12" id="Duration"/>
+
+                                    <!-- <select formControlName="Duration"  class="form-control" id="Duration"  required [ngClass]="{ 'is-invalid': submitted && f.Duration.errors }">
+                                        <option *ngFor="let item of DurationList" [value]="item.id">
+                                          {{item.code }}
+                                        </option>
+                                      </select> -->
+                                      <div *ngIf="submitted && f.Duration.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Duration.errors.required">Duration is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="VisitDate">Visit Date</label>
+                                    <input type="date" formControlName="VisitDate" class="form-control form-control-sm col-md-12" id="VisitDate" required [ngClass]="{ 'is-invalid': submitted && f.VisitDate.errors }"/>
+                                    <div *ngIf="submitted && f.VisitDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.VisitDate.errors.required">Visit Date is required</div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="StartDate">Start Date</label>
+                                    <input type="date" formControlName="StartDate" class="form-control form-control-sm col-md-12" id="StartDate" required [ngClass]="{ 'is-invalid': submitted && f.StartDate.errors }"/>
+                                    <div *ngIf="submitted && f.StartDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.StartDate.errors.required">Start Date is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="EndDate">End Date</label>
+                                    <input type="date" formControlName="EndDate" class="form-control form-control-sm col-md-12" id="EndDate" required [ngClass]="{ 'is-invalid': submitted && f.EndDate.errors }"/>
+                                    <div *ngIf="submitted && f.EndDate.errors" class="invalid-feedback">
+                                        <div *ngIf="f.EndDate.errors.required">End Date is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="LeadAuditorId">
+                                        {{ "Lead Auditor" }}
+                                    </label>
+
+                                    <select formControlName="LeadAuditorId"  class="form-control" id="LeadAuditorId" required [ngClass]="{ 'is-invalid': submitted && f.LeadAuditorId.errors }"  (change)="ChangeAuditor($event.target.value)">
+                                        <option *ngFor="let item of LeadAuditorList" [value]="item.userId">
+                                          
+                                          {{item.userName }}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="submitted && f.LeadAuditorId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.LeadAuditorId.errors.required">Lead Auditor  is required</div>
+                                    </div>
+                                </div>
+                                
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Auditor1Id">
+                                        {{ "Auditor-1" }}
+                                    </label>
+
+                                    <select formControlName="Auditor1Id"  class="form-control" id="Auditor1Id" (change)="ChangeAuditor1($event.target.value)">
+                                        <option *ngFor="let item of AuditorList" [value]="item.userId"
+                                            >
+                                          {{item.userName }}
+                                        </option>
+                                      </select>
+                                     
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Auditor2Id">
+                                        {{ "Auditor-2" }}
+                                    </label>
+
+                                    <select formControlName="Auditor2Id"  class="form-control" id="Auditor2Id"(change)="ChangeAuditor2($event.target.value)">
+                                        <option *ngFor="let item of AuditorList" [value]="item.userId"
+                                     >
+                                          {{item.userName }}
+                                        </option>
+                                      </select>
+
+
+                                </div>
+                            </div>
+
+                            <div class="row mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Auditor3Id">
+                                        {{ "Auditor-3" }}
+                                    </label>
+
+                                    <select formControlName="Auditor3Id"  class="form-control" id="Auditor3Id"(change)="ChangeAuditor3($event.target.value)">
+                                        <option *ngFor="let item of AuditorList" [value]="item.userId"
+                                           >
+                                          {{item.userName }}
+                                        </option>
+                                      </select>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Auditor4Id">
+                                        {{ "Auditor-4" }}
+                                    </label>
+
+                                    <select formControlName="Auditor4Id"  class="form-control" id="Auditor4Id"(change)="ChangeAuditor4($event.target.value)">
+                                        <option *ngFor="let item of AuditorList" [value]="item.userId"
+                                      >
+                                          {{item.userName }}
+                                        </option>
+                                      </select>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Auditor5Id">
+                                        {{ "Auditor-5" }}
+                                    </label>
+
+                                    <select formControlName="Auditor5Id"  class="form-control" id="Auditor5Id"(change)="ChangeAuditor5($event.target.value)">
+                                        <option *ngFor="let item of AuditorList" [value]="item.userId"
+                                           >
+                                          {{item.userName }}
+                                        </option>
+                                      </select>
+
+
+                                </div>
+                            </div>
+                            <div class="row mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="ReviewerId">
+                                        {{ "Reviewer" }}
+                                    </label>
+
+                                    <select formControlName="ReviewerId"  class="form-control" id="ReviewerId" required [ngClass]="{ 'is-invalid': submitted && f.ReviewerId.errors }"(change)="ChangeReviewerId($event.target.value)">
+                                        <option *ngFor="let item of ReviewerList" [value]="item.userId"
+                                   >
+                                          {{item.userName }}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="submitted && f.ReviewerId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.ReviewerId.errors.required">Reviewer is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="ReviewDate">Review Date</label>
+                                    <input type="date" disabled formControlName="ReviewDate" class="form-control form-control-sm col-md-12" id="ReviewDate" />
+                                   
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="SubmisionDate">Submision Date</label>
+                                    <input type="date"disabled formControlName="SubmisionDate" class="form-control form-control-sm col-md-12" id="SubmisionDate" />
+                                   
+                                </div>
+                                
+                               
+                                
+
+                              
+                            </div>
+
+                            <div class="row mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Auditor3Id">
+                                        {{ "Remarks" }}
+                                    </label>
+
+                                    <input type="text" formControlName="VerificationLevel" class="form-control form-control-sm col-md-12" id="VerificationLevel" />
+
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <label class="mb-0" for="ReviewerId">
+                                        {{ "Reviewer" }}
+                                    </label>
+
+                                    <select formControlName="ReviewerId"  class="form-control" id="ReviewerId">
+                                        <option *ngFor="let item of LeadAuditorList" [value]="item.userId">
+                                          {{item.userName }}
+                                        </option>
+                                      </select>
+
+                                </div> -->
+                                <div class="col-md-4">
+                                    <label for="File"> Upload Audit Plan</label>
+                                    <input type="file" id="File" (change)="handlefileInput($event)" name="File">
+                                </div>
+                                
+
+                              
+                            </div>
+                            <div class="row mt-1 mx-2">
+                                <div class="col-md-4">
+                                 
+                                </div>
+                                <div class="col-md-4">
+                                          </div>
+                                <div class="col-md-4" >
+                                    <br />
+                                    <button type="button" *ngIf="auditcompletebtn"
+                                    class="btn-sm btn-success btn float-right ml-1" (click)="onSubmit()"><i class="fa fa-save"></i> Submit</button>
+                                    <button type="button"
+                                    class="btn-sm btn-primary btn float-right ml-1" (click)="NewRecord()"><i class="fas fa-plus-square"></i> New</button>
+                                    <button type="button"
+                                    class="btn-sm btn btn-dark btn  float-right ml-1" (click)="Back()"><i class="fa fa-arrow-circle-left"></i> Back</button>
+                                 
+
+
+                                </div>
+
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                <div class="card-body table-responsive p-0">
+    
+                  
+    
+                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true" [columnAutoWidth]="true"
+                    [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="AllVisitDataList | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }"
+                        keyExpr="id" >
+                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+                        <dxi-column   dataField="projectCode"  
+                        caption="Project Code" ></dxi-column>
+                        <dxi-column   dataField="visitLevelName"  
+                        caption="Visit Level" ></dxi-column>
+                         <dxi-column   dataField="startDate"  dataType="date" 
+                        caption="Start Date"></dxi-column> 
+                        
+                        <dxi-column   dataField="duration"  
+                        caption="Duration "></dxi-column>
+                        <dxi-column   dataField="visitStatusName"  
+                        caption="Visit Status "></dxi-column>
+                        
+    
+                
+                          <dxi-column type="buttons"caption="Action"  >  
+                            <dxi-button   icon="edit"
+                            [onClick]="edit"
+                            
+                            [(visible)]="recordEdit"
+                            ></dxi-button>  
+
+                            <dxi-button 
+                            hint="View"  icon="fas fa-eye text-secondary" alignment='left'
+                            [onClick]="edit"
+                           
+                            
+                            ></dxi-button> 
+                            <dxi-button   icon="deleterow"
+                             [onClick]="delete"
+                             [(visible)]="deleteVisit"
+                      
+                             ></dxi-button>
+                      
+                            
+                       
+                          </dxi-column>   
+                         
+                         
+                  
+    
+    
+    
+                    </dx-data-grid>
+                    <div class="card-footer table-card-footer pb-0 border-top">
+                        <div class="row">
+                            <div class="col-sm-2 col-12 text-sm-left text-center">
+                                <button class="btn btn-sm">
+                                    <i class="fas fa-redo text-info"(click)="reloadGrid()"></i>
+                               
+                               
+                                </button>
+    
+                            </div>
+                            <div class="col-sm-6 col-12">
+                        
+                            </div>
+                            <div class="col-sm-4 col-12">
+                                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls>
+                            </div>
+                            
+                        </div>
+                    </div>
+           
+    
+    
+    
+                </div>
+            </div></div>
+        </div>
+    </div>
+    </section>
+    </form><br><br>

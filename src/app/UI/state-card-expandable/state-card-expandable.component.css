@@ -1,0 +1,97 @@
+.state-card-expandable {
+  position: relative;
+  transition: all 1s;
+  display: flex;
+
+  /* word-wrap: break-word; */
+
+  border: 1px solid #f8f8f8;
+  /* background-color: #fff; */
+
+  /* border-radius: 5px; */
+  background-clip: border-box;
+
+  /* padding: 20px; */
+  margin: 1rem 0;
+  /* width: 30%; */
+  height: 80%;
+}
+
+.state-card-expandable--main {
+  padding: 0px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: #fff;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.state-card-expandable--main .label {
+  color: #909090;
+  font-size: 0.8em;
+}
+
+.state-card-expandable--main .state {
+  color: #111111;
+  font-size: 2em;
+}
+
+.state-card-expandable--extended {
+  display: none;
+  padding-right: 20px;
+
+  transition: all 1s;
+  background-color: #fff;
+}
+
+.state-card-expandable--tabs {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number {
+  font-size: 2em;
+  color: #111111;
+}
+
+.label {
+  color: #909090;
+  font-size: 0.6em;
+  letter-spacing: 1.5px;
+}
+
+.state-card-expandable--arrow {
+  color: #fff;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  background-color: #111111;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.state-card-expandable--arrow:active {
+  background-color: #222;
+}
+
+.extended .state-card-expandable--extended {
+  width: auto;
+  display: flex;
+  flex-grow: 1;
+}
+
+.extended .fa-angle-right {
+  transform: scaleX(-1);
+}
+

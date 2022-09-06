@@ -1,0 +1,12 @@
+::ng-deep #gridContainer {
+  
+    max-height: 450px;
+  }
+  ::ng-deep .dx-header-row .cell-header {
+    color: rgb(255, 254, 254);
+    
+    
+    background-color: #233456;
+
+}
+  

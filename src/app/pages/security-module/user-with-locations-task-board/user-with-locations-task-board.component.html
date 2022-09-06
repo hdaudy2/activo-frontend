@@ -1,0 +1,256 @@
+<!-- <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"  role="tab" aria-controls="nav-home" aria-selected="true">List Veiw</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" [routerLink]="['/app/pages/stock-management/indenting-authorizer']" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" style="color: darkblue;">Form</a>
+     
+    </div>
+</nav> -->
+
+<!-- <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+            aria-selected="true">List View</a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-with-locations']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">User</a>
+
+         <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;" [routerLink]="['/app/pages/security-module/userlocation-tab']" data-toggle="tab"  role="tab" aria-controls="nav-profile" aria-selected="false">User Location </a> 
+         
+    </div>
+</nav> -->
+
+
+
+    <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+        <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+    
+            <div class="row md-0 mb-1 mt-0">
+                <div class="col-sm-12 px-0">
+                    <div class="alert alert-info alert-dismissible">
+                        <h6>User Management | All Users</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="content px-2">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row mx-2">
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <input type="text" class="form-control col-md-12" name="keyword" [(ngModel)]="keyword"
+                            [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue" (click)="onSearch()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" [routerLink]="['/app/pages/security-module/user-with-locations']"
+                            data-toggle="tab" role="tab"
+                            class="btn-sm btn-primary col-md-8 float-right mx-0  mt-0 pt-2 pb-2"  [hidden]="!isAddShown">Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                <div class="card-body table-responsive p-0">
+
+                  
+
+                    <dx-data-grid id="dataGrid" [rowAlternationEnabled]="true" [showRowLines]="true"
+                        [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="user | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }"
+                        keyExpr="id" >
+                        <dxo-scrolling mode="virtual"></dxo-scrolling>
+                       
+                        <dxi-column   dataField="organizationName"  
+                        caption="Office Name" cssClass="cell-header"></dxi-column>
+                        <dxi-column   dataField="userName"  
+                        caption="User Name" cssClass="cell-header"></dxi-column>
+                        <dxi-column   dataField="fullName"  
+                        caption="Sur Name"cssClass="cell-header"></dxi-column>
+                        <dxi-column   dataField="roleName"  
+                        caption="Role"cssClass="cell-header"></dxi-column>
+                        <dxi-column   dataField="departmentName"  
+                        caption="Department"cssClass="cell-header"></dxi-column>
+                        <dxi-column   dataField="approvelStatus"  
+                        caption="Approval Status"cssClass="cell-header"></dxi-column>
+                       
+
+                
+                          <dxi-column type="buttons"caption="Action" alignment='left' cssClass="cell-header">  
+                            <dxi-button   icon="key"
+                            hint="Reset Password"
+                            [onClick]= "resetpassword"
+                            
+                           
+                            ></dxi-button>  
+                            <dxi-button   icon="edit"
+                            hint="Edit Record"
+                            [onClick]="edit"
+                            
+                           
+                            ></dxi-button>  
+                            <dxi-button   icon="fas fa-tasks"
+                            hint="Manage"
+                            [onClick]="edittest"
+                            
+                            [(visible)]="isManageAllowed"
+                            ></dxi-button>  
+                            
+                            <dxi-button 
+                            hint="View Record"  icon="fas fa-eye text-secondary"
+                            [onClick]="review"
+                          
+                            
+                            ></dxi-button> 
+                            <dxi-button 
+                            hint="Submit For Review" icon="exportselected"
+                            [onClick]="SubmitForreview"
+                            [(visible)]="isManageAllowed"
+                            
+                            ></dxi-button> 
+                            <dxi-button 
+                            hint="Remarks History"  icon="verticalaligntop" alignment='left'
+                            [onClick]="Remarks"
+                          
+                            
+                            ></dxi-button> 
+                            <dxi-button   icon="deleterow"
+                            [onClick]="delete"
+                            [(visible)]="deletedbtn"
+                            hint="Delete"
+                            ></dxi-button>  
+                            <!-- <i class="fas fa-tasks"></i> -->
+                            <!-- <dxi-button
+                            hint="Download File"
+                            icon="download"
+                           [onClick]="Downloadfile"></dxi-button> -->
+                           <!-- <dxi-button   icon="edit"
+                           [routerLink]='["/app/pages/stock-management/library"]'
+                             [(visible)]="isAddShown"
+                             ></dxi-button>   -->
+                          </dxi-column>   
+                         
+                         
+                  
+
+
+
+                    </dx-data-grid>
+                    <div class="card-footer table-card-footer pb-0 border-top">
+                        <div class="row">
+                            <div class="col-sm-2 col-12 text-sm-left text-center">
+                                <button class="btn btn-sm">
+                                    <i class="fas fa-redo text-info"(click)="reloadGrid()"></i>
+                               
+                               
+                                </button>
+
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <!-- <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls> -->
+                            </div>
+                            <div class="col-sm-4 col-12">
+                                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls>
+                            </div>
+                            <!-- <div class="col-sm-2 col-12 ">
+
+                                <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                                    <div class="p-2 bd-highlight">
+                                        <select (change)="onTableSizeChange($event)" class="custom-select">
+                                            <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                                {{ size }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- <dx-tree-list>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                            [showNavigationButtons]="true">
+                        </dxo-pager>
+                    </dx-tree-list> -->
+
+
+
+
+                </div>
+            </div></div>
+        </div>
+    </div>
+   
+
+</section>
+<form [formGroup]="ResetPasswordForm" #resetPasswordForm="ngForm">
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Reset Password</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+          <div class="card mx-2 pt-3 pb-2">
+            <div class="row">
+              <!-- <div class="col-sm-12"> -->
+
+            <div class="col-md-10 mx-2 ">
+              <label class="mb-0" for="EmailForgotPassword">Email</label>
+              <input type="text" formControlName="EmailForgotPassword" class="form-control float-right  form-control-sm col-md-12"
+                id="EmailForgotPassword" />
+            </div>
+            <div class="col-md-10 mx-2 ">
+              <label class="mb-0" for="NewPassword">Password</label>
+              <input type="text" autocomplete="off" formControlName="NewPassword" class="form-control float-right form-control-sm col-md-12"
+                id="NewPassword" />
+            </div> 
+          
+
+        <div class="col-md-10 mx-2 ">
+            <label class="mb-0" for="NewConfirmPassword">ConfirmPassword</label>
+            <input type="text" autocomplete="off" formControlName="NewConfirmPassword" class="form-control float-right px-2 form-control-sm col-md-12"
+              id="NewConfirmPassword" />
+          </div>
+          <!-- </div> -->
+          </div>
+          </div>
+          </div>
+        </div>
+
+          
+
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closePopup()">
+            Close
+          </button>
+          <button type="button"
+          class=" btn-success btn " (click)="UserSubmit()">Submit</button>
+        </div>
+      </div>
+      </div>
+    </div>
+</form> <br> <br>

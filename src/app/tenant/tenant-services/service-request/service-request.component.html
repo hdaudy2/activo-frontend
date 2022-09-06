@@ -1,0 +1,122 @@
+<form
+  [formGroup]="ServiceRequestForm"
+  (ngSubmit)="OnServiceRequestFormSubmit()"
+>
+  <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+      <div class="row">
+        <div class="col header">
+          <div>
+            <span class="header__heading">Add a new Service Request</span>
+          </div>
+          <div>
+            <button type="submit" class="btn btn__primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header">
+          <!-- Field Row Start -->
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0" for="Title">Title</label>
+              <input
+                type="text"
+                formControlName="Title"
+                class="form-control col-md-12"
+                id="Title"
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0">Service Type</label>
+              <select
+                class="form-control col-md-12"
+                formControlName="ServiceTypeId"
+              >
+                <option [ngValue]="null" [selected]="true" disabled>
+                  Choose Service Type
+                </option>
+                <option
+                  *ngFor="let serviceType of ServiceTypeList"
+                  [value]="serviceType.id"
+                >
+                  {{ serviceType.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="priority">Priority</label>
+              <select
+                class="form-control col-md-12"
+                formControlName="PriorityId"
+              >
+                <option [ngValue]="null" [selected]="true" disabled>
+                  Choose your priority
+                </option>
+                <option
+                  *ngFor="let priority of PriorityList"
+                  [value]="priority.id"
+                >
+                  {{ priority.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <!-- Field Row: End -->
+          <!-- Field Row Start -->
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0" for="BuildingId">Building</label>
+              <input
+                type="text"
+                formControlName="BuildingId"
+                class="form-control col-md-12"
+                id="BuildingId"
+                readonly="true"
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="FlatId">Flat</label>
+              <input
+                type="text"
+                formControlName="FlatId"
+                class="form-control col-md-12"
+                id="FlatId"
+                readonly="true"
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="Asset">Asset</label>
+              <input
+                type="text"
+                formControlName="Asset"
+                class="form-control col-md-12"
+                id="Asset"
+              />
+            </div>
+          </div>
+          <!-- Field Row End -->
+          <!-- Field Row Start -->
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-6">
+              <label class="mb-0" for="Description">Description</label>
+              <textarea
+                formControlName="Description"
+                class="form-control col-md-12"
+                id="Description"
+              ></textarea>
+            </div>
+          </div>
+          <!-- Field Row End -->
+          <!-- Button Row Start -->
+          <div class="row md-0 px-3 pb-2"></div>
+          <!-- Button Row End -->
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

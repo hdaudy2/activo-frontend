@@ -1,0 +1,143 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link" id="nav-profile-tab"
+            [routerLink]="['/app/pages/security-module/roles-with-permission-task-board']" style="color: darkblue;"
+            data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" dis>List
+            View</a>
+
+        <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Role</a>
+
+    </div>
+</nav>
+
+<!-- <form [formGroup]="RoleForm"> -->
+
+<section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0" id="Roles-With-Permissions">
+
+
+
+    <div class="container-fluid">
+        <div class="card">
+
+
+            <div class="row md-0 px-3 pb-2 mx-1 ">
+
+                <div class="col-md-5 px-1">
+                    <label class="mb-0" for="code">Code</label>
+                    <input type="text" [disabled]="!isAuthAllowed" [(ngModel)]="code" class="form-control col-md-12"
+                        id="code" />
+                </div>
+                <div class="col-md-5 mb-1">
+                    <label class="mb-0 " for="name">Name</label>
+                    <input type="text" [disabled]="!isAuthAllowed" [(ngModel)]="name" class="form-control col-md-12"
+                        id="name" />
+                </div>
+                <div class="col-md-1 mb-1 mt-4 " [hidden]="!isMakerButtons">
+                    <button type="button" class="btn-sm btn btn-info float-right mx-1 pt-2 "
+                        (click)="onSubmit()">Submit</button>
+
+                </div>
+                <div class="col-md-1 mb-1 mt-4 " [hidden]="!isMakerButtons">
+
+                    <button type="button" class="btn-sm btn btn-info float-right mx-1 pt-2 "
+                        (click)="onSaveAsDraft()">SaveAsDraft</button>
+                </div>
+
+
+            </div>
+
+            <!-- <div class="card-header">
+                    <div class="row md-0 mb-1 mt-0">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn bg-blue">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    (click)="onSearch()" 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+        </div>
+    </div>
+    <div class="container-fluid mt-2">
+        <div class="row md-0 mb-1 mt-0">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="w-25">Permissions</th>
+                                    <!-- <th class="w-25">List</th> -->
+                                    <th class="w-25">Create</th>
+                                    <th class="w-25">Update</th>
+                                    <th class="w-25">Query</th>
+                                    <th class="w-25 px-5">Authorize</th>
+                                    <!-- <th class="w-25 px-5">Attachments</th> -->
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr *ngFor="let item of list">
+                                    <td>{{ item.permissionName }}</td>
+                                    <td> <input [(ngModel)]="item.insertAllowed" [disabled]="!isAuthAllowed"
+                                            (change)="onInsertSelection(item)" type="checkbox" class="form-control-sm ">
+                                    </td>
+                                    <td> <input [(ngModel)]="item.updateAllowed" [disabled]="!isAuthAllowed"
+                                            (change)="onUpdateSelection(item)" type="checkbox" class="form-control-sm ">
+                                    </td>
+                                    <td> <input [(ngModel)]="item.queryAllowed" [disabled]="!isAuthAllowed"
+                                            (change)="onQueryAllowedSelection(item)" type="checkbox"
+                                            class="form-control-sm ">
+                                    </td>
+                                    <td> <input [(ngModel)]="item.authAllowed" [disabled]="!isAuthAllowed"
+                                            (change)="onAuthAllowedSelection(item)" type="checkbox"
+                                            class="form-control-sm mx-5 ">
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3 " [hidden]="!isDeclineRemarks">
+                    <div class="form-group row mb-3 px-0 ">
+                        <label class="col-form-label ">
+                            Decline Remarks
+                        </label>
+                        <input type="text" disabled [(ngModel)]="Remarks" class="form-control col-10" />
+                    </div>
+                </div>
+                <div class="row mb-2  card-footer " [hidden]="!isShownDeclineRemarks">
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group row mb-3 ">
+                            <label class="col-form-label " for="AuthorizerRemarks">
+                                Authorizer Remarks
+                            </label>
+                            <input type="text" [(ngModel)]="Remarks" class="form-control col-10"
+                                id="AuthorizerRemarks" />
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2 mt-5" [hidden]="!isShownRejectOrAuthButton">
+                        <button (click)="onReject()" type="button"
+                            class="btn-sm btn btn-info  float-right mx-2">Reject</button>
+                        <button (click)="onAuthorize()" type="button"
+                            class="btn-sm btn btn-info float-right mx-2">Authorize</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <br> <br><br>
+<!-- </form> -->

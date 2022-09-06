@@ -1,0 +1,492 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <!-- <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+            aria-selected="true">All Projects</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/slcp']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">SA8000:2014</a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/client-sites']" data-toggle="tab" role="tab" aria-controls="nav-profile"
+            aria-selected="false">Client Sites </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/client-add-visit']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Add/Edit Visit </a>
+
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/higg']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Higg Application Form </a>
+
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/slcp']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">SLCP Application Form </a> -->
+
+
+        <!-- <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-academic']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Academic </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-professional']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Professional </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-employment']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Employment </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-cpd']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">CPD </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-consultancy']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Consultancy </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-audits']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Audits </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-auditor']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Auditor Nace </a> -->
+
+    </div>
+</nav>
+
+
+<form [formGroup]="ISOForm" ISoForm="ngForm">
+
+    <section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+        <div class="container-fluid">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3
+                        style="text-align: center; color: rgb(35 52 86) ;font-family: 'Times New Roman'; font-weight: bold; ">
+                        ISO14001:2014 Application Form</h3>
+                </div>
+                <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+
+
+
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                        role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                        aria-selected="false">Client Site Detail </a></b>
+
+                        <div class="row mt-1 mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="ClientSiteId">
+                                    {{ "Site Name" }}
+                                </label>
+        
+                                <select formControlName="ClientSiteId" class="form-control form-control-sm col-md-12"
+                                    (change)="onChange($event.target.value)"  id="ClientSiteId" required [ngClass]="{ 'is-invalid': submitted && f.ClientSiteId.errors }">
+                                    <option *ngFor="let item of ClientSiteList" [value]="item.id">
+                                        {{ item.siteName }}
+                                    </option>
+                                </select>
+                                <div *ngIf="submitted && f.ClientSiteId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.ClientSiteId.errors.required">Site is required</div>
+                                </div>
+                                <!-- <div class='alert alert-danger'
+                                    *ngIf='!ClientSiteId.valid && (ClientSiteId.touched || ClientSiteId.dirty)'>
+                                    <div *ngIf="ClientSiteId.errors['required']">
+                                        Please Select Site..
+                                    </div>
+                                </div> -->
+                            </div>
+        
+        
+                            <div class="col-md-8">
+                                <label class="mb-0" for="Address">Address</label>
+        
+                                <input formControlName="Address" class="form-control form-control-sm col-md-12" id="Address"
+                                    disabled required [ngClass]="{ 'is-invalid': submitted && f.Address.errors }">
+                                    <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Address.errors.required">Address is required</div>
+                                    </div>
+                            </div>
+        
+                        </div>
+        
+        
+                        <div class="row mt-1 mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="VerificationTypeId">
+                                    {{ "Verification Type" }}
+                                </label>
+        
+                                <select formControlName="VerificationTypeId" class="form-control form-control-sm col-md-12"
+                                     id="VerificationTypeId" required [ngClass]="{ 'is-invalid': submitted && f.VerificationTypeId.errors }">
+                                    <option *ngFor="let item of VerificationTypeList" [value]="item.id">
+                                        {{ item.name }}
+                                    </option>
+                                </select>
+                                <div *ngIf="submitted && f.VerificationTypeId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.VerificationTypeId.errors.required">Verification Type is required</div>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-4">
+                                <label class="mb-0" for="LegalStatus">Legal Status</label>
+                                <input formControlName="LegalStatus" type="text" class="form-control form-control-sm col-md-12"
+                                    id="LegalStatus" disabled>
+        
+                            </div>
+        
+                            <div class="col-md-4">
+                                <label class="mb-0" for="OutsourceProductionProcessess">Outsource Production Process</label>
+                                <input formControlName="OutsourceProductionProcessess" type="text"
+                                    class="form-control form-control-sm col-md-12" id="OutsourceProductionProcessess" disabled>
+                            </div>
+        
+                        </div>
+        
+        
+        
+                        <div class="row mt-1 mx-2">
+                            <div class="col-md-6">
+                                <label class="mb-0" for="TotalEmployees">Total Employees</label>
+                                <input formControlName="TotalEmployees" type="text"
+                                    class="form-control form-control-sm col-md-12" id="TotalEmployees" disabled  required [ngClass]="{ 'is-invalid': submitted && f.TotalEmployees.errors }">
+                                    <div *ngIf="submitted && f.TotalEmployees.errors" class="invalid-feedback">
+                                        <div *ngIf="f.TotalEmployees.errors.required">Total Employees is required</div>
+                                    </div>
+                                </div>
+        
+        
+        
+                            <div class="col-md-6">
+                                <label class="mb-0" for="ShiftTimings">Shift Time</label>
+                                <input type="text" formControlName="ShiftTimings" class="form-control form-control-sm col-md-12"
+                                    id="ShiftTimings" disabled>
+        
+                            </div>
+        
+                        </div>
+        
+        
+        
+        
+        
+        
+        
+                        <br>
+        
+                    </div>
+        
+            <div class="card">
+
+
+
+                <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                        role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                        aria-selected="false">PROJECT: </a></b>
+
+
+                <div class="row  mt-1 mx-2">
+                    <div class="col-md-4">
+                        <label class="mb-0" for="BussinessScope">Bussiness Scope</label>
+                        <input type="text" formControlName="BussinessScope"
+                            class="form-control form-control-sm col-md-12" id="BussinessScope" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="TotalOccupancy">Total Occupancy</label>
+                        <input type="text" formControlName="TotalOccupancy"
+                            class="form-control form-control-sm col-md-12" id="TotalOccupancy" />
+                    </div>
+                    <!-- <div class="col-md-2">
+                                <label class="mb-0" for="indent">Employees</label>
+                                <input formControlName="StandardId" type="text" class="form-control form-control-sm col-md-12" id="indent" />
+                            </div> -->
+                            <div class="col-md-4">
+                                <label class="mb-0" for="NoOperationalShifts">Number of Operational Shifts</label>
+                                <input type="text" formControlName="NoOperationalShifts"
+                                    class="form-control form-control-sm col-md-12" id="NoOperationalShifts" />
+                            </div>
+
+                    <!-- <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Standard" }}
+                                </label>
+                                <select formControlName="StandardId" class="form-control form-control-sm col-md-12" required id="StandardId">
+                                    <option *ngFor="let item of StandardList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+
+                            </div> -->
+
+
+                </div>
+                <div class="row  mt-1 mx-2">
+                    <div class="col-md-4">
+                        <label class="mb-0" for="NumberEmployees">Number of Employees</label>
+                        <input type="text" formControlName="NumberEmployees"
+                            class="form-control form-control-sm col-md-12" id="NumberEmployees" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="NumberPartTimeEmployees">Number of Part Time Employees</label>
+                        <input type="text" formControlName="NumberPartTimeEmployees"
+                            class="form-control form-control-sm col-md-12" id="NumberPartTimeEmployees" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="StageCertification">
+                            {{ "Stage of Certification" }}
+                        </label>
+                        <select formControlName="StageCertification" class="form-control form-control-sm col-md-12" required
+                            id="StageCertification">
+                            <option *ngFor="let item of StageCertificationList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row  mt-1 mx-2">
+                    <div class="col-md-4">
+                        <label class="mb-0" for="ProjectTypeId">
+                            {{ "Project Transfer" }}
+                        </label>
+
+                        <select formControlName="ProjectTypeId" class="form-control form-control-sm col-md-12"
+                            required id="ProjectTypeId  ">
+                            <option *ngFor="let item of TransferProjectList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="AccreditationId">
+                            {{ "Accreditation" }}
+                        </label>
+
+                        <select formControlName="AccreditationId" class="form-control form-control-sm col-md-12"
+                            required id="AccreditationId">
+                            <option *ngFor="let item of AccreditationList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+
+
+                        <label class="mb-0" for="file"> Application Form (.pdf/.doc/.docx)</label>
+                        <input type="file" id="File" (change)="handlefileInput($event)" name="File">
+
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="ScopeCodeEvaluation">Scope(Code Evaluation)</label>
+                        <textarea type="text" formControlName="ScopeCodeEvaluation" class="form-control form-control-sm col-md-12"
+                            id="ScopeCodeEvaluation"></Textarea>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="ApplicationDate">Application Date</label>
+                        <input type="date" formControlName="ApplicationDate" class="form-control form-control-sm col-md-12"
+                            id="ApplicationDate"/>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Remarks">Remarks</label>
+                        <textarea type="text" formControlName="Remarks"
+                            class="form-control form-control-sm col-md-12" id="Remarks"></textarea>
+                    </div>
+
+                    </div>
+
+                    <div class="row mx-2">
+
+
+                        <!-- <div class="col-md-4">
+                            <label class="mb-0" for="Remarks">Remarks</label>
+                            <textarea type="text" formControlName="Remarks"
+                                class="form-control form-control-sm col-md-12" id="Remarks"></textarea>
+                        </div> -->
+                        <!-- <div class="col-md-4"  >
+                                <label class="mb-0" for="Remarks">Authorizer Remarks</label>
+                                <textarea type="text" formControlName="Remarks"class="form-control form-control-sm col-md-12" id="Remarks"></textarea>
+                                  
+
+                                  
+                               
+                               
+                            </div> -->
+                        <div class="col-md-4" *ngIf="authorizer">
+                            <label class="mb-0" for="ApprovalStatusId">
+                                {{ "Status" }}
+                            </label>
+                            <select formControlName="ApprovalStatusId" class="form-control form-control-sm col-md-12"
+                                 id="ApprovalStatusId">
+                                <option *ngFor="let item of ApprovalList" [value]="item.id">
+                                    {{ item.name }}
+                                </option>
+                            </select>
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="row  mt-1 mx-2">
+                        <button type="button" class="btn-sm btn btn-dark float-right col-md-1 ml-1 mt-3"
+                            (click)="Back()"><i class="fa fa-arrow-circle-left"></i> Back</button>
+                            <div class="col-md-2" *ngIf="savedownload">
+                                <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                                    (click)="DownloadApplicationForm()">
+                                    <i class="fa fa-download"></i> Application Form
+                                </button>
+                            </div>
+                            <div class="col-md-2" *ngIf="authorizer">
+
+                            <div *ngIf="btnApproval">
+                                <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+
+                                <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                                    (click)="OnApprovalSubmit()">
+                                    <i class="fa fa-save"></i>  Save
+                                </button>
+
+                            </div>
+                        </div>
+                        <div class="col-md-2" *ngIf="savebtn">
+                            <div *ngIf="!authorizer">
+
+                                <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+                                <button type="submit" class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left" (click)="onSubmit()">
+                                    <i class="fa fa-save"></i>  Submit
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2" *ngIf="deletebtn">
+                            <button class="btn-sm btn-danger btn col-md-12 ml-1 mt-3 float-left" (click)="delete()">
+                                <i class="fas fa-trash-alt"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+
+                <br>
+
+            </div>
+
+
+           
+            
+            <div class="card">
+
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                        role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                        aria-selected="false">Client Contract </a></b>
+
+                <div class="row mt-1 mx-2" *ngIf="btnContract">
+                    <div class="col-md-4">
+                        <label class="mb-0" for="ContractRemarks">Contract Remarks</label>
+                        <textarea type="text" formControlName="ContractRemarks"
+                            class="form-control form-control-sm col-md-12" id="ContractRemarks"></textarea>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="ContractStatusId">
+                            {{ "Status" }}
+                        </label>
+                        <select formControlName="ContractStatusId" class="form-control form-control-sm col-md-12"
+                             id="ContractStatusId">
+                            <option *ngFor="let item of ContractApprovalList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+
+                    </div>
+                    <div class="col-md-4" *ngIf="IsContract">
+
+
+                        <label for="file"> Contract(.pdf/.doc/.docx)</label>
+
+                        <input type="file" id="ContractFile" (change)="handlefileInput($event)" name="ContractFile">
+
+                    </div>
+                </div>
+
+                <div class="row mt-1 mx-2">
+                    <!-- <div class="col-md-4" *ngIf="IsContract">
+
+
+                        <label for="file"> Contract(.pdf/.doc/.docx)</label>
+
+                        <input type="file" id="ContractFile" (change)="handlefileInput($event)" name="ContractFile">
+
+                    </div> -->
+
+                    <div class="col-md-2" *ngIf="btnContractDownload">
+                        <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                            (click)="contractDownload()">
+                            <i class="fa fa-download"></i> View Contract
+                        </button>
+
+                    </div>
+                    <div class="col-md-4" *ngIf="IsContract">
+                        <button class="btn-sm btn-danger col-md-5 ml-1 mt-3 float-right" icon="download"
+                            (click)=" Pdf()">
+                            Contract Template
+                        </button>
+                        <button class="btn-sm btn-success btn col-md-5 ml-1 mt-3 float-right"
+                            (click)="onContractSubmit()">
+                            Contract Submit
+                        </button>
+                    </div>
+                    <div class="col-md-2" *ngIf="btnContractSave">
+                        <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                            (click)="contractApproved()">
+                            Submit
+                        </button>
+
+
+
+                        <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+
+
+                    </div>
+
+
+
+
+                </div>
+                <br>
+            </div>
+
+            </div>
+       
+    </section>
+</form>
+<br><br>

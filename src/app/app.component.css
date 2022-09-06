@@ -1,0 +1,29 @@
+.idle{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f3f3eb;
+}
+.idle-div{
+    max-width: 60%;
+    color: #197056;
+   
+}
+p{
+    line-height: 22px;
+    letter-spacing: 0.3px;
+}
+button{
+    width: calc(50% - 8px);
+    padding: 2px;
+}
+::ng-deep #dataGrid {
+    max-height: fit-content;
+}
+

@@ -1,0 +1,325 @@
+<!-- <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"  role="tab" aria-controls="nav-home" aria-selected="true">Client Basic Information</a>
+      
+    </div>
+</nav> -->
+
+
+
+
+
+<section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+        <div class="row md-0 mb-1 mt-0">
+            <div class="col-sm-12 px-0">
+                <div class="alert alert-info alert-dismissible">
+                    <h6>Operations | Client Basic Information</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<form [formGroup]="ClientForm" #clientForm="ngForm">
+<section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+                        <div class="container-fluid mb-2">
+                            <div class="row mx-2">
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Code">Client Code</label>
+                                    <input type="text"   onKeyPress="if(this.value.length==12) return false;" autocomplete="off" formControlName="Code"class="form-control form-control-sm col-md-12" id="Code"  required [ngClass]="{ 'is-invalid': submitted && f.Code.errors }"/>
+                                    <div *ngIf="submitted && f.Code.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Code.errors.required">Code is required</div>
+                                    </div> 
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- <label class="mb-0" for="denomination">
+                                        {{ "Applicant Type" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12" id="denomination">
+                                        <option>
+                                            {{ " " }}
+                                        </option>
+                                    </select> -->
+                                    
+                                    <label class="mb-0" for="indent">Company Name</label>
+                                    <input type="text" autocomplete="off" formControlName="Name"class="form-control form-control-sm col-md-12" id="Name"  required [ngClass]="{ 'is-invalid': submitted && f.Name.errors }" />
+                                    <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Name.errors.required">Company Name is required</div>
+                                    </div> 
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Email">Email Address</label>
+                                    <input type="text" autocomplete="off" formControlName="Email" class="form-control form-control-sm col-md-12" id="Email"  required [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"/>
+                                    <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Email.errors.required">Email Address is required</div>
+                                    </div> 
+                                </div>
+                               
+                             
+                               
+                            </div>
+                            <div class="row  mt-1 mx-2">
+
+                                <!-- <div class="col-md-4">
+                                  <label class="mb-0" for="CountryId">
+                                    {{ "Country" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CountryId" id="CountryId">
+                                    <option *ngFor="let item of CountryList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+                                </div> -->
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="CountryId">
+                                      {{ "Country" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CountryId" autocomplete="off"
+                                  id="CountryId"required [ngClass]="{ 'is-invalid': submitted && f.CountryId.errors }" (change)="loadState($event.target.value)"> 
+                                  <option *ngFor="let item of CountryList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.CountryId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.CountryId.errors.required">Country is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                                <!-- <div class="col-md-4">
+                                  <label class="mb-0" for="StateId">
+                                    {{ "State" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="StateId" id="StateId">
+                                    <option *ngFor="let item of StateList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+                                </div> -->
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="StateId">
+                                      {{ "State" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="StateId" 
+                                  id="StateId" required [ngClass]="{ 'is-invalid': submitted && f.StateId.errors }" (change)="loadCities($event.target.value)">
+                                  <option *ngFor="let item of StateList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.StateId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.StateId.errors.required">State is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                                
+                  
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="CityId">
+                                      {{ "City" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CityId" 
+                                  id="CityId" required [ngClass]="{ 'is-invalid': submitted && f.CityId.errors }">
+                                  <option *ngFor="let item of CityList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.CityId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.CityId.errors.required">City is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                  
+                              </div>
+                            <!-- <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "Country" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="CountryId" 
+                                    id="CountryId">
+                                    <option *ngFor="let item of CountryList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+
+                                   
+                                  
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "State" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="StateId" 
+                                    id="StateId"  >
+                                    <option *ngFor="let item of StateList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "City" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="CityId" 
+                                    id="CityId"  >
+                                    <option *ngFor="let item of CityList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+                                </div>
+                            
+                            </div> -->
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="indent">Postal Code</label>
+                                    <input type="text" autocomplete="off" formControlName="PostalCode"  class="form-control form-control-sm col-md-12" id="PostalCode" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "Prefix" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="PrefixId" 
+                                    id="PrefixId">
+                                    <option *ngFor="let item of PrefixList" [value]="item.id" >
+                                      {{ item.name }}
+                                    </option>
+                                   </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="ContactPerson">Contact Person</label>
+                                    <input type="text" autocomplete="off" formControlName="ContactPerson" class="form-control form-control-sm col-md-12" id="ContactPerson"  required [ngClass]="{ 'is-invalid': submitted && f.ContactPerson.errors }"/>
+                                    <div *ngIf="submitted && f.ContactPerson.errors" class="invalid-feedback">
+                                        <div *ngIf="f.ContactPerson.errors.required">Contact Person is required</div>
+                                    </div> 
+                                </div>
+                            
+                            </div>
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Position">Position</label>
+                                    <input type="text"formControlName="Position"autocomplete="off" class="form-control form-control-sm col-md-12" id="Position"  required [ngClass]="{ 'is-invalid': submitted && f.Position.errors }"/>
+                                    <div *ngIf="submitted && f.Position.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Position.errors.required">Contact Person Position is required</div>
+                                    </div>  
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="indent">Date</label>
+                                    <input type="date" formControlName="Date" class="form-control form-control-sm col-md-12" id="Date" />
+
+                                </div>
+                               
+                                <div class="col-md-2">
+                                    <label class="mb-0" for="PhoneNumber">Phone</label>
+                                    <input type="text"formControlName="PhoneNumber" autocomplete="off" class="form-control form-control-sm col-md-12" id="PhoneNumber" placeholder="Phone Number"/>
+                                   
+                                 </div>
+                                 <div class="col-md-2">
+                                    <label class="mb-0" for="MobileNumber"></label>
+                                    <input type="text" formControlName="MobileNumber"autocomplete="off" class="form-control form-control-sm col-md-12" id="MobileNumber" placeholder="Mobile Number" />
+                                 </div> 
+                            </div>
+                            <div class="row  mt-1 mx-2">
+                                
+                                
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Website">Website</label>
+                                    <input type="text" formControlName="Website"autocomplete="off" class="form-control form-control-sm col-md-12" id="Website" />
+                                 </div>
+                                
+                                 <div class="col-md-4">
+                                    <label class="mb-0" for="Multisite">
+                                        {{ "Multisite" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="Multisite" 
+                                    id="Multisite">
+                                    <option *ngFor="let item of MultisiteList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="IsActive">
+                                        {{ "Status" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="IsActive" 
+                                    id="IsActive" required [ngClass]="{ 'is-invalid': submitted && f.IsActive.errors }">
+                                    <option *ngFor="let item of StatusList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                    
+                                </select>
+                                <div *ngIf="submitted && f.IsActive.errors" class="invalid-feedback">
+                                    <div *ngIf="f.IsActive.errors.required">Status is required</div>
+                                </div> 
+                                </div>
+                            
+                            </div>
+                            <div class="row  mt-1 mx-2">
+                               
+
+                               
+                               
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="indent">Address 1</label>
+                                    <textarea type="text" formControlName="Address1" autocomplete="off" class="form-control form-control-sm col-md-12" id="Address1"  required [ngClass]="{ 'is-invalid': submitted && f.Address1.errors }"></textarea>
+                                    <div *ngIf="submitted && f.Address1.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Address1.errors.required">Address is required</div>
+                                    </div> 
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="indent">Address 2</label>
+                                    <textarea type="text" formControlName="Address2"autocomplete="off" class="form-control form-control-sm col-md-12" id="Address2"></textarea>
+                                </div>
+                                 <div class="col-md-4">
+                                    <br/>
+                                    <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+                                    <!-- <button type="button"
+                                        class="btn-sm btn-success btn float-right mx-3 px-4 mt-3 pt-2 pb-2" style="margin: 5px;" (click)="onSubmit()">Submit</button>
+                                   
+                                    <button class="btn-sm btn btn-dark col-md-3 float-right" style="margin: 5px;">
+                                        Back
+                                    </button> -->
+                                    
+                                    <button type="button"
+                                    class="btn-sm btn-success btn float-right mx-1 px-4 mt-2 pt-2 pb-2 mt-3" (click)="onSubmit()"><i class="fa fa-save"></i> Submit</button>
+                                    <!-- <button type="button"
+                                    class="btn-sm btn-primary btn float-right mx-1 px-3 mt-2 pt-2 pb-2 mt-3" (click)="NewRecord()"><i class="fas fa-plus-square"></i> New</button> -->
+                                    <button type="button"
+                                    class="btn-sm btn btn-dark btn  float-right mx-1 px-3 mt-2 pt-2 pb-2 mt-3" (click)="Back()"><i class="fa fa-arrow-circle-left"></i> Back</button>
+                                 
+
+                                </div>
+                                
+                            </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+</section>
+</form>

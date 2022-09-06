@@ -1,0 +1,106 @@
+﻿<section class="content-header pt-0 pb-0 mx-0 mb-0 md-0">
+  <div class="container-fluid mt-2">
+    <UI-widget-panel></UI-widget-panel>
+    <div class="row col-md-12 DataGridPanel">
+      <div class="col-sm-6">
+        <div class="DataGridCard">
+          <h6 style="margin-bottom: 20px">High Priority Service Request</h6>
+          <dx-data-grid
+            id="dataGrid"
+            [rowAlternationEnabled]="true"
+            [showRowLines]="false"
+            [columnAutoWidth]="true"
+            [showColumnLines]="false"
+            [allowColumnReordering]="false"
+            [dataSource]="HighPriorityGridData"
+            keyExpr="id"
+          >
+            <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+            <dxi-column dataField="title" caption="Title"></dxi-column>
+            <dxi-column
+              dataField="building"
+              caption="Building"
+              [(visible)]="ShowBuildingColumnsInGrid"
+            ></dxi-column>
+            <dxi-column
+              dataField="flat"
+              caption="Flat"
+              [(visible)]="ShowFlatColumnsInGrid"
+            ></dxi-column>
+            <dxi-column dataField="serviceType" caption="Service"></dxi-column>
+            <dxi-column dataField="issuedOn" caption="Requested Date"></dxi-column>
+            <dxi-column dataField="status" caption="Status"></dxi-column>
+            <dxi-column type="buttons" caption="Action" cssClass="cell-header">
+              <dxi-button
+                hint="Edit Record"
+                icon="edit"
+                [onClick]="onEditClick"
+              ></dxi-button>
+            </dxi-column>
+            <!-- DATA GRID PAGINATION: START-->
+            <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+            <dxo-paging [pageSize]="5"> </dxo-paging>
+            <dxo-pager
+              [visible]="true"
+              [allowedPageSizes]="allowedPageSizes"
+              [displayMode]="displayMode"
+              [showPageSizeSelector]="showPageSizeSelector"
+              [showInfo]="showInfo"
+              [showNavigationButtons]="showNavButtons"
+            >
+            </dxo-pager>
+            <!-- DATA GRID PAGINATION: END-->
+          </dx-data-grid>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="DataGridCard">
+          <h6 style="margin-bottom: 20px">New Service Request</h6>
+          <dx-data-grid
+            id="dataGrid"
+            [rowAlternationEnabled]="true"
+            [showRowLines]="false"
+            [columnAutoWidth]="true"
+            [showColumnLines]="false"
+            [allowColumnReordering]="false"
+            [dataSource]="OpenStatusGridData"
+            keyExpr="id"
+          >
+            <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+            <dxi-column dataField="title" caption="Title"></dxi-column>
+            <dxi-column
+              dataField="building"
+              caption="Building"
+              [(visible)]="ShowBuildingColumnsInGrid"
+            ></dxi-column>
+            <dxi-column dataField="issuedOn" caption="Requested Date"></dxi-column>
+            <dxi-column dataField="serviceType" caption="Service"></dxi-column>
+            <dxi-column dataField="status" caption="Status"></dxi-column>
+            <dxi-column type="buttons" caption="Action" cssClass="cell-header">
+              <dxi-button
+                hint="Edit Record"
+                icon="edit"
+                [onClick]="onEditClick"
+              ></dxi-button>
+            </dxi-column>
+            <!-- DATA GRID PAGINATION: START-->
+            <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+            <dxo-paging [pageSize]="5"> </dxo-paging>
+            <dxo-pager
+              [visible]="true"
+              [allowedPageSizes]="allowedPageSizes"
+              [displayMode]="displayMode"
+              [showPageSizeSelector]="showPageSizeSelector"
+              [showInfo]="showInfo"
+              [showNavigationButtons]="showNavButtons"
+            >
+            </dxo-pager>
+            <!-- DATA GRID PAGINATION: END-->
+          </dx-data-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

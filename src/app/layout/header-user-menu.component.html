@@ -1,0 +1,30 @@
+<div class="row" style="background-color: rgb(45 67 114)">
+
+  <div class="col-md-12 nav-user-menu" style=" color: white;background-color: rgb(35 52 86);border-color: whitesmoke; border-radius: 50px;  display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 5px 0px 5px 0px;
+
+          "> {{userName}}
+
+    <li class="nav-item dropdown nav-user-menu" dropdown>
+
+
+      <a href="javascript:;" class="nav-link" dropdownToggle>
+        <img class=" user-image img-circle  mb-1 elevation-2" src=" \assets\img\user.png" alt="User Image" />
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right" *dropdownMenu style="z-index: 9;">
+        <a class="dropdown-item" [routerLink]="['update-password']">
+          <i class="fas fa-user-edit"></i> {{ "Reset Password" | localize }}
+        </a>
+        <a class="dropdown-item" href="javascript:;" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i> {{ "Logout" | localize }}
+        </a>
+        <a class="dropdown-item" href="javascript:;" (click)="profile()">
+          <i class="fa fa-user"></i> {{ "User Profile" | localize }}
+        </a>
+      </div>
+    </li>
+  </div>
+</div>

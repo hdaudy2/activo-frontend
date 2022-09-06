@@ -1,0 +1,142 @@
+<!-- Heading: Start -->
+<section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+  <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+    <div class="row">
+      <div class="col header">
+        <div>
+          <span class="header__heading">Floors</span>
+          <span class="header__back" [routerLink]="backToViewBuildingURL"
+            ><i class="fas fa-arrow-circle-left"></i> Back to list</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Heading: End -->
+<!-- Service Request List: Start -->
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body table-responsive p-0">
+          <!-- DATA GRID: START -->
+          <dx-data-grid
+            id="dataGrid"
+            class="mx-3 mb-3 mt-3"
+            [showBorders]="true"
+            [rowAlternationEnabled]="true"
+            [showRowLines]="true"
+            [columnAutoWidth]="true"
+            [showColumnLines]="true"
+            [dataSource]="GridData"
+          >
+            <!-- DATA GRID COL: START-->
+            <dxi-column
+              dataField="name"
+              caption="Name"
+              cssClass="cell-header"
+            ></dxi-column>
+            <dxi-column
+              dataField="floorType"
+              caption="Floor Type"
+              cssClass="cell-header"
+            ></dxi-column>
+            <dxi-column
+              dataField="building"
+              caption="Building"
+              cssClass="cell-header"
+            ></dxi-column>
+            <dxi-column
+              dataField="flatNo"
+              caption="Flat No"
+              cssClass="cell-header"
+            ></dxi-column>
+            <dxi-column
+              dataField="slotNo"
+              caption="Slot No"
+              cssClass="cell-header"
+            ></dxi-column>
+            <!-- DATA GRID COL: START-->
+            <!-- DATA GRID COL BUTTON: START-->
+            <dxi-column type="buttons" caption="Action" cssClass="cell-header">
+              <dxi-button
+                hint="Edit Record"
+                icon="edit"
+
+                [onClick]="onEditClick"
+              ></dxi-button>
+            </dxi-column>
+            <!-- DATA GRID COL BUTTON: END-->
+            <!-- DATA GRID PAGINATION: START-->
+            <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+            <dxo-paging [pageSize]="5"> </dxo-paging>
+            <dxo-pager
+              [visible]="true"
+              [allowedPageSizes]="allowedPageSizes"
+              [displayMode]="displayMode"
+              [showPageSizeSelector]="showPageSizeSelector"
+              [showInfo]="showInfo"
+              [showNavigationButtons]="showNavButtons"
+            >
+            </dxo-pager>
+            <!-- DATA GRID PAGINATION: END-->
+          </dx-data-grid>
+          <!-- DATA GRID: END -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Service Request List: End -->
+
+<ng-template #EditFloorModel>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Floor</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form
+      [formGroup]="AddFloorDateForm"
+      (ngSubmit)="onAddFloorDataFormSubmit()"
+    >
+      <div class="container-fluid">
+        <!-- Field Row Start -->
+        <div class="row">
+          <div class="col-sm-12 mb-2">
+            <label class="mb-0" for="name">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control col-md-12"
+            />
+          </div>
+          <div class="col-md-12 mb-2">
+            <label class="mb-0">Floor Type</label>
+            <select
+              class="form-control col-md-12"
+              formControlName="floorTypeId"
+            >
+              <option [ngValue]="null">Choose Floor Type</option>
+              <option *ngFor="let ft of FloorTypeList" [value]="ft.id">
+                {{ ft.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn__primary">Save</button>
+          </div>
+        </div>
+        <!-- Field Row End -->
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,258 @@
+<!-- <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link" id="nav-profile-tab"
+            [routerLink]="['/app/pages/security-module/agency-task-board']" style="color: darkblue;"
+            data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false" dis>List
+            View</a>
+
+        <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Organaization</a>
+
+    </div>
+</nav> -->
+
+<form [formGroup]="AgencyForm" #agencyForm="ngForm">
+  <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+        <div class="row md-0 mb-1 mt-0">
+            <div class="col-sm-12 px-0">
+                <div class="alert alert-info alert-dismissible">
+                    <h6>Operations | Branch Office Detail</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content pt-0 pb-0 mx-2 mb-0 md-0">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+                        <div class="container-fluid mb-2">
+                            <div class="row mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Code">Code</label>
+                                    <input onKeyPress="if(this.value.length==8) return false;" type="text"formControlName="Code" class="form-control form-control-sm col-md-12" id="Code"required [ngClass]="{ 'is-invalid': submitted && f.Code.errors }" />
+                                    <div *ngIf="submitted && f.Code.errors" class="invalid-feedback">
+                                      <div *ngIf="f.Code.errors.required"> Code is required</div>
+                                  </div> 
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Name">Partner Name</label>
+                                    <input type="text"formControlName="Name" class="form-control form-control-sm col-md-12" id="Name" required [ngClass]="{ 'is-invalid': submitted && f.Name.errors }">
+                                    <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Name.errors.required"> Partner Name is required</div>
+                                    </div> 
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="JoiningDate">Joining Date</label>
+                                    <input type="date" formControlName="JoiningDate" class="form-control form-control-sm col-md-12" id="JoiningDate" />
+                                </div>
+
+
+                            </div>
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Description">Profile</label>
+                                    <input type="text" formControlName="Description" class="form-control form-control-sm col-md-12" id="Description" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="ContactPerson">Contact Name</label>
+                                    <input type="text" formControlName="ContactPerson" class="form-control form-control-sm col-md-12" id="ContactPerson" required [ngClass]="{ 'is-invalid': submitted && f.ContactPerson.errors }">
+                                    <div *ngIf="submitted && f.ContactPerson.errors" class="invalid-feedback">
+                                        <div *ngIf="f.ContactPerson.errors.required"> Contact Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="ContactNumber">Contact Phone</label>
+                                    <input type="text"formControlName="ContactNumber" class="form-control form-control-sm col-md-12" id="ContactNumber" />
+                                </div>
+                            </div>
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Email">Contact Email</label>
+                                    <input type="Email" formControlName="Email"class="form-control form-control-sm col-md-12" id="Email" required [ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+                                    <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Email.errors.required"> Email is required</div>
+                                    </div> 
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Address">Address 1</label>
+                                    <input type="text"formControlName="Address" class="form-control form-control-sm col-md-12" id="Address" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Address2">Address 2</label>
+                                    <input type="text"formControlName="Address2" class="form-control form-control-sm col-md-12" id="Address2" />
+                                </div>
+
+                            </div>
+                            <div class="row  mt-1 mx-2">
+
+                                <!-- <div class="col-md-4">
+                                  <label class="mb-0" for="CountryId">
+                                    {{ "Country" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CountryId" id="CountryId">
+                                    <option *ngFor="let item of CountryList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+                                </div> -->
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="CountryId">
+                                      {{ "Country" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CountryId" 
+                                  id="CountryId"required [ngClass]="{ 'is-invalid': submitted && f.CountryId.errors }" (change)="loadState($event.target.value)"> 
+                                  <option *ngFor="let item of CountryList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.CountryId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.CountryId.errors.required">Country is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                                <!-- <div class="col-md-4">
+                                  <label class="mb-0" for="StateId">
+                                    {{ "State" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="StateId" id="StateId">
+                                    <option *ngFor="let item of StateList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+                                </div> -->
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="StateId">
+                                      {{ "State" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="StateId" 
+                                  id="StateId" required [ngClass]="{ 'is-invalid': submitted && f.StateId.errors }" (change)="loadCities($event.target.value)">
+                                  <option *ngFor="let item of StateList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.StateId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.StateId.errors.required">State is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                                
+                  
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="CityId">
+                                      {{ "City" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CityId" 
+                                  id="CityId" required [ngClass]="{ 'is-invalid': submitted && f.CityId.errors }">
+                                  <option *ngFor="let item of CityList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.CityId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.CityId.errors.required">City is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                  
+                              </div>
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="PostalCode">Postal Code</label>
+                                    <input formControlName="PostalCode" type="text" class="form-control form-control-sm col-md-12" id="PostalCode" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Role">
+                                      {{ "Role" }}
+                                    </label>
+                                    <select formControlName="RoleId" class="form-control form-control-sm col-md-12" id="RoleId" required [ngClass]="{ 'is-invalid': submitted && f.RoleId.errors }">
+                                      <option *ngFor="let item of roleList" [value]="item.id">
+                                        {{ item.name }}
+                                      </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.RoleId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.RoleId.errors.required">Role is required</div>
+                                    </div>
+
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label class="mb-0" for="IsActive">
+                                      {{ "Active Status" }}
+                                    </label>
+                                    <select formControlName="IsActive" class="form-control form-control-sm col-md-12"
+                                    id="IsActive" required [ngClass]="{ 'is-invalid': submitted && f.IsActive.errors }">
+                                    <option *ngFor="let item of ActiveStatusList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.IsActive.errors" class="invalid-feedback">
+                                        <div *ngIf="f.IsActive.errors.required">Status is required</div>
+                                    </div>
+
+                                  </div>
+                            </div>
+
+                            <br>
+
+
+                            <b> 
+                                
+                                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                                    aria-controls="nav-profile" aria-selected="false">Login Details:</a></b>
+
+                            <div class="row mt-1 px-2">
+                                <div class="col-md-4">
+
+                                    <label class="mb-0" for="UserName">User Name</label>
+                                    <input type="text"formControlName="UserName" class="form-control form-control-sm col-md-12" id="UserName" />
+                                </div>
+                                <div class="col-md-4">
+
+                                    <label class="mb-0" for="Password">Password</label>
+                                    <input type="password"formControlName="Password" class="form-control form-control-sm col-md-12" id="Password" />
+                                </div>
+                                <div class="col-md-4">
+
+                                    <label class="mb-0" for="EmailForgotPassword">Email(incase of forgot password)</label>
+                                    <input type="email"formControlName="EmailForgotPassword" class="form-control form-control-sm col-md-12" id="EmailForgotPassword" />
+                                </div>
+
+
+                            </div>
+                            <div class="row mt-1 px-2">
+                                <div class="col-md-12">
+                                    <button type="button"
+                                        class="btn-sm btn-success btn float-right mx-3 px-4 mt-3 pt-2 pb-2"(click)="onSubmit()">Submit</button>
+                                    <button [routerLink]="['/app/pages/security-module/agency-task-board']"
+                                        data-toggle="tab" role="tab" type="button"
+                                        class="btn-sm btn btn-dark float-right mx-3 px-4 mt-3 pt-2 pb-2">Back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section></form><br><br>

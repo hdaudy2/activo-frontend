@@ -1,0 +1,7 @@
+::ng-deep .dx-header-row .cell-header {
+    color: rgb(255, 254, 254);
+    font-style: italic;
+    font-weight: bold;
+    background-color: #233456;
+
+}

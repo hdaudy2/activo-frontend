@@ -1,0 +1,99 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;" [routerLink]="['/app/pages/security-module/user-with-location-authorizer-task-board']" data-toggle="tab"  role="tab" aria-controls="nav-profile" aria-selected="false">List View</a>
+        
+        <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"  role="tab" aria-controls="nav-profile" aria-selected="false">User  </a>
+      
+    </div>
+  </nav>
+  
+
+  <section class="content px-2  mt-3">
+    <div class="container-fluid">
+
+
+  <div class="card px-3">
+  <form>
+      <div class="row mt-1 mt-3">
+          <div class="col-md-6 mb-1">
+      
+        <label for="exampleFormControlInput1">Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+      </div>
+      <div class="col-md-6 mb-1">
+          <label for="exampleFormControlInput1">Full Name</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="FullName">
+        
+          </div>
+      </div>
+  
+      <div class="row mt-1">
+          <div class="col-md-6 mb-1">
+        
+          <label for="exampleFormControlInput1">User Name</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="UserName">
+        </div>
+  
+  
+        <div class="col-md-6 mb-1">
+          <label for="exampleFormControlInput1">Password</label>
+          <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+        </div>
+      </div>
+  
+      <div class="row mt-1">
+          <div class="col-md-6 mb-2">
+        
+          <label for="exampleFormControlInput1">Conform Password</label>
+          <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Conform Password">
+        </div>
+        <div class="col-md-6 mb-2">
+          <label for="exampleFormControlInput1">Email Address</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address">
+        </div>
+      </div>
+  
+      <div class="row mt-3 px-2">
+        <div class="col-md-3 ">
+      <div class="row mt-4">
+        <label for="exampleFormControlInput1 mb-4">Is active</label>
+        <input type="checkbox" class="form-control-sm mx-3" id="exampleFormControlInput1">
+      </div></div>
+      <div class="col-md-3 mb-3">
+       
+        <label class="mb-0" for="">Role</label>
+        <select class="form-control col-md-12 " id="dencode">
+            <option>
+                {{ " " }}
+            </option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+       
+        <label class="mb-0" for="">Department</label>
+        <select class="form-control col-md-12 " id="dencode">
+            <option>
+                {{ " " }}
+            </option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-2 card-footer">
+        <div class="col-md-6 mb-2 ">
+            <div class="form-group row mb-3 ">
+                <label class="col-form-label " for="AuthorizerRemarks">
+                    Authorizer Remarks
+                </label>
+                <input type="text" class="form-control col-10" id="AuthorizerRemarks" />
+            </div>
+        </div>
+        <div class="col-md-6 mb-2 mt-5">
+            <button type="button" class="btn-sm btn btn-info float-right mx-2">Reject</button>
+            <button type="button" class="btn-sm btn btn-info float-right mx-2">Authorize</button>
+        </div>
+    </div>
+    </form>
+  </div>
+
+  </div>
+  </section>

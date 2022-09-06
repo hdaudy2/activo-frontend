@@ -1,0 +1,205 @@
+<nav>
+  
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <!-- <a class="nav-item nav-link" id="nav-profile-tab" href="#" style=" color: white;background-color: #304570;border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/security-module/user-remarks?')"
+      
+        data-toggle="tab" role="tab"
+        aria-controls="nav-profile" aria-selected="false">Authorizer Remarks </a> -->
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style=" color: white;background-color: #304570;border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/sales/audit-plan?')"
+           
+             data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Project Detail</a>
+       
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+            aria-selected="true">QC</a>
+
+     
+      
+
+
+    
+
+    </div>
+</nav>
+
+<form [formGroup]="QcDocumentsForm" #qcDocumentsForm="ngForm">
+
+
+    <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-12">
+
+                 
+
+
+
+                    <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+
+
+                </div>
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="col-md-12 right" *ngIf="btnSave">
+                          <button class="btn-sm btn-success btn  ml-1 mt-2 float-right"
+                              (click)="SaveAllComments()">
+                              Save Comments
+                          </button>
+                    </div>
+
+                    <br>
+                    <div class="card-body table-responsive p-0">
+        
+                      
+        
+                        <dx-data-grid #dataGridVar
+                        id="gridContainer"
+                        [dataSource]="QcmasterList"
+                        keyExpr="id"
+                        [showColumnLines]="false"
+                        [showRowLines]="true"
+                        [showBorders]="true"
+                        (onCellPrepared)="onCellPrepared($event)"
+                        (onRowPrepared)="onRowPrepared($event)"
+                        [columnAutoWidth]="true" 
+                      >
+                      <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                        <dxi-column dataField="name"caption="Title" cssClass="cell-header"></dxi-column>
+                        <dxi-column dataField="statusName"caption="Status" alignment='left'cssClass="cell-header" [width]="130"></dxi-column>
+                        <!-- <dxi-column dataField="filed1" caption="Filed1 Caption">  
+                          <div >  
+                            
+                            <i class="dx-icon dx-icon-home"></i>
+                            
+                             
+                          </div>  
+                        </dxi-column>   -->
+                        <dxi-column type="buttons"caption="Action"   cssClass="cell-highlighted" [width]="120" >  
+                          <div>  
+                            <i class="fa fa-exclamation" aria-hidden="true"></i>  
+                        </div>    
+                          <dxi-button    icon="comment"
+                            cssClass="dx-icon"
+                            [onClick]="addComments"
+                            hint="Add Comment"
+                            [(visible)]="editButton"
+                            text="Done"
+                            ></dxi-button> 
+                            
+                            <!-- <dxi-button   icon="check"
+                           
+                            hint="In Compliance"
+                            [onClick]="inCompliance"
+                            [(visible)]="editButton"
+                          
+                            ></dxi-button>  -->
+                           
+                      
+                           
+                          </dxi-column> 
+                          <!-- <dxi-column dataField="statusName" cellTemplate="cellTemplate"></dxi-column>
+                          <div *dxTemplate="let cell of 'cellTemplate'">
+                              <div style="color:rgb(231, 233, 225)">{{cell.text}}</div>
+                          </div> -->
+                          <!-- <dxi-column type="buttons">
+                            <dxi-button
+                                name="save"
+                                cssClass="my-class">
+                            </dxi-button>
+                        </dxi-column> -->
+                        <dxo-master-detail [enabled]="true" template="detail"></dxo-master-detail>
+                        <div *dxTemplate="let employee of 'detail'">
+                          <div class="master-detail-caption">{{
+                           "QC Comments History"
+                          }}</div>
+                          <app-qc-detail-grid 
+                          [key]="employee.key"
+                          [qCDetail]="QCDetail"
+                          [qcStatusList]="QcStatusList"
+                          (newItemEvent)="addItem($event)"
+                         
+
+                          >
+                        </app-qc-detail-grid>
+                        </div>
+                      </dx-data-grid>
+                      <!-- <app.parent (data)="eventHandler($event)"></app.parent> -->
+                    </div>
+                </div></div>
+            </div>
+        </div>
+        
+       
+
+
+
+      <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Comment</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+              <div class="card mx-2 pt-3 pb-2">
+                <div class="row">
+                  <!-- <div class="col-sm-12"> -->
+
+                <div class="col-md-10 mx-2 ">
+                  <label class="mb-0" for="Comment">Comment</label>
+                  <textarea type="text" formControlName="Comment" class="form-control float-right  form-control-sm col-md-12"
+                    id="Comment"></textarea>
+               
+                    <!-- <div *ngIf="submitted && f.Comment.errors" class="invalid-feedback">
+                      <div *ngIf="f.Comment.errors.required">Status  is required</div>
+                  </div> -->
+                  </div>
+                <div class="col-md-10 mx-2">
+                  <label class="mb-0" for="QcStatusId">
+                      {{ "Status" }}
+                  </label>
+
+                  <select formControlName="QcStatusId"  class="form-control" id="QcStatusId" required [ngClass]="{ 'is-invalid': submitted && f.QcStatusId.errors }">
+                      <option *ngFor="let item of QcStatusList" [value]="item.id">
+                        {{item.name }}
+                      </option>
+                    </select>
+                    <div *ngIf="submitted && f.QcStatusId.errors" class="invalid-feedback">
+                      <div *ngIf="f.QcStatusId.errors.required">Status  is required</div>
+                  </div>
+              </div>
+              
+              <div class="col-md-10 mx-2">
+
+                <label for="File"> Upload File</label>
+                <input type="file" id="File" (change)="handlefileInput($event)" name="File" formControlName="File">
+            </div>
+            
+              <!-- </div> -->
+              </div>
+              </div>
+              </div>
+            </div>
+
+              
+
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="closePopup()">
+                Close
+              </button>
+              <button type="button"
+              class=" btn-success btn " (click)="saveComment()">Save</button>
+            </div>
+          </div>
+          </div>
+        </div>
+    </section>
+
+
+
+</form> 
+<br> <br>

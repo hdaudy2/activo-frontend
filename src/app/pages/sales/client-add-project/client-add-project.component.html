@@ -1,0 +1,439 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <!-- <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+            aria-selected="true">All Projects</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/slcp']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">SA8000:2014</a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/client-sites']" data-toggle="tab" role="tab" aria-controls="nav-profile"
+            aria-selected="false">Client Sites </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/client-add-visit']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Add/Edit Visit </a>
+
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/higg']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Higg Application Form </a>
+
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/slcp']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">SLCP Application Form </a> -->
+
+
+        <!-- <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-academic']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Academic </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-professional']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Professional </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-employment']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Employment </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-cpd']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">CPD </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-consultancy']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Consultancy </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-audits']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Audits </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-auditor']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Auditor Nace </a> -->
+
+    </div>
+</nav>
+
+
+
+
+<section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+    <div class="container-fluid">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 style="text-align: center; ">SA8000:2014 Application Form</h3>
+                <div class="row">
+                  
+                    <div class="col-sm-12">
+                        <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+                        <div class="container-fluid mb-2">
+
+
+
+<b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+    role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+    aria-selected="false">Client Site Detail </a></b>
+
+    <div class="row mt-1 mx-2">
+        <div class="col-md-4">
+            <label class="mb-0" for="denomination">
+                {{ "Factory Name" }}
+            </label>
+
+            <select type="text" class="form-control form-control-sm col-md-12"
+                id="denomination">
+                <option value="volvo">A & S</option>
+                <option value="volvo">Multi National</option>
+            </select>
+        </div>
+
+
+        <div class="col-md-8">
+            <label class="mb-0"  for="indent">Address</label>
+           
+           <input  class="form-control form-control-sm col-md-12" id="indent" disabled > 
+
+        </div>
+        
+    </div>
+
+
+    <div class="row mt-1 mx-2">
+        <div class="col-md-4">
+            <label class="mb-0" for="denomination">
+                {{ "Verification Type" }}
+            </label>
+
+            <select type="text" class="form-control form-control-sm col-md-12"
+                id="denomination">
+                <option value="volvo">Off Site</option>
+                <option value="volvo">On Site</option>
+            </select>
+        </div> 
+
+        <div class="col-md-4">
+            <label class="mb-0" for="indent">Legal Status</label>
+           <input type="text" class="form-control form-control-sm col-md-12" id="indent"disabled >
+
+        </div>
+
+        <div class="col-md-4">
+            <label class="mb-0"  for="indent">Outsource Production Process</label>
+           <input type="text" class="form-control form-control-sm col-md-12" id="indent"disabled >
+        </div>
+        
+    </div>
+
+
+    
+    <div class="row mt-1 mx-2">
+        <div class="col-md-6">
+            <label class="mb-0"  for="indent">Total Employees</label>
+           <input type="text" class="form-control form-control-sm col-md-12" id="indent"disabled >
+        </div>
+
+
+
+        <div class="col-md-6">
+            <label class="mb-0"  for="indent">Shift Time</label>
+           <input type="text" class="form-control form-control-sm col-md-12" id="indent"disabled >
+
+        </div>
+        
+    </div>
+
+    <!-- <div class="row  mt-1 mx-2">
+                                
+
+        <div class="col-md-12">
+            <br />
+            
+            <button class="btn-sm btn-success btn col-md-2  float-right" style="margin: 5px;">
+                Save
+            </button>
+
+            <button class="btn-sm btn btn-dark col-md-2 float-right" style="margin: 5px;">
+                Cancel
+            </button>
+
+
+        </div>
+
+    </div> -->
+
+
+
+                     </div>
+                </div>
+            </div>
+        </div>
+     </div>
+        <div class="card">
+            <div class="card-header">
+               
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+
+                        <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                                role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                                aria-selected="false">PROJECT: </a></b>
+                    </div>
+                    <div class="container-fluid mb-2">
+                        <div class="row mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Project Type" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">New Project</option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-2">
+                                <label class="mb-0" for="indent">Employees</label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+                            </div>
+                            <div class="col-md-2">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Risk" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">Low</option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Standard" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">Select Standard</option>
+                                </select>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row  mt-1 mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "EA Code" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">---Select EA Code---</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Nace Code" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">---Select Nace Code---</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Consultant" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">---Select Consultant---</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="row  mt-1 mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Select Accreditation" }}
+                                </label>
+
+                                <select type="text" class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">Select Accreditation</option>
+                                </select>
+                            </div>
+
+
+                            <div class="col-md-8">
+                                <label class="mb-0" for="indent">Scope</label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- <div class="input-group">
+                                <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn bg-blue">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    
+                                </div>
+                            </div> -->
+                    <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                            role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                            aria-selected="false">PLANNING: </a></b>
+                    <div class="container-fluid mb-2">
+                        <div class="row mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="indent">Pre-Audit Duration</label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="indent">Duration Stage 1</label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="mb-0" for="indent">Duration Stage 2</label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+
+                            </div>
+
+
+                        </div>
+                        <div class="row  mt-1 mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0">
+                                    {{ "Surveillance visit frequency" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12">
+                                    <option value="Annual">Annual</option>
+                                    <option value="Semi-Annual">Semi-Annual</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Surveillance Method" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">---Select---</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "No.of Surveillance Visits" }}
+                                </label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- <div class="input-group">
+                                    <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn bg-blue">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                        
+                                    </div>
+                                </div> -->
+                    <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                            role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                            aria-selected="false">FINANCIAL:</a></b>
+                    <div class="container-fluid mb-2">
+                        <div class="row mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="indent">Applicaton fee </label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="indent">Pre-Audit fee </label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="mb-0" for="indent">Assessment fee</label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+
+                            </div>
+
+
+                        </div>
+                        <div class="row  mt-1 mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="indent">Surv fee</label>
+                                <input type="text" class="form-control form-control-sm col-md-12" id="indent" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="denomination">
+                                    {{ "Expenses" }}
+                                </label>
+                                <select class="form-control form-control-sm col-md-12" id="denomination">
+                                    <option value="volvo">Included</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+
+                                    <label for="file"> Application Form (.pdf/.doc/.docx)</label>
+                                    <input type="file" id="file">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row  mt-1 mx-2">
+
+                            <div class="col-md-12">
+                                <br />
+                                <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+                                <button class="btn-sm btn-success btn col-md-1  float-right" style="margin: 5px;">
+                                    Save
+                                </button>
+
+                                <button class="btn-sm btn btn-dark col-md-1 float-right" style="margin: 5px;">
+                                    Cancel
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+ <br><br>

@@ -1,0 +1,160 @@
+<form
+  [formGroup]="AddUserManagementDataForm"
+  (ngSubmit)="onAddUserManagementFormSubmit()"
+>
+  <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+      <div class="row">
+        <div class="col header">
+          <div>
+            <span class="header__heading">Edit User</span>
+            <span class="header__back" routerLink="/app/userManagement"
+              ><i class="fas fa-arrow-circle-left"></i> Back to list</span
+            >
+          </div>
+          <div>
+            <button type="submit" class="btn btn__primary" *ngIf="ShowSaveButton">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header">
+          <!-- Field Row Start -->
+          <div class="row md-0 px-3 pb-2">
+            
+            <div class="col-md-4">
+              <label class="mb-0" for="fullName">First Name</label>
+              <input type="text" formControlName="fullName" class="form-control col-md-12" />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="lastName">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control col-md-12"/>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="email">Email Address</label>
+              <input type="text" formControlName="email" class="form-control col-md-12" disabled/>
+            </div>
+          </div>
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0">Building</label>
+              <select
+                class="form-control col-md-12"
+                formControlName="buildingId"
+                (change)="onBuildingChange($event.target.value)"
+              >
+                <option [ngValue]="null">Choose Building</option>
+                <option
+                  *ngFor="let building of BuildingList"
+                  [value]="building.id"
+                >
+                  {{ building.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="telephone">Telephone-No</label>
+              <input type="text" formControlName="telephone" (keypress)="KeyPress($event)"
+                class="form-control form-control-sm col-md-12" maxlength="12" placeholder="000-000-0000"
+                id="phoneNumber" />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0" for="mobile">Mobile-No</label>
+              <input type="text" formControlName="mobile" (keypress)="KeyPress($event)"
+                class="form-control form-control-sm col-md-12" maxlength="12" placeholder="000-000-0000"
+                id="mobileNumber" />
+                </div>
+           
+          </div>
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0">Country</label>
+              <select
+                class="form-control col-md-12"
+                formControlName="countryId"
+                (change)="onCountryChange($event.target.value)"
+              >
+                <option [ngValue]="null">Choose Country</option>
+                <option
+                  *ngFor="let country of CountryList"
+                  [value]="country.id"
+                >
+                  {{ country.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0">State</label>
+              <select
+                class="form-control col-md-12"
+                formControlName="stateId"
+                (change)="onStateChange($event.target.value)"
+              >
+                <option [ngValue]="null">Choose State</option>
+                <option *ngFor="let state of StateList" [value]="state.id">
+                  {{ state.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0">City</label>
+              <select class="form-control col-md-12" formControlName="cityId">
+                <option [ngValue]="null">Choose City</option>
+                <option *ngFor="let city of CityList" [value]="city.id">
+                  {{ city.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <b>
+
+              <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                  data-toggle="tab" role="tab" style="text-decoration: underline"
+                  aria-controls="nav-profile" aria-selected="false">Login
+                  Details:</a></b>
+
+                  <div class="row mt-1 px-2">
+                    <div class="col-md-4">
+
+                        <label class="mb-0" for="email">User Name</label>
+                        <input type="text" formControlName="email"
+                            class="form-control form-control-sm col-md-12" id="email" disabled
+                            placeholder="Email Address"
+                           />
+                    </div>
+                    <div class="col-md-4">
+
+                        <label class="mb-0" for="Password">Password</label>
+                        <input type="password" formControlName="Password"
+                            class="form-control form-control-sm col-md-12" id="Password"
+                            placeholder="Password"/>
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <label class="mb-0" for="Password">Confirm Password</label>
+                        <input type="password" class="form-control form-control-sm col-md-12"
+                            formControlName="ConfirmPassword" id="ConfirmPassword"
+                            placeholder="Confirm Password">
+                       
+                    </div>
+
+
+                </div>
+         
+         
+         
+          <!-- Field Row: End -->
+          <!-- Field Row Start -->
+         
+          <!-- Field Row End -->
+        </div>
+      </div>
+    </div>
+  </section>
+</form>

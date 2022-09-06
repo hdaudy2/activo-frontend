@@ -1,0 +1,290 @@
+<form
+  [formGroup]="AddBuildingDataForm"
+  (ngSubmit)="onAddBuildingDataFormSubmit()"
+>
+  <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+      <div class="row">
+        <div class="col header">
+          <div>
+            <span class="header__heading">Edit Building</span>
+            <span class="header__back" routerLink="/app/buildings"
+              ><i class="fas fa-arrow-circle-left"></i> Back to list</span
+            >
+          </div>
+          <div>
+            <button type="submit" class="btn btn__primary" *ngIf="ShowSaveButton">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header">
+          <!-- Field Row Start -->
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0">Country</label>
+              <select
+                class="form-control col-md-12"
+                formControlName="countryId"
+                (change)="onCountryChange($event.target.value)"
+              >
+                <option [ngValue]="null">Choose country</option>
+                <option
+                  *ngFor="let country of CountryList"
+                  [value]="country.id"
+                >
+                  {{ country.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0">State</label>
+              <select
+                class="form-control col-md-12"
+                formControlName="stateId"
+                (change)="onStateChange($event.target.value)"
+              >
+                <option [ngValue]="null">Choose State</option>
+                <option *ngFor="let state of StateList" [value]="state.id">
+                  {{ state.name }}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0">City</label>
+              <select class="form-control col-md-12" formControlName="cityId">
+                <option [ngValue]="null">Choose City</option>
+                <option *ngFor="let city of CityList" [value]="city.id">
+                  {{ city.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <!-- Field Row: End -->
+          <!-- Field Row Start -->
+          <div class="row md-0 px-3 pb-2">
+            <div class="col-md-4">
+              <label class="mb-0" for="name">Name</label>
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control col-md-12"
+              />
+            </div>
+            <div class="col-md-4">
+              <label class="mb-0">Client</label>
+              <select
+                class="form-control col-md-12"
+                formControlName="clientId"
+                (change)="onClientChange($event.target.value)"
+              >
+                <option [ngValue]="null">Choose client</option>
+                <option
+                  *ngFor="let client of ClientList"
+                  [value]="client.id"
+                >
+                  {{ client.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <!-- Field Row End -->
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
+<div class="container-fluid">
+  <div class="row mx-1">
+    <div class="col-md-3">
+      <div class="state-card-expandable">
+        <div class="state-card-expandable--main">
+          <div class="label">Floors</div>
+          <div class="state">{{ FloorList?.length || 0 }}</div>
+        </div>
+        <div class="state-card-expandable--button">
+          <button class="card-btn" (click)="openModal(AddFloorModel)">
+            add
+          </button>
+          <button class="card-btn" [routerLink]="FloorURL">view</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="state-card-expandable">
+        <div class="state-card-expandable--main">
+          <div class="label">Flats</div>
+          <div class="state">{{ FlatList?.length || 0 }}</div>
+        </div>
+        <div class="state-card-expandable--button">
+          <button class="card-btn" (click)="openModal(AddFlatModel)">
+            add
+          </button>
+          <button class="card-btn" [routerLink]="FlatURL">view</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="state-card-expandable">
+        <div class="state-card-expandable--main">
+          <div class="label">P-Slot</div>
+          <div class="state">{{ ParkingSlotList?.length || 0 }}</div>
+        </div>
+        <div class="state-card-expandable--button">
+          <button class="card-btn" (click)="openModal(AddParkingSlotModel)">
+            add
+          </button>
+          <button class="card-btn" [routerLink]="ParkingSlotURL">view</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #AddFloorModel>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Floor</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form
+      [formGroup]="AddFloorDateForm"
+      (ngSubmit)="onAddFloorDataFormSubmit()"
+    >
+      <div class="container-fluid">
+        <!-- Field Row Start -->
+        <div class="row">
+          <div class="col-sm-12 mb-2">
+            <label class="mb-0" for="name">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control col-md-12"
+            />
+          </div>
+          <div class="col-md-12 mb-2">
+            <label class="mb-0">Floor Type</label>
+            <select
+              class="form-control col-md-12"
+              formControlName="floorTypeId"
+            >
+              <option [ngValue]="null">Choose Floor Type</option>
+              <option *ngFor="let ft of FloorTypeList" [value]="ft.id">
+                {{ ft.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn__primary">Save</button>
+          </div>
+        </div>
+        <!-- Field Row End -->
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #AddFlatModel>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Flat</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="AddFLatDateForm" (ngSubmit)="onAddFlatDataFormSubmit()">
+      <div class="container-fluid">
+        <!-- Field Row Start -->
+        <div class="row">
+          <div class="col-sm-12 mb-2">
+            <label class="mb-0" for="name">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control col-md-12"
+            />
+          </div>
+          <div class="col-md-12 mb-2">
+            <label class="mb-0">Floor</label>
+            <select class="form-control col-md-12" formControlName="floorId">
+              <option [ngValue]="null">Choose Floor</option>
+              <option
+                *ngFor="let floor of ResidenceFloorList"
+                [value]="floor.id"
+              >
+                {{ floor.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn__primary">Save</button>
+          </div>
+        </div>
+        <!-- Field Row End -->
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #AddParkingSlotModel>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Parking Slot</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form
+      [formGroup]="AddParkingSlotDateForm"
+      (ngSubmit)="onAddParkingSlotDataFormSubmit()"
+    >
+      <div class="container-fluid">
+        <!-- Field Row Start -->
+        <div class="row">
+          <div class="col-sm-12 mb-2">
+            <label class="mb-0" for="name">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control col-md-12"
+            />
+          </div>
+          <div class="col-md-12 mb-2">
+            <label class="mb-0">Floor</label>
+            <select class="form-control col-md-12" formControlName="floorId">
+              <option [ngValue]="null">Choose Floor</option>
+              <option *ngFor="let floor of ParkingFloorList" [value]="floor.id">
+                {{ floor.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn__primary">Save</button>
+          </div>
+        </div>
+        <!-- Field Row End -->
+      </div>
+    </form>
+  </div>
+</ng-template>

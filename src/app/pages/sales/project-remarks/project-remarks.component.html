@@ -1,0 +1,104 @@
+<section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+        <div class="row md-0 mb-1 mt-0">
+            <div class="col-sm-12 px-0">
+                <div class="alert alert-info alert-dismissible">
+                    <h6>Authorizer Remarks History</h6>
+                </div>
+                <!-- <button type="button" class="btn-sm btn btn-dark float-right col-md-1 ml-1 mt-0"
+                (click)="Back()"><i class="fa fa-arrow-circle-left"></i> Back</button> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+   
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                <div class="card-body table-responsive p-0">
+    
+                  
+    
+                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                        [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="ProjectsRemarksList | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }"
+                        keyExpr="id" >
+                        <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+                        <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                        </dxo-search-panel> -->
+
+                        
+                        <dxi-column   dataField="projectTypeName" [width]="150" 
+                        caption="Project Type" ></dxi-column>
+                        <dxi-column   dataField="remarksDate" dataType="date"[width]="130" 
+                        caption="Date" ></dxi-column>
+                     
+                        <dxi-column   dataField="remarks"  
+                        caption="Remarks"></dxi-column>
+                        
+                        <dxi-column   dataField="approvalStatusName"  [width]="150" 
+                        caption="Status"></dxi-column>
+                        <dxi-column   dataField="remarksBy"  [width]="200" 
+                        caption="Remarks Given By"></dxi-column>
+                       
+                  
+    
+    
+    
+                    </dx-data-grid>
+                    <div class="card-footer table-card-footer pb-0 border-top">
+                        <div class="row">
+                            <div class="col-sm-2 col-12 text-sm-left text-center">
+                                <button class="btn btn-sm">
+                                    <i class="fas fa-redo text-info"(click)="reloadGrid()"></i>
+                               
+                               
+                                </button>
+    
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <!-- <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls> -->
+                            </div>
+                            <div class="col-sm-4 col-12">
+                                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls>
+                            </div>
+                            <!-- <div class="col-sm-2 col-12 ">
+    
+                                <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                                    <div class="p-2 bd-highlight">
+                                        <select (change)="onTableSizeChange($event)" class="custom-select">
+                                            <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                                {{ size }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- <dx-tree-list>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                            [showNavigationButtons]="true">
+                        </dxo-pager>
+                    </dx-tree-list> -->
+    
+    
+    
+    
+                </div>
+            </div></div>
+        </div>
+    </div>
+</section><br><br>

@@ -1,0 +1,1171 @@
+
+
+<form [formGroup]="CardForm" #cardForm="ngForm">
+    <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+        <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+            <div class="row md-0 mb-1 mt-0">
+                <div class="col-sm-12 px-0">
+                    <div class="alert alert-info alert-dismissible">
+                        <h6>User Management / User Details</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-header pt-0 pb-0 mx-0 mb-0 md-0">
+    
+        <!-- <button [routerLink]="['/app/pages/security-module/user-with-locations-task-board']"
+        data-toggle="tab" role="tab" type="button"
+        class="btn-sm btn btn-dark float-right col-md-5 ml-1">Back</button> -->
+
+       
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row col-md-12">
+                   <div class="col-sm-6">
+                    <a class="brand-link pt-0">
+                        <img src="assets/img/n1.jpg " height="100px" width="100px"
+                             class="img-square elevation-0 mx-1 mt-2 mb-0 pt-0" alt="" srcset="" />
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <b> <a class="nav-item nav-link active float-right" id="nav-profile-tab"[routerLink]="['/app/pages/security-module/user-with-locations-task-board']" data-toggle="tab"
+                        data-toggle="tab" role="tab" style="text-decoration: underline"
+                        aria-controls="nav-profile" aria-selected="false"><i class="fa fa-arrow-circle-left"></i> Back</a></b>
+                    </div>
+                </div>
+                        <!-- <div class="row md-0 px-3 pb-2 ">
+                    <img 
+                    class=" pp-image img-circle  mb-0 elevation-2"
+                    src="/C:/OzoneLibraryDocuments/UserDataFiles/pp.jpg"
+                    alt="Pp Image"
+                  />
+                  <img [attr.src]="/C:/OzoneLibraryDocuments/UserDataFiles/pp.jpg">
+                  </div> -->
+                    
+                    <div class="row md-0 px-3 pb-2 ">
+
+
+                     
+    
+                            <div class="col-md-3">
+                                
+                                <label class="mb-0 " for="Code">Code</label>
+                                <!-- <label class="col-md-12" formcontrolname="Code" for="Code" id="Code"></label> -->
+                                <input type="text"  formControlName="Code" class="form-control form-control-sm" id="Code" disabled />
+                            </div>
+                           
+                            <div class="col-md-3">
+                                <label class="mb-0" for="Description">Full Name</label>
+                                <input type="text"  formControlName="FullName" class="form-control form-control-sm" id="FullName" disabled />                     
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="Name">Sur Name</label>
+                                <input type="text"  formControlName="FirstName" class="form-control form-control-sm" id="FirstName" disabled />
+                            </div> 
+                            <div class="col-md-3">
+                                <label class="mb-0" for="StartDate">Email</label>
+                                <input type="text"  formControlName="Email" class="form-control form-control-sm" id="Email" disabled />                  
+                               </div>
+                             
+    
+                        </div>
+              
+                        <div class="row md-0 px-3 pb-2 ">
+    
+                            <div class="col-md-3">
+                                <label class="mb-0" for="">Address 1</label>
+                                <input type="text"  formControlName="Address1" class="form-control form-control-sm" id="Address1" disabled />
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <label class="mb-0" for="Name">Address 2</label>
+                                <input type="text"  formControlName="Address2" class="form-control form-control-sm" id="Address2" disabled />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="CountryName">Country</label>
+                                <input type="text"  formControlName="CountryName" class="form-control form-control-sm" id="CountryName" disabled />
+                            </div>
+    
+                            <div class="col-md-3">
+                                <label class="mb-0" for="StartDate">State</label>
+                                <input type="text"  formControlName="StateName" class="form-control form-control-sm" id="StateName" disabled />
+                            </div>
+    
+                        </div>
+                        <div class="row md-0 px-3 pb-2 ">
+    
+                            <div class="col-md-3">
+                                <label class="mb-0" for="CityName">City</label>
+                                <input type="text"  formControlName="CityName" class="form-control form-control-sm" id="CityName" disabled />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="Description">Postal Code</label>
+                                <input type="text"  formControlName="PostalCode" class="form-control form-control-sm" id="PostalCode" disabled />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="">Mobile</label>
+                                <input type="text"  formControlName="Mobile" class="form-control form-control-sm" id="Mobile" disabled />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="StartDate">Telephone</label>
+                                <input type="text"  formControlName="Telephone" class="form-control form-control-sm" id="Telephone" disabled />
+                            </div>
+    
+                        </div>
+
+                        <div class="row md-0 px-3 pb-2 ">
+    
+                            <div class="col-md-3">
+                                <label class="mb-0" for="">Role</label>
+                                <input type="text"  formControlName="Role" class="form-control form-control-sm" id="Role" disabled />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="Prefix">Prefix</label>
+                                <input type="text"  formControlName="Prefix" class="form-control form-control-sm" id="Prefix" disabled />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="DateofBirth">Date Of Birth</label>
+                                <input type="text"  formControlName="DateofBirth" class="form-control form-control-sm" id="DateofBirth" disabled />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="">Registration No</label>
+                                <input type="text"  formControlName="RegistrationNo" class="form-control form-control-sm" id="RegistrationNo" disabled />
+                            </div>
+                           
+    
+                        </div>
+
+                        <div class="row md-0 px-3 pb-2 ">
+    
+                            <div class="col-md-3">
+                                <label class="mb-0" for="Department">Department</label>
+                                <input type="text"  formControlName="Department" class="form-control form-control-sm" id="Department" disabled />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="mb-0" for="State">Status</label>
+                                <input type="text"  formControlName="Status" class="form-control form-control-sm" id="Status" disabled />
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn-sm btn btn-success float-left mb-2 mt-4 col-md-12"
+                                    (click)="DownloadImage()">User Image</button>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button"
+                                class="btn-sm btn btn-success float-right mb-2 mt-4 col-md-12"  (click)="DownloadConfidentially()">Confidentially</button>
+                            </div>
+    
+                            <div class="col-md-2">
+                                <button type="button"
+                                class="btn-sm btn btn-success float-left mb-2 mt-4 col-md-12"  (click)="DownloadContract()">Contract</button>
+                            </div>
+    
+                        </div>
+
+                        <div class="row md-0 px-3 pb-2 ">
+                        <div class="col-md-3">
+                            <label class="mb-0" for="ParentAgencyName">Parent Agency Name</label>
+                            <input type="text"  formControlName="ParentAgencyName" class="form-control form-control-sm" id="ParentAgencyName" disabled />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="mb-0" for="ParentUserName">Parent User Name</label>
+                            <input type="text"  formControlName="ParentUserName" class="form-control form-control-sm" id="ParentUserName" disabled />
+                        </div>
+                        </div>
+              
+
+                 
+                </div>
+    
+    
+            </div>
+           
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">Standard Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                                    [columnAutoWidth]="true"
+                                        [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="UserStandardList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <!-- <dxo-scrolling mode="virtual"></dxo-scrolling> -->
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                                        <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                                        </dxo-search-panel> -->
+                                        <!-- <dxi-column   dataField="id"  
+                                        caption="S.No" ></dxi-column> -->
+                                        <dxi-column   dataField="standardName"  
+                                        caption="Standard" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="auditorTypeName"  
+                                        caption="Level" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="courseTypeName"  
+                                        caption="Course Type" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="courseDate"   dataType="date" 
+                                        caption="Course Date" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="preValidDate"   dataType="date" 
+                                        caption="Pre Val Date" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="validationDate"   dataType="date" 
+                                        caption="Val Date" cssClass="cell-header"></dxi-column>
+                                         <!-- <dxi-column   dataField="status" 
+                                        caption="Status" ></dxi-column> -->
+
+                                          <dxi-column   dataField="approvalStatus"  
+                                        caption="Approval Status" cssClass="cell-header"></dxi-column> 
+                                       
+                                           
+                                        <dxi-column type="buttons"caption="Download" cssClass="cell-header">  
+
+                                            <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="DownloadValidationReport"></dxi-button>
+                                           </dxi-column>
+                                          
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                          <!-- </dxi-column>   -->
+
+                                          
+                                          <dxi-column type="buttons"caption="Action" cssClass="cell-header" >  
+                                            <dxi-button  hint="Record Review" icon="comment"  [onClick]="openPopup"
+                                            [visible]="btnforReview"
+                                            
+                                        
+                                            ></dxi-button>  
+                                        </dxi-column>
+                                       
+                                    
+                                       
+                                       
+                                       
+                    
+                                
+                                          <!-- <dxi-column type="buttons"caption="Action"  >  
+                                            <dxi-button   icon="edit"
+                                            
+                                            
+                                        
+                                            ></dxi-button>  
+                                        </dxi-column>    -->
+                                            
+                                            <!-- <i class="fas fa-tasks"></i> -->
+                                            <!-- <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button> -->
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                         
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                    <!-- <div class="card-footer table-card-footer pb-0 border-top">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-12 text-sm-left text-center">
+                                                <button class="btn btn-sm">
+                                                    <i class="fas fa-redo text-info"></i>
+                                               
+                                               
+                                                </button>
+                    
+                                            </div>
+                                            <div class="col-sm-6 col-12">
+                                               
+                                            </div>
+                                            <div class="col-sm-4 col-12">
+                                                <pagination-controls id="server">
+                                                </pagination-controls>
+                                            </div>
+                                          
+                                        </div>
+                                    </div> -->
+                                   
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+
+
+            </div>         
+                    
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">Declarations Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"    [columnAutoWidth]="true" [rowAlternationEnabled]="true" [showRowLines]="true"
+                                        [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="DeclarationList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                
+                                        <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                                        </dxo-search-panel> -->
+                                        <!-- <dxi-column   dataField="id"  
+                                        caption="S.No" ></dxi-column> -->
+                                        <dxi-column   dataField="companyName"  
+                                        caption="Company" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="interest"  
+                                        caption="Interest"cssClass="cell-header" ></dxi-column>
+                                        <dxi-column   dataField="contractTypeName"  
+                                        caption="Contract" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="startYear" alignment='left'  
+                                        caption="Start Year" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="endYear"  alignment='left' 
+                                        caption="End Year" cssClass="cell-header"></dxi-column>
+                                        <!-- <dxi-column   dataField="approvalStatus"  
+                                        caption="Approval Status" ></dxi-column> -->
+                                    
+                                       
+                                       
+                                       
+                    
+                                
+                                            
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                  
+                                   
+                    
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+
+
+            </div>
+
+
+
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">Academic Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                                    [columnAutoWidth]="true"  [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="AcademicList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                                        <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                                        </dxo-search-panel> -->
+                                        <dxi-column   dataField="qualification"  
+                                        caption="Qualification" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="details"  
+                                        caption="Details" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="institution"  
+                                        caption="Institution" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="startYear"  alignment='left' 
+                                        caption="StartYear" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="endYear"  alignment='left' 
+                                        caption="EndYear" cssClass="cell-header"></dxi-column>
+                                        <!-- <dxi-column   dataField="document"  
+                                        caption="Document" ></dxi-column> -->
+                                        
+                                    
+                                       
+                                       
+                                       
+                    
+                                
+                                        <dxi-column type="buttons"caption="Document"  cssClass="cell-header">  
+                                           
+                                    
+                                            <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button>
+                
+                                          
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                          </dxi-column>  
+                                      
+                                            
+                                            <!-- <i class="fas fa-tasks"></i> -->
+                                            <!-- <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button> -->
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                           
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                   
+                    
+                    
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+
+
+            </div>
+
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">Professional Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                                    [columnAutoWidth]="true" [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="ProfessionalList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                
+                                        <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                                        </dxo-search-panel> -->
+                                        <dxi-column   dataField="body"  
+                                        caption="Body" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="qualification"  
+                                        caption="Qualification" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="details"  
+                                        caption="Details" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="year"  alignment='left' 
+                                        caption="Year" cssClass="cell-header"></dxi-column>
+                                       
+                                       
+                                    
+                                       
+                                       
+                                        <dxi-column type="buttons"caption="Document"  cssClass="cell-header">  
+                                           
+                                    
+                                            <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="DownloadProfesional"></dxi-button>
+                
+                                          
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                          </dxi-column>  
+                    
+                                
+                                           
+                                           
+                                      
+                                            
+                                            <!-- <i class="fas fa-tasks"></i> -->
+                                            <!-- <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button> -->
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                            
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                    
+                                    
+                    
+                    
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+
+
+            </div>
+
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">Employment Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                                    [columnAutoWidth]="true" [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="EmploymentList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                
+                                      
+                                        <dxi-column   dataField="jobTitle"  
+                                        caption="JobTitle" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="organization"  
+                                        caption="Organization" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="businessScope"  
+                                        caption="BusinessScope" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="startYear"  alignment='left' 
+                                        caption="StartYear" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="endYear"  alignment='left' 
+                                        caption="EndYear" cssClass="cell-header"></dxi-column>
+                                       
+                                    
+                                       
+                                       
+                                       
+                    
+                                
+                                         
+                                           
+                                      
+                                            
+                                            <!-- <i class="fas fa-tasks"></i> -->
+                                            <!-- <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button> -->
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                        
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                
+                                    <!-- <dx-tree-list>
+                                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                                            [showNavigationButtons]="true">
+                                        </dxo-pager>
+                                    </dx-tree-list> -->
+                    
+                    
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+
+
+            </div>  
+            
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">CPD Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                                    [columnAutoWidth]="true" [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="CPDList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                
+                                     
+                                        <dxi-column   dataField="course"  
+                                        caption="Course" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="organization"  
+                                        caption="Organization" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="details"  
+                                        caption="Details"cssClass="cell-header" ></dxi-column>
+                                        <dxi-column   dataField="standardName"  
+                                        caption="Standard Name" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="year"  alignment='left' 
+                                        caption="Year"cssClass="cell-header" ></dxi-column>
+                                        <dxi-column   dataField="typeId"  
+                                        caption="Type" cssClass="cell-header"></dxi-column>
+                                        
+                                    
+                                       
+                                       
+                                       
+                    
+                                
+                                         
+                                        <dxi-column type="buttons"caption="Document" cssClass="cell-header" >  
+                                           
+                                    
+                                            <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="DownloadCPD"></dxi-button>
+                
+                                          
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                          </dxi-column>  
+                                      
+                                            
+                                            <!-- <i class="fas fa-tasks"></i> -->
+                                            <!-- <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button> -->
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                        
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                   
+                                    <!-- <dx-tree-list>
+                                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                                            [showNavigationButtons]="true">
+                                        </dxo-pager>
+                                    </dx-tree-list> -->
+                    
+                    
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+
+
+            </div>
+            
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">Consultancy Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                                    [columnAutoWidth]="true"   [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="ConsultancyList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                
+                                       
+                                        <dxi-column   dataField="organization"  
+                                        caption="Organisation" cssClass="cell-header"></dxi-column>
+                                        <!-- <dxi-column   dataField="name"  
+                                        caption="S.No" ></dxi-column> -->
+                                        <dxi-column   dataField="standardName"  
+                                        caption="Standard" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="eacodeName"  
+                                        caption="EA Code" cssClass="cell-header"></dxi-column>
+                                        
+                                        <dxi-column   dataField="nacecodeName"  
+                                        caption="Nace Code" cssClass="cell-header"></dxi-column>
+                                       
+                                        <dxi-column   dataField="durationDays"  alignment='left'
+                                        caption="Duration (days)" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="year"  alignment='left'
+                                        caption="year" cssClass="cell-header"></dxi-column>
+                                        
+                                    
+                                       
+                                       
+                                       
+                    
+                                
+                                         
+                                            
+                                      
+                                            
+                                            <!-- <i class="fas fa-tasks"></i> -->
+                                            <!-- <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button> -->
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                        
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                   
+                                    <!-- <dx-tree-list>
+                                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                                            [showNavigationButtons]="true">
+                                        </dxo-pager>
+                                    </dx-tree-list> -->
+                    
+                    
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">Audits Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                                    [columnAutoWidth]="true" [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="AuditList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                
+                                    
+                                        
+                                        <dxi-column   dataField="standardName"  
+                                        caption="Standard"cssClass="cell-header" ></dxi-column>
+                                        <dxi-column   dataField="nacecodeName"  
+                                        caption="Nace Code" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="organization"  
+                                        caption="Organisation" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="duration"  alignment='left'
+                                        caption="Duration (days)" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="year"  alignment='left'
+                                        caption="year" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="auditTypeName"  
+                                        caption="Audit type" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="certificationBodyName"  
+                                        caption="Certification Body" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="auditLevel"  
+                                        caption="Audit Level" cssClass="cell-header"></dxi-column>
+                                        
+                                    
+                                       
+                                       
+                                       
+                    
+                                
+                                         
+                                           
+                                      
+                                            
+                                            <!-- <i class="fas fa-tasks"></i> -->
+                                            <!-- <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button> -->
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                        
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                    
+                                    <!-- <dx-tree-list>
+                                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                                            [showNavigationButtons]="true">
+                                        </dxo-pager>
+                                    </dx-tree-list> -->
+                    
+                    
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+
+
+            </div>
+
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                    aria-controls="nav-profile" aria-selected="false">Auditor Nace Details:</a></b>
+
+
+                    <div class="container-fluid mt-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                <div class="card-body table-responsive p-0">
+                    
+                                  
+                    
+                                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                                    [columnAutoWidth]="true" [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="AuditorNaceList | paginate
+                                        : {
+                                            id: 'server',
+                                            itemsPerPage: this.pagedDto.pageSize,
+                                            currentPage: this.pagedDto.page,
+                                            totalItems: this.totalCount
+                                          }"
+                                        keyExpr="id" >
+                                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                
+                                       
+                                     
+                                      
+                                        <dxi-column   dataField="standardName"  
+                                        caption="Standard" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="nacecodeName"  
+                                        caption="Nace Code" cssClass="cell-header"></dxi-column>
+                                        <dxi-column   dataField="eacodeName"  
+                                        caption="EA Code" cssClass="cell-header"></dxi-column>
+                                       
+                                        <dxi-column   dataField="approvalStatus"  
+                                        caption="Approval Status" cssClass="cell-header"></dxi-column> 
+                                       
+                                      
+                                        
+                                        
+                                    
+                                        <dxi-column type="buttons"caption="Action" cssClass="cell-header" >  
+                                            <dxi-button  hint="Record Review" icon="comment"  [onClick]="openPopup1"
+                                            [visible]="btnforReview2"
+                                            
+                                        
+                                            ></dxi-button>  
+                                        </dxi-column>
+                                       
+                                       
+                    
+                                
+                                         
+                                      
+                                            
+                                            <!-- <i class="fas fa-tasks"></i> -->
+                                            <!-- <dxi-button
+                                            hint="Download File"
+                                            icon="download"
+                                           [onClick]="Downloadfile"></dxi-button> -->
+                                           <!-- <dxi-button   icon="edit"
+                                           [routerLink]='["/app/pages/stock-management/library"]'
+                                             [(visible)]="isAddShown"
+                                             ></dxi-button>   -->
+                                        
+                                         
+                                         
+                                  
+                    
+                    
+                    
+                                    </dx-data-grid>
+                                    
+                                    <!-- <dx-tree-list>
+                                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                                            [showNavigationButtons]="true">
+                                        </dxo-pager>
+                                    </dx-tree-list> -->
+                    
+                    
+                    
+                    
+                                </div>
+                            </div></div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card">
+                    <div class="container-fluid mt-4">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+
+                    <div class="row mx-2 mt-2 mb-2"*ngIf="div1">
+                        
+                      
+                        <div class="col-md-5">
+                            <label class="mb-0" for="Comments">Remarks</label>
+                            <textarea type="text" formControlName="Comments"class="form-control form-control-sm col-md-12" id="Comments"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="mb-0" for="ApprovalStatusId">
+                                {{ "Status" }}
+                            </label>
+                            <select formControlName="ApprovalStatusId" class="form-control form-control-sm col-md-12" required id="ApprovalStatusId">
+                                <option *ngFor="let item of statusList" [value]="item.id">
+                                  {{ item.name }}
+                                </option>
+                              </select>
+
+                        </div>
+                        <div class="col-md-3">
+                            <br />
+                            <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+                            <button class="btn-sm btn-success btn col-md-5 ml-1 float-right"  (click)="onSubmit()">
+                                Save
+                            </button>
+                            <button [routerLink]="['/app/pages/security-module/user-with-locations-task-board']"
+                            data-toggle="tab" role="tab" type="button"
+                            class="btn-sm btn btn-dark float-right col-md-5 ml-1">Back</button>
+                           
+
+
+                        </div>
+                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+            </div>
+        </div>   
+        
+        
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" *ngIf="standard">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="text-align: center;">Standard Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="card mx-2 pt-3 pb-2">
+                                <div class="row mx-1">
+                                    <!-- <div class="col-sm-12"> -->
+
+                                        <div class="col-md-12">
+                                            <label class="mb-0" for="Remarks">Remarks</label>
+                                            <textarea type="text" formControlName="Remarks"
+                                                class="form-control form-control-sm col-md-12" id="Remarks"></textarea>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="mb-0" for="ApprovalStatusId">
+                                                {{ "Status" }}
+                                            </label>
+                                            <select formControlName="ApprovalStatusId"
+                                                class="form-control form-control-sm col-md-12" id="ApprovalStatusId">
+                                                <option *ngFor="let item of statusList" [value]="item.id">
+                                                    {{ item.name }}
+                                                </option>
+                                            </select>
+    
+    
+                                            <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+    
+    
+                                        </div>
+
+
+                                   
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="closePopup()">
+                            Close
+                        </button>
+                        <button type="button" class=" btn-success btn "(click)="OnApprovalSubmit()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}" *ngIf="auditor">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="text-align: center;">Auditor Nace Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="card mx-2 pt-3 pb-2">
+                                <div class="row mx-1">
+                                    <!-- <div class="col-sm-12"> -->
+
+                                        <div class="col-md-12">
+                                            <label class="mb-0" for="Remarks">Remarks</label>
+                                            <textarea type="text" formControlName="Remarks"
+                                                class="form-control form-control-sm col-md-12" id="Remarks"></textarea>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="mb-0" for="ApprovalStatusId">
+                                                {{ "Status" }}
+                                            </label>
+                                            <select formControlName="ApprovalStatusId" class="form-control form-control-sm col-md-12" required id="ApprovalStatusId">
+                                                <option *ngFor="let item of statusList" [value]="item.id">
+                                                  {{ item.name }}
+                                                </option>
+                                              </select>
+                
+                                        </div>
+
+
+                                   
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" (click)="closePopup()">
+                            Close
+                        </button>
+                        <button type="button" class=" btn-success btn "(click)="OnApprovalAuditorSubmit()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+        </form>                 
+
+     <br><br>

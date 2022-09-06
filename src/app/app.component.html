@@ -1,0 +1,48 @@
+<ngx-ui-loader fgsType="three-strings" fgsColor="#025838" overlayColor="rgba(40,40,40,0.2)" pbColor="#025838"></ngx-ui-loader>
+<div class="wrapper">
+  <app-header></app-header>
+  <sidebar></sidebar>
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+  <div id="sidebar-overlay" (click)="toggleSidebar()"></div>
+</div>
+<section class="idle" *ngIf="idleState"  [@fadeInOut]>
+  <div class="idle-div">
+      <h1> Your Session is about to end.</h1>
+      <p>
+        You've been inactive for a while. For your security, we'll automatically sign you out
+        in approximately {{idleCounter}} seconds, you may choose "Stay signed in" to continue or sign out if you're done.
+      </p>
+      <button class="btn btn-light "  (click)="logout()">Sign out</button>
+      <button class="btn btn-info "  (click)="startIdleOrResume()"> Stay Signed in
+        
+      </button>
+  </div>
+</section>
+
+<!-- <section>
+  <div class="container-fluid mt-2">
+
+    <dx-data-grid id="dataGrid" [allowColumnReordering]="true">
+      <dxi-column dataField="FullName"></dxi-column>
+      <dxi-column dataField="Position"></dxi-column>
+      <dxi-column dataField="BirthDate" dataType="date">
+      </dxi-column>
+      <dxi-column dataField="HireDate" dataType="date">
+      </dxi-column>
+      <dxi-column dataField="City"></dxi-column>
+      <dxi-column dataField="Country"></dxi-column>
+      <dxi-column dataField="Address"></dxi-column>
+      <dxi-column dataField="HomePhone"></dxi-column>
+      <dxi-column dataField="PostalCode"></dxi-column>
+
+
+
+
+
+    </dx-data-grid>
+
+  </div>
+</section> -->

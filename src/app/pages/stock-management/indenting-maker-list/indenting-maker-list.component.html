@@ -1,0 +1,303 @@
+<section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+        <div class="row md-0 mb-1 mt-0">
+            <div class="col-sm-12 px-0">
+                <div class="alert alert-info alert-dismissible">
+                    <h6>Library | Library Resources Detail</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<form [formGroup]="StandardForm" #standardForm="ngForm">
+    <section class="content pt-0 pb-0 mx-2 mb-0 md-0">
+        <!-- <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [(ngModel)]="keyword"
+                                [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue" (click)="onSearch()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+        <!-- <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+         
+                <input type="button"  [hidden]="!isAddShown"class="btn-sm btn btn-info col-md-1 float-right" [routerLink]='["/app/pages/stock-management/library"]' value="Add">
+              
+                
+                <div class="row md-0 mb-1 mt-0">
+                    <div class="col-sm-2">
+                        <label style="margin-top: 8px;">Modules</label>
+                    </div>
+                    <div class="col-sm-4">
+                    
+                        <select  class="form-control  col-md-12" (change)="SearchProduct($event.target.value)">
+                            <option *ngFor="let item of moduleList" [value]="item.id">
+                              {{item.name }}
+                            </option>
+                          </select>
+                    </div> 
+                </div>
+            </div>  
+
+
+        </div>
+    </div> -->
+        <div class="row">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header">
+                        <!-- <input type="button"  [hidden]="!isAddShown"class="btn-sm btn btn-info col-md-1 float-right" (click)="onSubmit( )" value="Add"> -->
+
+
+                        <div class="row col-md-12">
+
+                            <div class="col-md-4">
+
+                                <label style="margin-top: 8px;">Modules</label>
+
+                                <!-- <select class="form-control col-sm-8"  (change)="SearchProduct($event.target.value)">  
+                                <option *ngFor="let prod of ProductHeader" [value]="prod.name" >{{prod.name}} </option>  
+                            </select> -->
+                                <!-- <select formControlName="ModuleId" class="form-control col-sm-8">
+                                <option *ngFor="let prod of moduleList" [value]="item.id">
+                                  {{item.name }}
+                                </option>
+                            </select> -->
+
+
+                                <select class="form-control  col-md-12" formControlName="ModuleId">
+                                    <option *ngFor="let item of moduleList" [value]="item.id">
+                                        {{item.name }}
+                                    </option>
+                                </select>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label style="margin-top: 8px;">Standard</label>
+                                <select class="form-control  col-md-12" formControlName="CertificationId">
+                                    <option *ngFor="let item of CertificationList" [value]="item.id">
+                                        {{item.name }}
+                                    </option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-md-4">
+                                <label style="margin-top: 8px;">Title</label>
+                                <input type="text" formControlName="Title" class="form-control col-md-12" id="Title" />
+
+                            </div>
+                            <!-- <div class="col-md-2">
+                                <button class="btn-sm btn-success  btn  float-right" style="margin-top: 8px;"(click)="onstandard()">
+                                    <i class="fas fa-search"></i>
+                               Search
+                                </button>
+                            </div> -->
+
+                        </div>
+               
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+                            <!-- <input type="button" [hidden]="!isAddShown" class="btn-sm btn btn-info   float-right mx-1"
+                                [routerLink]='["/app/pages/stock-management/library"]' value="Add New Record"> -->
+
+
+                                <button class="btn-sm btn-success btn mx-1 float-right"[hidden]="!isAddShown" [routerLink]='["/app/pages/stock-management/library"]'>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                 Add New Record
+                                </button>
+                            <button class="btn-sm btn-primary btn col-md-1 mx-1 float-right" (click)="onSearch()">
+                                <i class="fas fa-search"></i>
+                                Search
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div >
+            <app-Library [id]="id">
+
+            </app-Library>
+        </div> -->
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body table-responsive p-0">
+
+
+
+                            <dx-data-grid id="dataGrid" class="mx-3 mb-3 mt-3"   [showBorders]="true"[rowAlternationEnabled]="true" [showRowLines]="true"
+                                [columnAutoWidth]="true" [showColumnLines]="true" [allowColumnReordering]="true"
+                                [dataSource]="LibraryList | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }" keyExpr="id">
+                                <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                                <!-- <dxo-filter-row [visible]="showFilterRow" [applyFilter]="currentFilter"></dxo-filter-row>
+                        <dxo-header-filter [visible]="showHeaderFilter"></dxo-header-filter> -->
+
+
+
+
+                                <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                        </dxo-search-panel> -->
+
+
+
+
+                                <dxi-column dataField="moduleName" caption="Module" cssClass="cell-header"></dxi-column>
+                                <dxi-column dataField="title" caption="Title" cssClass="cell-header"></dxi-column>
+                                <dxi-column dataField="version" caption="Version" cssClass="cell-header"></dxi-column>
+                                <dxi-column dataField="standardName" caption="Standard" cssClass="cell-header"></dxi-column>
+
+                                <dxi-column dataField="description" caption="Description" cssClass="cell-header"></dxi-column>
+                                <!-- <dxi-column dataField="status" caption="Status"></dxi-column> -->
+
+                                <!-- <dxi-column type="buttons"caption="Edit"  >  
+                            <dxi-button   icon="edit"
+                            [onClick]="editIconClick"
+                            [(visible)]="isAddShown"
+                            ></dxi-button>  
+                    
+                          </dxi-column>  -->
+
+
+                                <dxi-column type="buttons" caption="Action" cssClass="cell-header">
+                                    <dxi-button hint="Edit Record" icon="edit" [onClick]="editIconClick"
+                                        [(visible)]="isAddShown"></dxi-button>
+
+                                    <dxi-button hint="Download File" icon="download" [onClick]="Downloadfile">
+                                    </dxi-button>
+
+                                    <dxi-button hint="Delete Record" icon="deleterow" [onClick]="delete"
+                                        [(visible)]="isAddShown"></dxi-button>
+                                    <!-- <dxi-button   icon="edit"
+                           [routerLink]='["/app/pages/stock-management/library"]'
+                             [(visible)]="isAddShown"
+                             ></dxi-button>   -->
+                                </dxi-column>
+
+
+                                <!-- <dxo-editing  [onClick]="editIconClick" [dataSource]="LibraryList"
+                            keyExpr="id">
+                        </dxo-editing> -->
+                                <!-- <dxi-button name="edit" [onClick]="editIconClick"></dxi-button>   -->
+                                <!-- <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode"
+                            [showPageSizeSelector]="showPageSizeSelector" [showInfo]="showInfo"
+                            [showNavigationButtons]="showNavButtons">
+                        </dxo-pager> -->
+                                <!-- <dxo-paging [pageSize]="10"> 
+                        </dxo-paging>
+                        <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode"
+                            [showPageSizeSelector]="showPageSizeSelector" [showInfo]="showInfo"
+                            [showNavigationButtons]="showNavButtons">
+                        </dxo-pager>
+                    </dx-data-grid>
+                    <div class="options">
+                        <div class="caption">Options</div>
+                        <div class="option-container">
+                            <div class="option">
+                                <dx-select-box id="displayModes" displayExpr="text" valueExpr="value"
+                                    [items]="displayModes" [(value)]="displayMode">
+                                </dx-select-box>
+                            </div>
+                            <div class="option">
+                                <dx-check-box id="showPageSizes" text="Show Page Size Selector"
+                                    [(value)]="showPageSizeSelector">
+                                </dx-check-box>
+                            </div>
+                            <div class="option">
+                                <dx-check-box id="showInfo" text="Show Info Text" [disabled]="isCompactMode"
+                                    [(value)]="showInfo">
+                                </dx-check-box>
+                            </div>
+                            <div class="option">
+                                <dx-check-box id="showNavButtons" text="Show Navigation Buttons"
+                                    [disabled]="isCompactMode" [(value)]="showNavButtons">
+                                </dx-check-box>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+
+
+                            </dx-data-grid>
+                            <div class="card-footer table-card-footer pb-0 border-top">
+                                <div class="row">
+                                    <div class="col-sm-2 col-12 text-sm-left text-center">
+                                        <button class="btn btn-sm">
+                                            <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+
+
+                                        </button>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls> -->
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                        </pagination-controls>
+                                    </div>
+                                    <!-- <div class="col-sm-2 col-12 ">
+    
+                                <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                                    <div class="p-2 bd-highlight">
+                                        <select (change)="onTableSizeChange($event)" class="custom-select">
+                                            <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                                {{ size }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </section>
+</form>
+<br>
+<!-- </form>  -->

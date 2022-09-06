@@ -1,0 +1,547 @@
+<br>
+
+<form [formGroup]="ProjectForm" #projectForm="ngForm">
+<section class="content-header pt-0 pb-0 mx-0 mb-0 md-0">
+  <div class="container-fluid">
+
+    <!-- <button class="btn-sm btn-success btn col-md-1 float-left mx-2" style="margin: 5px;" (click)="reloadGrid()">
+      Refresh
+    </button> -->
+    <div class="row col-md-12">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body table-responsive p-0">
+
+
+            <dx-data-grid id="dataGrid" class="mx-1 mb-1 mt-1" [showBorders]="true" [rowAlternationEnabled]="true" [showRowLines]="true" [columnAutoWidth]="true"
+              [showColumnLines]="false" [allowColumnReordering]="true" (onRowClick)="onRowClick($event)"
+             [dataSource]="ProjectStatus | paginate
+           : {
+                id: 'server',
+                itemsPerPage: this.pagedDto.pageSize,
+                currentPage: this.pagedDto.page,
+                totalItems: this.totalCount
+              }" keyExpr="id">
+              <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+              <dxi-column dataField="name" caption="Project Applications" cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="count" caption="Count" cssClass="cell-header"></dxi-column>
+
+
+
+
+
+
+            </dx-data-grid>
+            <!-- <div class="card-footer table-card-footer pb-0 border-top">
+            <div class="row">
+              <div class="col-sm-2 col-12 text-sm-left text-center">
+                <button class="btn btn-sm">
+                  <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+                </button>
+              </div>  -->
+            <!-- <div class="col-sm-8 col-12">
+                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+              </div> -->
+            <!-- <div class="col-sm-2 col-12 "> -->
+
+            <!-- <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                  <div class="p-2 bd-highlight">
+                    <select (change)="onTableSizeChange($event)" class="custom-select">
+                      <option *ngFor="let size of tableSizes" [ngValue]="size">
+                        {{ size }}
+                      </option>
+                    </select>
+                  </div>
+                </div> 
+               </div> -->
+            <!-- </div>
+          </div>  -->
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body table-responsive p-0">
+
+
+
+            <dx-data-grid id="dataGrid"class="mx-1 mb-1 mt-1" [showBorders]="true" [rowAlternationEnabled]="true" [showRowLines]="true" [columnAutoWidth]="true"
+              [showColumnLines]="false" [allowColumnReordering]="true" (onRowClick)="onRowContractClick($event)"
+              [dataSource]="ContractStatus | paginate
+            : {
+                id: 'server',
+                itemsPerPage: this.pagedDto.pageSize,
+                currentPage: this.pagedDto.page,
+                totalItems: this.totalCount
+              }" keyExpr="id">
+              <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+              <dxi-column dataField="name" caption="Client Contracts" cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="count" caption="Count" cssClass="cell-header"></dxi-column>
+
+
+
+
+
+
+            </dx-data-grid>
+            <!-- <div class="card-footer table-card-footer pb-0 border-top">
+            <div class="row">
+              <div class="col-sm-2 col-12 text-sm-left text-center">
+                <button class="btn btn-sm">
+                  <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+                </button>
+              </div> -->
+            <!-- <div class="col-sm-8 col-12">
+                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+              </div> -->
+            <!-- <div class="col-sm-2 col-12 ">
+
+                <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                  <div class="p-2 bd-highlight">
+                    <select (change)="onTableSizeChange($event)" class="custom-select">
+                      <option *ngFor="let size of tableSizes" [ngValue]="size">
+                        {{ size }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div> -->
+            <!-- </div>
+          </div> -->
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body table-responsive p-0">
+
+
+
+            <dx-data-grid id="dataGrid" class="mx-1 mb-1 mt-1" [showBorders]="true" [rowAlternationEnabled]="true" [showRowLines]="true" [columnAutoWidth]="true"
+              [showColumnLines]="false" [allowColumnReordering]="true" (onRowClick)="onRowClick1($event)"
+              (onCellPrepared)="onCellPrepared($event)" [dataSource]="AuditStatus | paginate
+          : {
+              id: 'server',
+              itemsPerPage: this.pagedDto.pageSize,
+              currentPage: this.pagedDto.page,
+              totalItems: this.totalCount
+            }" keyExpr="id">
+              <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+              <dxi-column dataField="name" caption="Audit Reports"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="count" caption="Count"cssClass="cell-header"></dxi-column>
+
+
+
+
+
+
+            </dx-data-grid>
+            <!-- <div class="card-footer table-card-footer pb-0 border-top">
+            <div class="row">
+              <div class="col-sm-2 col-12 text-sm-left text-center">
+                <button class="btn btn-sm">
+                  <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+                </button>
+              </div> -->
+            <!-- <div class="col-sm-8 col-12">
+                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+              </div> -->
+            <!-- <div class="col-sm-2 col-12 ">
+
+                <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                  <div class="p-2 bd-highlight">
+                    <select (change)="onTableSizeChange($event)" class="custom-select">
+                      <option *ngFor="let size of tableSizes" [ngValue]="size">
+                        {{ size }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div> -->
+            <!-- </div>
+          </div> -->
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row col-md-12" *ngIf="auditgrid">
+      <div class="col-md-12">
+        <div class="card">
+          <h3 style="text-align: center; color: rgb(9, 26, 59) ;font-family: 'Times New Roman'; font-weight: bold; margin-top: 10px; ">
+
+
+            {{CurrentName}}
+          </h3>
+          <div class="card-body table-responsive p-0">
+
+            <dx-data-grid class="mx-3 mb-3"  id="gridContainer"  [showBorders]="true" [rowAlternationEnabled]="true" [showRowLines]="true" [columnAutoWidth]="true"
+              [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="AuditList " keyExpr="id">
+              <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+              <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+            </dxo-search-panel>
+            <dxi-column dataField="clientName" caption="Client Name" cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="projectCode" caption="Project Code"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="startDate" caption="Start Date" dataType="date"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="endDate" caption="End Date" dataType="date"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="reviewerName" caption="Reviewer Name"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="createdDate" caption="Created Date" dataType="date" cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="leadAuditorName" caption="leadAuditor Name" cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="visitStatusName" caption="Status"cssClass="cell-header"></dxi-column>
+              <dxi-column type="buttons" caption="Action" alignment='left' cssClass="cell-header">
+
+                <dxi-button hint="Review" icon="fas fa-eye text-secondary" alignment='left' [onClick]="review1">
+                </dxi-button>
+                <!-- <dxi-button 
+            hint="Remarks History"  icon="verticalaligntop" alignment='left'
+            [onClick]="Remarks"
+          
+            
+            ></dxi-button>  -->
+
+                <!-- <dxi-button   icon="edit" alignment='left'
+            
+            hint="Edit Record"
+            
+            >
+        </dxi-button>  
+            <dxi-button 
+            hint="Submit For Review" icon="exportselected" alignment='left'
+           
+            
+            ></dxi-button>  -->
+                <!-- <dxi-button   icon="fas fa-tasks"
+            hint="Add Visit"
+            [onClick]="OnManageVisit"
+            
+            [(visible)]="ManageVisit"
+            ></dxi-button>   -->
+                <!-- <dxi-button
+            stylingMode="danger"
+            text="Application Submited For Review"
+         
+            type="danger"
+            [visible]="ReciewForApproval"
+            alignment='left'
+          
+           
+             >
+             </dxi-button> -->
+
+              </dxi-column>
+
+
+
+
+            </dx-data-grid>
+            <!-- <div class="card-footer table-card-footer pb-0 border-top">
+          <div class="row">
+            <div class="col-sm-2 col-12 text-sm-left text-center">
+              <button class="btn btn-sm">
+                <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+              </button>
+            </div> -->
+            <!-- <div class="col-sm-8 col-12">
+              <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+              </pagination-controls>
+            </div> -->
+            <!-- <div class="col-sm-2 col-12 ">
+
+              <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                <div class="p-2 bd-highlight">
+                  <select (change)="onTableSizeChange($event)" class="custom-select">
+                    <option *ngFor="let size of tableSizes" [ngValue]="size">
+                      {{ size }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div> -->
+            <!-- </div>
+        </div> -->
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row col-md-12" *ngIf="projectgrid">
+      <div class="col-md-12">
+        <div class="card " >
+          <h3 style="text-align: center; color: rgb(9, 26, 59) ;font-family: 'Times New Roman'; font-weight: bold; margin-top: 10px; ">
+
+
+            {{CurrentName}}
+          </h3>
+          <div class="card-body table-responsive p-0">
+
+
+
+            <dx-data-grid class="mx-3 mb-3"  id="gridContainer"  [showBorders]="true" [rowAlternationEnabled]="true" [showRowLines]="true" [columnAutoWidth]="true"
+              [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="ProjectsList" keyExpr="id">
+              <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+              <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+            </dxo-search-panel>
+            <dxi-column dataField="clientName" caption="Client Name"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="projectCode" caption="Project Code"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="agencyName" caption="Branch Office"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="siteName" caption="Site Name"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="createdDate" caption="Created Date" dataType="date"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="approvalStatusName" caption="Status"cssClass="cell-header"></dxi-column>
+              <dxi-column type="buttons" caption="Action" alignment='left'cssClass="cell-header">
+
+                <dxi-button hint="Review" icon="fas fa-eye text-secondary" alignment='left' [onClick]="review">
+                </dxi-button>
+                
+
+              </dxi-column>
+
+
+
+
+            </dx-data-grid>
+            <!-- <div class="card-footer table-card-footer pb-0 border-top">
+          <div class="row"> -->
+            <!-- <div class="col-sm-2 col-12 text-sm-left text-center">
+              <button class="btn btn-sm">
+                <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+              </button>
+            </div> 
+            <div class="col-sm-8 col-12">
+              <pagination-controls id="server" (pageChange)="onTableDataChangeApplication($event)">
+              </pagination-controls>
+            </div> -->
+            <!-- <div class="col-sm-2 col-12 ">
+
+              <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                <div class="p-2 bd-highlight">
+                  <select (change)="onTableSizeChange($event)" class="custom-select">
+                    <option *ngFor="let size of tableSizes" [ngValue]="size">
+                      {{ size }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div> -->
+            <!-- </div>
+        </div> -->
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row col-md-12" *ngIf="contractgrid">
+      <div class="col-md-12">
+        <div class="card">
+          <h3 style="text-align: center; color: rgb(9, 26, 59) ;font-family: 'Times New Roman'; font-weight: bold; margin-top: 10px; ">
+
+
+            {{CurrentName}}
+          </h3>
+          <div class="card-body table-responsive p-0">
+
+
+
+            <dx-data-grid class="mx-3 mb-3"  id="gridContainer"  [showBorders]="true" [rowAlternationEnabled]="true" [showRowLines]="true" [columnAutoWidth]="true"
+              [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="ContractList " keyExpr="id">
+              <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+              <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+            </dxo-search-panel>
+            <dxi-column dataField="clientName" caption="Client Name"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="projectCode" caption="Project Code"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="agencyName" caption="Branch Office"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="siteName" caption="Site Name"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="createdDate" caption="Created Date" dataType="date"cssClass="cell-header"></dxi-column>
+              <dxi-column dataField="approvalStatusName" caption="Status"cssClass="cell-header"></dxi-column>
+              <dxi-column type="buttons" caption="Action" alignment='left'cssClass="cell-header">
+
+                <dxi-button hint="Review" icon="fas fa-eye text-secondary" alignment='left' [onClick]="review">
+                </dxi-button>
+                <!-- <dxi-button 
+            hint="Remarks History"  icon="verticalaligntop" alignment='left'
+            [onClick]="Remarks"
+          
+            
+            ></dxi-button>  -->
+
+
+                <dxi-button   icon="fas fa-tasks"
+            hint="Audit Visit"
+            [onClick]="OnManageVisit"
+            
+            [(visible)]="ManageAuditVisit"
+            ></dxi-button>  
+                <!-- <dxi-button
+            stylingMode="danger"
+            text="Application Submited For Review"
+         
+            type="danger"
+            [visible]="ReciewForApproval"
+            alignment='left'
+          
+           
+             >
+             </dxi-button> -->
+
+              </dxi-column>
+
+
+
+
+            </dx-data-grid>
+            <!-- <div class="card-footer table-card-footer pb-0 border-top">
+          <div class="row">
+            <div class="col-sm-2 col-12 text-sm-left text-center">
+              <button class="btn btn-sm">
+                <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+              </button>
+            </div> -->
+            <!-- <div class="col-sm-8 col-12">
+              <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+              </pagination-controls>
+            </div> -->
+            <!-- <div class="col-sm-2 col-12 ">
+
+              <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                <div class="p-2 bd-highlight">
+                  <select (change)="onTableSizeChange($event)" class="custom-select">
+                    <option *ngFor="let size of tableSizes" [ngValue]="size">
+                      {{ size }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div> -->
+            <!-- </div>
+        </div> -->
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+  </div>
+</section>
+
+<!-- <form [formGroup]="ProjectForm" #projectForm="ngForm"> -->
+
+   
+  <!-- <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+   
+   
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                <div class="card-body table-responsive p-0">
+    
+                  
+    
+                    <dx-data-grid id="gridContainer"  [rowAlternationEnabled]="true" [showRowLines]="true"  [columnAutoWidth]="true" 
+                     [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="ProjectsList | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }"
+                        keyExpr="id" >
+                      
+                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+                      
+                            <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                            </dxo-search-panel>
+                        
+                        <dxi-column dataField="projectCode" caption="Project Code"></dxi-column>
+                        <dxi-column dataField="agencyName" caption="Branch Office"></dxi-column>
+                        <dxi-column dataField="siteName" caption="Site Name"></dxi-column>
+                        <dxi-column dataField="createdDate" caption="Created Date" dataType="date"></dxi-column>
+                        <dxi-column dataField="approvalStatusName" caption="Status"></dxi-column>
+                        <dxi-column type="buttons" caption="Action" alignment='left'>
+          
+                          <dxi-button hint="Review" icon="fas fa-eye text-secondary" alignment='left' [onClick]="review">
+                          </dxi-button>
+                       
+                          </dxi-column>   
+                         
+                          
+                  
+    
+    
+    
+                    </dx-data-grid>
+                    <div class="card-footer table-card-footer pb-0 border-top">
+                        <div class="row">
+                            <div class="col-sm-2 col-12 text-sm-left text-center">
+                                <button class="btn btn-sm">
+                                    <i class="fas fa-redo text-info"(click)="reloadGrid()"></i>
+                               
+                               
+                                </button>
+    
+                            </div>
+                            <div class="col-sm-6 col-12">
+                              
+                                
+                            </div>
+                            <div class="col-sm-4 col-12">
+                                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls>
+                            </div>
+                           
+                        </div>
+                    </div>
+  
+    
+    
+    
+    
+                </div>
+            </div></div>
+        </div>
+    </div>
+
+   
+
+</section> -->
+</form>
+<br>
+<br>
+<br>
+<!-- </form>  -->

@@ -1,0 +1,278 @@
+
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        
+        <!-- <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+        aria-selected="true">All Remarks</a> -->
+        <!-- <a class="nav-item nav-link" id="nav-profile-tab" href="#" style=" color: white;background-color: #304570;border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/security-module/user-remarks?')"
+      
+        data-toggle="tab" role="tab"
+        aria-controls="nav-profile" aria-selected="false">Authorizer Remarks </a> -->
+
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-standards?')"
+          
+            data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Standards </a>
+
+       
+        
+
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+            aria-selected="true">Declaration</a>
+
+       
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: white; background-color: #304570; border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/security-module/user-academic?')"
+           data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Academic </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: white; background-color: #304570;border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/security-module/user-professional?')"
+          
+             data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Professional </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: white; background-color: #304570;border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/security-module/user-employment?')"
+            data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Employment </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: white; background-color: #304570;border-color: whitesmoke;"
+           
+            (click)="editRecord('/app/pages/security-module/user-cpd?')"
+             data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">CPD </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: white; background-color: #304570;border-color: whitesmoke;"
+
+        (click)="editRecord('/app/pages/security-module/user-consultancy?')"
+           data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Consultancy </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"style="color: white; background-color: #304570;border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/security-module/user-audits?')"
+            data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Audits </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: white; background-color: #304570;border-color: whitesmoke;"
+        (click)="editRecord('/app/pages/security-module/user-auditor?')"
+          data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Auditor Nace </a>
+
+    </div>
+</nav>
+
+
+<section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+        <!-- <div class="row md-0 mb-1 mt-0">
+            <div class="col-sm-12 px-0">
+                <div class="alert alert-info alert-dismissible">
+                    <h6><i class="fa fa-database"></i> Task Board</h6>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>
+<form [formGroup]="UserDeclarationForm" #userDeclarationForm="ngForm">
+<section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+                        <div class="container-fluid mb-2">
+                            <div class="row mx-2">
+                                <div class="col-md-8">
+                                    <label class="mb-0" for="CompanyName">Company</label>
+                                    <input type="text" formControlName="CompanyName" class="form-control form-control-sm col-md-12" id="CompanyName"required [ngClass]="{ 'is-invalid': submitted && f.CompanyName.errors }" />
+                                    <div *ngIf="submitted && f.CompanyName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.CompanyName.errors.required">Company Name is required</div>
+                                    </div>
+                                
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "Contract" }}
+                                    </label>
+                                    <select formControlName="ContractTypeId" class="form-control form-control-sm col-md-12"  id="ContractTypeId">
+                                        <option *ngFor="let item of ContractTypeList" [value]="item.id">
+                                          {{ item.name }}
+                                        </option>
+                                      </select>
+
+                                </div>
+
+                            </div>
+                        
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-8">
+                                    <label class="mb-0"  for="Interest">Interest</label>
+                                    <input type="text" formControlName="Interest"class="form-control form-control-sm col-md-12" id="Interest" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "Start Year" }}
+                                    </label>
+
+                                    <input type="number" formControlName="StartYear" onKeyPress="if(this.value.length==4) return false;" class="form-control form-control-sm col-md-12" id="StartYear" />
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "Approval Status" }}
+                                    </label>
+
+                                    <select disabled formControlName="ApprovalStatusId" class="form-control form-control-sm col-md-12"  id="ApprovalStatusId">
+                                        <option *ngFor="let item of ApprovalList" [value]="item.id">
+                                          {{ item.name }}
+                                        </option>
+                                      </select>
+                                </div> -->
+
+                            </div>
+                            <div class="row  mt-1 mx-2">
+                                
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "End Year" }}
+                                    </label>
+                                        <input type="number" formControlName="EndYear" onKeyPress="if(this.value.length==4) return false;"class="form-control form-control-sm col-md-12" id="EndYear" />
+
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
+                                   
+                                    <button class="btn-sm btn-success btn col-md-4 mt-4 ml-1 float-right"  (click)="onSubmit()">
+                                        Save
+                                    </button>
+                                    <button class="btn-sm btn-dark btn col-md-4 ml-1 mt-4 float-right"  (click)="NewRecord()">Clear</button>
+                                  
+
+
+                                </div>
+
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                <div class="card-body table-responsive p-0">
+    
+                  
+    
+                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                        [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="UserDeclarationList | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }"
+                        keyExpr="id" >
+                        <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+                        <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                        </dxo-search-panel> -->
+                        <dxi-column   dataField="companyName"  
+                        caption="Company" ></dxi-column>
+                        <dxi-column   dataField="contractTypeName"  
+                        caption="Contract Type"></dxi-column>
+                        <dxi-column   dataField="interest"  
+                        caption="Interest"></dxi-column>
+                       
+                        <dxi-column   dataField="startYear"  alignment='left' 
+                        caption="Start Year" ></dxi-column>
+                        <dxi-column   dataField="endYear"  alignment='left'
+                        caption="End Year"></dxi-column>
+                        <!-- <dxi-column   dataField="approvalStatus"  
+                        caption="Approval Status"></dxi-column> -->
+                       
+                          <dxi-column type="buttons"caption="Action"  >  
+                            <dxi-button   icon="edit"
+                            [onClick]="edit"
+                            hint="Edit"
+                            [(visible)]="isAddShown"
+                            ></dxi-button>  
+                      
+                            <dxi-button   icon="deleterow"
+                             [onClick]="delete"
+                             [(visible)]="isAddShown"
+                             hint="Delete"
+                             ></dxi-button>  
+                       
+                          </dxi-column>   
+                         
+                         
+                  
+    
+    
+    
+                    </dx-data-grid>
+                    <div class="card-footer table-card-footer pb-0 border-top">
+                        <div class="row">
+                            <div class="col-sm-2 col-12 text-sm-left text-center">
+                                <button class="btn btn-sm">
+                                    <i class="fas fa-redo text-info"(click)="reloadGrid()"></i>
+                               
+                               
+                                </button>
+    
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <!-- <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls> -->
+                            </div>
+                            <div class="col-sm-4 col-12">
+                                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls>
+                            </div>
+                            <!-- <div class="col-sm-2 col-12 ">
+    
+                                <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                                    <div class="p-2 bd-highlight">
+                                        <select (change)="onTableSizeChange($event)" class="custom-select">
+                                            <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                                {{ size }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- <dx-tree-list>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                            [showNavigationButtons]="true">
+                        </dxo-pager>
+                    </dx-tree-list> -->
+    
+    
+    
+    
+                </div>
+            </div></div>
+        </div>
+    </div>
+</section></form><br><br>

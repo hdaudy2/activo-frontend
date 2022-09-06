@@ -1,0 +1,50 @@
+input[type="button"] {
+  cursor: pointer;
+}
+.state-card-expandable {
+  position: relative;
+  display: flex;
+  border-radius: 5px;
+  background-clip: border-box;
+  margin: 1rem 0;
+  background-color: #fff;
+}
+
+.state-card-expandable--main {
+  padding: 10px 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.state-card-expandable--main .label {
+  color: #909090;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+}
+
+.state-card-expandable--main .state {
+  color: #111111;
+  font-size: 2em;
+  text-align: center;
+}
+
+.state-card-expandable--button {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: space-evenly;
+}
+
+.card-btn {
+  color: #fff;
+  font-size: 0.8em;
+  padding: 5px 20px;
+  border-radius: 4px;
+  background-color: #111111;
+}
+
+.card-btn:active {
+  background-color: #222;
+}

@@ -1,0 +1,293 @@
+<form [formGroup]="AuditReportForm" #auditReportForm="ngForm">
+
+
+    <section class="content-header pt-0 pb-0 mt-3 mx-0 mb-0 md-0">
+
+
+
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h3
+                        style="text-align: center; color: rgb(35 52 86) ;font-family: 'Times New Roman'; font-weight: bold; ">
+                        Audit Report</h3>
+                </div>
+                <div class="row md-0 px-3 pb-2 ">
+
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Project Code: " }}
+                        </label>
+                        {{Projectcode}}
+
+                    </div>
+
+                    <div class="col-md-8">
+                        <label class="mb-0" for="Code">
+                            {{ "Standard : " }}
+                        </label>
+                        {{StandardName}}
+
+                    </div>
+                </div>
+                <!-- <form [formGroup]> -->
+                <div class="row md-0 px-3 pb-2 ">
+
+
+                    <!-- <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Project : " }}
+                        </label>
+                        {{Projectcode}}
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="Code">
+                            {{ "Project : " }}
+                        </label>
+                        {{Projectcode}}
+
+                    </div> -->
+
+                    <div class="col-md-4">
+                        <label class="mb-0" for="AuditDocumentTypeId">Document Type</label>
+                        <select class="form-control form-control-sm col-md-12 "
+                            formControlName="AuditDocumentTypeId" required
+                            [ngClass]="{ 'is-invalid': submitted && f.AuditDocumentTypeId.errors }"
+                            id="AuditDocumentTypeId">
+                            <option *ngFor="let item of DocumentsTypeList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.AuditDocumentTypeId.errors" class="invalid-feedback">
+                            <div *ngIf="f.AuditDocumentTypeId.errors.required">Document is required</div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                       
+
+                            <label class="mb-0" for="file">Upload Document (PDF)</label>
+                            <input type="file"class="form-control-sm col-md-12 " id="File" (change)="handlefileInput($event)" name="File"
+                                formControlName="File">
+                      
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button"
+                    
+                        class="btn-sm btn btn-primary float-right mx-1 px-3 mt-4 pt-2 pb-2  "  (click)="NewRecord()">New</button>
+                       
+                        <button type="button"
+                            class="btn-sm btn-success btn float-right mx-1 px-3 mt-4 pt-2 pb-2 " (click)="onSubmit()">Submit</button>
+                    </div>
+
+                </div>
+                <!-- //</form> -->
+                <!-- <div class="row mt-1 px-2">
+
+                    <div class="col-md-12">
+                        <button type="button" class="btn-sm btn btn-success float-right mx-2 px-4 mt-2 pt-2 pb-2 mt-3 "
+                            (click)="NewRecord()">New</button>
+                        <button type="button" class="btn-sm btn-success btn float-right mx-2 px-4 mt-2 pt-2 pb-2 mt-3"
+                            (click)="onSubmit()">Submit</button>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                    <div class="card-body table-responsive p-0">
+        
+                      
+        
+                        <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"
+                            [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="DocumentsList | paginate
+                            : {
+                                id: 'server',
+                                itemsPerPage: this.pagedDto.pageSize,
+                                currentPage: this.pagedDto.page,
+                                totalItems: this.totalCount
+                              }"
+                            keyExpr="id" >
+                            <!-- <dxo-scrolling mode="virtual"></dxo-scrolling>
+    
+                            <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                            </dxo-search-panel> -->
+                            <dxi-column   dataField="auditDocumentName"  
+                            caption="Document Type" ></dxi-column>
+                            <dxi-column   dataField="createdDate"dataType="date"   
+                            caption="Uploaded Date" ></dxi-column>
+                             <!-- <dxi-column   dataField="description"  
+                            caption="Description"></dxi-column>  -->
+                            
+                            <dxi-column type="buttons" caption="Download">
+                                <dxi-button hint="Download File" icon="download" [onClick]="Downloadfile">
+                                </dxi-button>
+                            </dxi-column>
+                           
+                           
+        
+                    
+                              <dxi-column type="buttons"caption="Action"  >  
+                                <dxi-button   icon="edit"
+                                [onClick]="edit"
+                                hint="Edit"
+                              
+                                ></dxi-button> 
+                                
+                                <dxi-button   icon="deleterow"
+                                 [onClick]="delete"
+                              
+                                 hint="Delete"
+                                 ></dxi-button>
+                          
+                                
+                                <!-- <i class="fas fa-tasks"></i> -->
+                                <!-- <dxi-button
+                                hint="Download File"
+                                icon="download"
+                               [onClick]="Downloadfile"></dxi-button> -->
+                               <!-- <dxi-button   icon="edit"
+                               [routerLink]='["/app/pages/stock-management/library"]'
+                                 [(visible)]="isAddShown"
+                                 ></dxi-button>   -->
+                              </dxi-column>   
+                             
+                             
+                      
+        
+        
+        
+                        </dx-data-grid>
+                        <div class="card-footer table-card-footer pb-0 border-top">
+                            <div class="row">
+                                <div class="col-sm-2 col-12 text-sm-left text-center">
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-redo text-info"(click)="reloadGrid()"></i>
+                                   
+                                   
+                                    </button>
+        
+                                </div>
+                                <div class="col-sm-6 col-12">
+                                    <!-- <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                    </pagination-controls> -->
+                                </div>
+                                <div class="col-sm-4 col-12">
+                                    <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                    </pagination-controls>
+                                </div>
+                                <!-- <div class="col-sm-2 col-12 ">
+        
+                                    <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                                        <div class="p-2 bd-highlight">
+                                            <select (change)="onTableSizeChange($event)" class="custom-select">
+                                                <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                                    {{ size }}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- <dx-tree-list>
+                            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                                [showNavigationButtons]="true">
+                            </dxo-pager>
+                        </dx-tree-list> -->
+        
+        
+        
+        
+                    </div>
+                </div></div>
+            </div>
+        </div>
+        <!-- <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body table-responsive p-0">
+
+
+
+                            <dx-data-grid id="dataGrid" [rowAlternationEnabled]="true" [showRowLines]="true"
+                                [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="DocumentsList | paginate
+                            : {
+                                id: 'server',
+                                itemsPerPage: this.pagedDto.pageSize,
+                                currentPage: this.pagedDto.page,
+                                totalItems: this.totalCount
+                              }" keyExpr="id">
+                                <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+
+                                <dxi-column dataField="auditDocumentName" caption="Document"></dxi-column>
+                                <dxi-column dataField="createdDate" caption="Uploaded Date"></dxi-column>
+
+
+
+                                <dxi-column type="buttons" caption="Download">
+                                    <dxi-button hint="Download File" icon="download" [onClick]="Downloadfile">
+                                    </dxi-button>
+                                </dxi-column>
+
+
+
+                                <dxi-column type="buttons" caption="Action">
+                                    <dxi-button icon="edit" [onClick]="edit" [(visible)]="isAddShown"></dxi-button>
+
+                                    <dxi-button icon="deleterow" [onClick]="delete" [(visible)]="isAddShown">
+                                    </dxi-button>
+
+
+
+                                 
+                                </dxi-column>
+
+
+
+
+
+
+                            </dx-data-grid>
+                            <div class="card-footer table-card-footer pb-0 border-top">
+                                <div class="row">
+                                    <div class="col-sm-2 col-12 text-sm-left text-center">
+                                        <button class="btn btn-sm">
+                                            <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+
+
+                                        </button>
+
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                     
+                                    </div>
+                                    <div class="col-sm-4 col-12">
+                                        <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                        </pagination-controls>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                          
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+    </section>
+</form> <br> <br>

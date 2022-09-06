@@ -1,0 +1,164 @@
+<section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+  <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+    <div class="row">
+      <div class="col header">
+        <div>
+          <span class="header__heading">Service Types</span>
+          <span class="header__back" routerLink="/app/home"
+            ><i class="fas fa-arrow-circle-left"></i> Back to list</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Heading: End -->
+<!-- Filter Form: Start -->
+<form [formGroup]="ServiceTypeDataForm" (ngSubmit)="OnFormSubmit()">
+  <div class="container-fluid mt-2">
+    <div class="card p-2">
+      <!-- Field Row Start -->
+      <div class="row px-3 py-2" style="font-size: large">
+        Add New Service Type
+      </div>
+      <!-- Field Row End -->
+      <!-- Field Row Start -->
+      <div class="row md-0 px-3 pb-2">
+        <div class="col-md-4">
+          <label class="mb-0" for="name">Name</label>
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control form-control-sm col-md-12"
+            id="name"
+          />
+        </div>
+        <div class="col-md-4">
+          <label class="mb-0" for="description">Description</label>
+          <input
+            type="text"
+            formControlName="description"
+            class="form-control form-control-sm col-md-12"
+            id="description"
+          />
+        </div>
+      </div>
+      <!-- Field Row: End -->
+      <!-- Field Row Start -->
+      <div class="row px-3 py-2">
+        <input type="submit" class="btn btn__primary" value="Submit" />
+      </div>
+      <!-- Field Row End -->
+    </div>
+  </div>
+</form>
+<!-- Filter Form: End -->
+<!-- Service Request List: Start -->
+<div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body table-responsive p-0">
+          <!-- DATA GRID: START -->
+          <dx-data-grid
+            id="dataGrid"
+            class="mx-3 mb-3 mt-3"
+            [showBorders]="true"
+            [rowAlternationEnabled]="true"
+            [showRowLines]="true"
+            [columnAutoWidth]="true"
+            [showColumnLines]="true"
+            [dataSource]="GridData"
+          >
+            <!-- DATA GRID COL: START-->
+            <dxi-column
+              dataField="name"
+              caption="Name"
+              cssClass="cell-header"
+            ></dxi-column>
+            <dxi-column
+              dataField="description"
+              caption="Description"
+              cssClass="cell-header"
+            ></dxi-column>
+            <!-- DATA GRID COL: START-->
+            <!-- DATA GRID COL BUTTON: START-->
+            <dxi-column type="buttons" caption="Action" cssClass="cell-header">
+              <dxi-button
+                hint="Edit Record"
+                icon="edit"
+                [onClick]="onEditClick"
+              ></dxi-button>
+              <dxi-button
+                hint="Delete Record"
+                icon="fas fa-trash fa-lg"
+                [onClick]="onDeleteClick"
+              ></dxi-button>
+            </dxi-column>
+            <!-- DATA GRID COL BUTTON: END-->
+            <!-- DATA GRID PAGINATION: START-->
+            <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+            <dxo-paging [pageSize]="5"> </dxo-paging>
+            <dxo-pager
+              [visible]="true"
+              [allowedPageSizes]="allowedPageSizes"
+              [displayMode]="displayMode"
+              [showPageSizeSelector]="showPageSizeSelector"
+              [showInfo]="showInfo"
+              [showNavigationButtons]="showNavButtons"
+            >
+            </dxo-pager>
+            <!-- DATA GRID PAGINATION: END-->
+          </dx-data-grid>
+          <!-- DATA GRID: END -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Service Request List: End -->
+<ng-template #EditServiceTypeModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Service Type</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="ServiceTypeDataUpdateForm" (ngSubmit)="OnUpdateFormSubmit()">
+      <div class="container-fluid">
+        <!-- Field Row Start -->
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <label class="mb-0" for="name">Name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control form-control-sm col-md-12"
+              id="name"
+            />
+          </div>
+          <div class="col-md-12 mb-4">
+            <label class="mb-0" for="description">Description</label>
+            <input
+              type="text"
+              formControlName="description"
+              class="form-control form-control-sm col-md-12"
+              id="description"
+            />
+          </div>
+          <div class="col-sm-12">
+            <button type="submit" class="btn bg-success">update</button>
+          </div>
+        </div>
+        <!-- Field Row End -->
+      </div>
+    </form>
+  </div>
+</ng-template>

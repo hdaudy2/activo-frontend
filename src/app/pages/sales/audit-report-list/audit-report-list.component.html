@@ -1,0 +1,95 @@
+<!-- <section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+</section>
+
+    <section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+       
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+
+                        <div class="card-header">
+                            <h3
+                                style="text-align: center; color: rgb(35 52 86) ;font-family: 'Times New Roman'; font-weight: bold; ">
+                                Audit List</h3>
+                        </div>
+                    <div class="card-body table-responsive p-0">
+        
+                      
+        
+                        <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true" [columnAutoWidth]="true"
+                            [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="AuditReportList | paginate
+                            : {
+                                id: 'server',
+                                itemsPerPage: this.pagedDto.pageSize,
+                                currentPage: this.pagedDto.page,
+                                totalItems: this.totalCount
+                              }"
+                            keyExpr="id" >
+                            <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+    
+                            <dxi-column   dataField="projectCode"  
+                            caption="Project Code" ></dxi-column>
+                            <dxi-column   dataField="visitTypeName"  
+                            caption="Visit Type" ></dxi-column>
+                             <dxi-column   dataField="startDate"  dataType="date" 
+                            caption="Start Date"></dxi-column> 
+                            
+                            <dxi-column   dataField="duration"  
+                            caption="Duration "></dxi-column>
+                            <dxi-column   dataField="visitStatusName"  
+                            caption="Visit Status "></dxi-column>
+                            
+        
+                    
+                              <dxi-column type="buttons"caption="Action"  >  
+                                <dxi-button 
+                                hint="Review"  icon="fas fa-eye text-secondary" alignment='left'
+                                [onClick]="review"
+                               
+                                
+                                ></dxi-button> 
+                                <dxi-button 
+                                hint="Audit Report" icon="edit" alignment='left'
+                                [onClick]="UploadReport"
+                               
+                                
+                                ></dxi-button> 
+                                
+                          
+                              </dxi-column>   
+                             
+                             
+                      
+        
+        
+        
+                        </dx-data-grid>
+                        <div class="card-footer table-card-footer pb-0 border-top">
+                            <div class="row">
+                                <div class="col-sm-2 col-12 text-sm-left text-center">
+                                    <button class="btn btn-sm">
+                                        <i class="fas fa-redo text-info"(click)="reloadGrid()"></i>
+                                   
+                                   
+                                    </button>
+        
+                                </div>
+                                <div class="col-sm-6 col-12">
+                                 
+                                </div>
+                                <div class="col-sm-4 col-12">
+                                    <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                    </pagination-controls>
+                                </div>
+                               
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div></div>
+            </div>
+        </div>
+        </section>
+        <br><br> -->
+

@@ -1,0 +1,392 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <a  class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+        aria-selected="true">Client Site</a>
+ 
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+        (click)="editRecord('/app/pages/sales/all-projects?')"
+            data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">All Projects</a>
+
+        
+
+       
+
+
+       
+    </div>
+</nav>
+
+
+
+<section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+        <!-- <div class="row md-0 mb-1 mt-0">
+            <div class="col-sm-12 px-0">
+                <div class="alert alert-info alert-dismissible">
+                    <h6><i class="fa fa-database"></i> Task Board</h6>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>
+<form [formGroup]="ClientSitesForm" #clientSitesForm="ngForm">
+<section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+                        <div class="container-fluid mb-2">
+
+                            <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                                role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                                aria-selected="false">Client Site</a></b>
+                            <!-- <div class="row mt-1 mx-2">
+                                <div class="col-md-4">
+                                    
+                                  <label class="mb-0" for="indent">Factory Name</label>
+                                    <textarea type="text" class="form-control form-control-sm col-md-12" id="indent"></textarea>
+                                </div>
+
+
+                                <div class="col-md-8">
+                                    <label class="mb-0" for="indent">Address</label>
+                                   <textarea type="text" class="form-control form-control-sm col-md-12" id="indent" ></textarea>
+
+                                </div>
+                                
+                            </div> -->
+                            <div class="row mt-1 mx-2">
+                                <!-- <div class="col-md-4">
+                                    <label class="mb-0" for="denomination">
+                                        {{ "Verification Type" }}
+                                    </label>
+
+                                    <select type="text" class="form-control form-control-sm col-md-12"
+                                        id="denomination">
+                                        <option value="volvo">Off Site</option>
+                                        <option value="volvo">On Site</option>
+                                    </select>
+                                </div> -->
+
+                                <div class="col-md-4">
+                                    
+                                    <label class="mb-0" for="SiteName">Site Name</label>
+                                      <input type="text"formControlName="SiteName" placeholder="Site Name" class="form-control form-control-sm col-md-12" id="SiteName"required [ngClass]="{ 'is-invalid': submitted && f.SiteName.errors }"/>
+                                      <div *ngIf="submitted && f.SiteName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.SiteName.errors.required">Site is required</div>
+                                    </div>
+                                 
+                                    </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="LegalStatus">Legal Status</label>
+                                    <input type="text"formControlName="LegalStatus"class="form-control form-control-sm col-md-12" id="LegalStatus" />
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="OutsourceProductionProcessess">Outsource Production Process</label>
+                                    <input type="text"formControlName="OutsourceProductionProcessess" class="form-control form-control-sm col-md-12" id="OutsourceProductionProcessess" />
+
+                                </div>
+                                
+                            </div>
+
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                <label class="mb-0" for="TotalEmployees">Total Employees</label>
+                                    <input type="text" formControlName="TotalEmployees"class="form-control form-control-sm col-md-12" id="TotalEmployees" required [ngClass]="{ 'is-invalid': submitted && f.TotalEmployees.errors }"/>
+                                    <div *ngIf="submitted && f.TotalEmployees.errors" class="invalid-feedback">
+                                        <div *ngIf="f.TotalEmployees.errors.required">Total Employees is required</div>
+                                </div>
+                            </div>
+                                    <div class="col-md-8">
+                                        <label class="mb-0" for="ShiftTimings">Shift Time</label>
+                                        <input type="text"formControlName="ShiftTimings" class="form-control form-control-sm col-md-12" id="ShiftTimings" />
+                                </div>
+
+                               
+
+                            </div>
+                            <div class="row  mt-1 mx-2">
+
+                                <!-- <div class="col-md-4">
+                                  <label class="mb-0" for="CountryId">
+                                    {{ "Country" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CountryId" id="CountryId">
+                                    <option *ngFor="let item of CountryList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+                                </div> -->
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="CountryId">
+                                      {{ "Country" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CountryId" 
+                                  id="CountryId"required [ngClass]="{ 'is-invalid': submitted && f.CountryId.errors }" (change)="loadState($event.target.value)"> 
+                                  <option *ngFor="let item of CountryList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.CountryId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.CountryId.errors.required">Country is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                                <!-- <div class="col-md-4">
+                                  <label class="mb-0" for="StateId">
+                                    {{ "State" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="StateId" id="StateId">
+                                    <option *ngFor="let item of StateList" [value]="item.id">
+                                      {{ item.name }}
+                                    </option>
+                                  </select>
+                                </div> -->
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="StateId">
+                                      {{ "State" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="StateId" 
+                                  id="StateId" required [ngClass]="{ 'is-invalid': submitted && f.StateId.errors }" (change)="loadCities($event.target.value)">
+                                  <option *ngFor="let item of StateList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.StateId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.StateId.errors.required">State is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                                
+                  
+                  
+                                <div class="col-md-4">
+                                  <label class="mb-0" for="CityId">
+                                      {{ "City" }}
+                                  </label>
+                                  <select class="form-control form-control-sm col-md-12 " formControlName="CityId" 
+                                  id="CityId" required [ngClass]="{ 'is-invalid': submitted && f.CityId.errors }">
+                                  <option *ngFor="let item of CityList" [value]="item.id">
+                                    {{ item.name }}
+                                  </option>
+                                </select>
+                                <div *ngIf="submitted && f.CityId.errors" class="invalid-feedback">
+                                  <div *ngIf="f.CityId.errors.required">City is required</div>
+                              </div>
+                              </div>
+                  
+                  
+                  
+                              </div>
+
+                            <!-- <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="CountryId">
+                                        {{ "Country" }}
+                                    </label>
+
+                                    <select formControlName="CountryId"  class="form-control" aria-placeholder="Select Country" required [ngClass]="{ 'is-invalid': submitted && f.CountryId.errors }">
+                                        <option *ngFor="let item of CountryList" [value]="item.id">
+                                          {{item.name }}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="submitted && f.CountryId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.CountryId.errors.required">Country is required</div>
+                                </div> </div>
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="StateId">
+                                        {{ "State" }}
+                                    </label>
+
+                                    <select formControlName="StateId"  class="form-control" aria-placeholder="Select State" required [ngClass]="{ 'is-invalid': submitted && f.StateId.errors }">
+                                        <option *ngFor="let item of StateList" [value]="item.id">
+                                          {{item.name }}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="submitted && f.StateId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.StateId.errors.required">State is required</div>
+                                </div> </div>
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="City">
+                                        {{ "City" }}
+                                    </label>
+
+                                    <select formControlName="CityId"  class="form-control" aria-placeholder="Select City" required [ngClass]="{ 'is-invalid': submitted && f.CityId.errors }">
+                                        <option *ngFor="let item of CityList" [value]="item.id">
+                                          {{item.name }}
+                                        </option>
+                                      </select>
+                                      <div *ngIf="submitted && f.CityId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.CityId.errors.required">City is required</div>
+                                </div>
+
+                            </div>
+
+                               
+
+                            </div> -->
+
+                            <div class="row mt-1 mx-2">
+                                <div class="col-md-8">
+                                    <label class="mb-0" for="Address">Address</label>
+                                   <textarea type="text"formControlName="Address" class="form-control form-control-sm col-md-12" id="Address" required [ngClass]="{ 'is-invalid': submitted && f.Address.errors }" ></textarea>
+                                   <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Address.errors.required">Address is required</div>
+                                </div> </div>
+                                <div class="col-md-4">
+                                    <br />
+                                    <button type="button"
+                                    class="btn-sm btn-success btn float-right mx-1 px-4 mt-2 pt-2 pb-2 mt-3" (click)="onSubmit()"><i class="fa fa-save"></i> Submit</button>
+                                    <button type="button"
+                                    class="btn-sm btn-primary btn float-right mx-1 px-3 mt-2 pt-2 pb-2 mt-3" (click)="NewRecord()"><i class="fas fa-plus-square"></i> New</button>
+                                    <button type="button"
+                                    class="btn-sm btn btn-dark btn  float-right mx-1 px-3 mt-2 pt-2 pb-2 mt-3" (click)="Back()"><i class="fa fa-arrow-circle-left"></i> Back</button>
+                                 
+
+
+                                </div>
+                            </div>
+                            
+
+
+
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mt-2">
+        
+        <div class="row">
+            <div class="card">
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                    role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                    aria-selected="false">Client Sites </a></b>
+            <div class="card-body table-responsive p-0">
+            <div class="col-md-12">
+
+               
+    
+                  
+    
+                    <dx-data-grid id="dataGrid"  [rowAlternationEnabled]="true" [showRowLines]="true"[columnAutoWidth]="true"
+                        [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="ClientSitesList | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }"
+                        keyExpr="id" >
+                        <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+                        <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                        </dxo-search-panel> -->
+                        <dxi-column   dataField="siteName"  
+                        caption="Site Name" ></dxi-column>
+                        <dxi-column   dataField="outsourceProductionProcessess"  
+                        caption="Outsource Production Process"></dxi-column>
+                        <dxi-column   dataField="legalStatus"  
+                        caption="Legal Status"></dxi-column>
+                        <dxi-column   dataField="countryName"  
+                        caption="Country" ></dxi-column>
+                        <dxi-column   dataField="stateName"  
+                        caption="State"></dxi-column>
+                        <dxi-column   dataField="cityName"  
+                        caption="city" ></dxi-column>
+                      
+                       
+                       
+                       
+    
+                
+                          <dxi-column type="buttons"caption="Action"  >  
+                            <dxi-button   icon="edit"
+                            [onClick]="edit"
+                            hint="Edit"
+                            [(visible)]="isAddShown"
+                            ></dxi-button>  
+                      
+                            <dxi-button   icon="deleterow"
+                             [onClick]="delete"
+                             [(visible)]="isAddShown"
+                             hint="Delete"
+                             ></dxi-button>  
+                         
+                          </dxi-column>   
+                         
+                         
+                  
+    
+    
+    
+                    </dx-data-grid>
+                    <div class="card-footer table-card-footer pb-0 border-top">
+                        <div class="row">
+                            <div class="col-sm-2 col-12 text-sm-left text-center">
+                                <button class="btn btn-sm">
+                                    <i class="fas fa-redo text-info"(click)="reloadGrid()"></i>
+                               
+                               
+                                </button>
+    
+                            </div>
+                            <div class="col-sm-6 col-12">
+                                <!-- <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls> -->
+                            </div>
+                            <div class="col-sm-4 col-12">
+                                <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls>
+                            </div>
+                            <!-- <div class="col-sm-2 col-12 ">
+    
+                                <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                                    <div class="p-2 bd-highlight">
+                                        <select (change)="onTableSizeChange($event)" class="custom-select">
+                                            <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                                {{ size }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <!-- <dx-tree-list>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                            [showNavigationButtons]="true">
+                        </dxo-pager>
+                    </dx-tree-list> -->
+    
+    
+    
+    
+                </div>
+            </div></div>
+        </div>
+    </div>
+</section></form>

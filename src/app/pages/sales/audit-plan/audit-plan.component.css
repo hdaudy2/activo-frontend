@@ -1,0 +1,63 @@
+/* .modal-header {
+    box-sizing: border-box;
+    position: absolute;
+    top: 200;
+    width: 100%;
+    height : auto;
+  }
+   */
+  /* .modal-body {
+    max-height: none;
+  position: absolute;
+    top: 40px;
+    bottom: 60px;
+     width: 1200px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    height : 500px;
+    align-items: center;
+  }  */
+  
+  /* .modal-footer{
+     position : absolute;
+     bottom: 0;
+     height: 60px;
+     box-sizing: border-box;
+     width: 100%;
+  } */
+
+/* 
+  .modal-dialog { */
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: center; */
+    /* overflow-y: auto; */
+    /* min-height: calc(100vh - 60px); */
+    /* width: 1000px;
+  } */
+  /* @media (max-width: 767px) {
+    .modal-dialog {
+      min-height: calc(100vh - 20px);
+    }
+  } */
+  
+  /* you only need the above CSS. The code below centers the modal trigger button */
+  
+  /* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 1000px;
+  } */
+ 
+  ::ng-deep .dx-header-row .cell-header {
+    color: rgb(255, 254, 254);
+    font-style: italic;
+    font-weight: bold;
+    background-color: #233456;
+
+}
+::ng-deep #gridContainer {
+  max-height: 400px;
+}

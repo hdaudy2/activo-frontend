@@ -1,0 +1,758 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+        <!-- <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+            aria-selected="true">All Projects</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/slcp']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">SA8000:2014</a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/client-sites']" data-toggle="tab" role="tab" aria-controls="nav-profile"
+            aria-selected="false">Client Sites </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/client-add-visit']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Add/Edit Visit </a>
+
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/higg']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Higg Application Form </a>
+
+            <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/sales/slcp']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">SLCP Application Form </a> -->
+
+
+        <!-- <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-academic']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Academic </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-professional']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Professional </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-employment']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Employment </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-cpd']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">CPD </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-consultancy']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Consultancy </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-audits']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Audits </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#" style="color: darkblue;"
+            [routerLink]="['/app/pages/security-module/user-auditor']" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Auditor Nace </a> -->
+
+    </div>
+</nav>
+
+
+<form [formGroup]="SAForm" #sAForm="ngForm">
+
+    <section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+        <div class="container-fluid">
+
+            <div class="card">
+                <!-- <div class="card-header">
+                    <h3
+                        style="text-align: center; color: rgb(35 52 86) ;font-family: 'Times New Roman'; font-weight: bold; ">
+                        SA8000:2014 Application Form</h3>
+                </div> -->
+                <div class="card-header">
+
+                    <div class="alert alert-info alert-info">
+                        <h3  style="text-align: center;font-family: 'Times New Roman'; font-weight: bold; "> SA8000:2014 Application Form</h3>
+                    </div>
+                    <h4
+                        style="text-align: center; color: #0056B3 ;font-family: 'Times New Roman';  font-weight: bold; text-decoration: underline">
+                        {{  ProjectStatus}}</h4>
+                        <!-- <h3
+                        style="text-align: center; color: rgb(239, 241, 247) ; background-color: darkblue; font-family: 'Times New Roman'; font-weight: bold; ">
+                        
+                        {{  ProjectStatus}}</h3> -->
+                        <!-- <button type="button"style="text-align: center;"
+                        class="btn-sm btn-primary btn float-left mx-1 "> {{  ProjectStatus}}</button> -->
+                </div>
+                <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+
+
+                <div *ngIf="!Multisite">
+                    <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                            role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                            aria-selected="false">Client Site Detail </a></b>
+
+                    <div class="row mt-1 mx-2">
+                        <div class="col-md-4">
+                            <label class="mb-0" for="ClientSiteId">
+                                {{ "Site Name" }}
+                            </label>
+
+                            <select formControlName="ClientSiteId" class="form-control form-control-sm col-md-12"
+                                (change)="onChange($event.target.value)" id="ClientSiteId">
+                                <option *ngFor="let item of ClientSiteList" [value]="item.id">
+                                    {{ item.siteName }}
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="col-md-8">
+                            <label class="mb-0" for="Address">Address</label>
+
+                            <input formControlName="Address" class="form-control form-control-sm col-md-12" id="Address"
+                                disabled>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row mt-1 mx-2">
+                        <div class="col-md-4">
+                            <label class="mb-0" for="VerificationTypeId">
+                                {{ "Verification Type" }}
+                            </label>
+
+                            <select formControlName="VerificationTypeId" class="form-control form-control-sm col-md-12"
+                                id="VerificationTypeId">
+                                <option *ngFor="let item of VerificationTypeList" [value]="item.id">
+                                    {{ item.name }}
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="mb-0" for="LegalStatus">Legal Status</label>
+                            <input formControlName="LegalStatus" type="text"
+                                class="form-control form-control-sm col-md-12" id="LegalStatus" disabled>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="mb-0" for="OutsourceProductionProcessess">Outsource Production Process</label>
+                            <input formControlName="OutsourceProductionProcessess" type="text"
+                                class="form-control form-control-sm col-md-12" id="OutsourceProductionProcessess"
+                                disabled>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row mt-1 mx-2">
+                        <div class="col-md-6">
+                            <label class="mb-0" for="TotalEmployees">Total Employees</label>
+                            <input formControlName="TotalEmployees" type="text"
+                                class="form-control form-control-sm col-md-12" id="TotalEmployees" disabled>
+
+
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <label class="mb-0" for="ShiftTimings">Shift Time</label>
+                            <input type="text" formControlName="ShiftTimings"
+                                class="form-control form-control-sm col-md-12" id="ShiftTimings" disabled>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+                <br>
+
+            </div>
+            <div class="card">
+
+
+
+                <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                        role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                        aria-selected="false">PROJECT: </a></b>
+
+                <div class="col-md-4" *ngIf="Multisite">
+
+
+                    <label class="mb-0" for="Code">
+                        {{ "Project : " }}
+                    </label>
+                    {{ProjectCode}}
+
+
+
+                </div>
+
+                <!-- <div class="col-md-4">
+                   
+
+                    <label class="mb-0" for="Code">
+                        {{ "Project Status: " }}
+                    </label>
+                 
+                        {{  ProjectStatus}}
+                  
+                   
+
+
+
+                </div> -->
+                <div class="row  mt-1 mx-2">
+                    <div class="col-md-4" *ngIf="!Multisite">
+                        <label class="mb-0" for="ProjectCode">Project Code</label>
+                        <input type="text" formControlName="ProjectCode" disabled
+                            class="form-control form-control-sm col-md-12" id="ProjectCode" />
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="ProjectTypeId">
+                            {{ "Project Transfer" }}
+                        </label>
+                        <select formControlName="ProjectTypeId" class="form-control form-control-sm col-md-12"
+                            id="ProjectTypeId" required
+                            [ngClass]="{ 'is-invalid': submitted && f.ProjectTypeId.errors }">
+                            <option *ngFor="let item of TransferProjectList" [value]="item.id">
+                                {{ item.code }}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.ProjectTypeId.errors" class="invalid-feedback">
+                            <div *ngIf="f.ProjectTypeId.errors.required">Project Transfer is required</div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4" *ngIf="Multisite">
+
+                        <label class="mb-0" for="OverAllEmployees">Total Employees</label>
+                        <input formControlName="OverAllEmployees" type="text"
+                            class="form-control form-control-sm col-md-12" id="OverAllEmployees" disabled>
+
+
+
+
+                    </div>
+
+
+
+                    <!-- <div class="col-md-4">
+                        <label class="mb-0" for="ProjectTypeId">
+                            {{ "Project Type" }}
+                        </label>
+                        <select formControlName="ProjectTypeId" class="form-control form-control-sm col-md-12" 
+                            id="ProjectTypeId">
+                            <option *ngFor="let item of ProjectTypeList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+
+                    </div> -->
+                    <!-- <div class="col-md-2">
+                                <label class="mb-0" for="indent">Employees</label>
+                                <input formControlName="StandardId" type="text" class="form-control form-control-sm col-md-12" id="indent" />
+                            </div> -->
+                    <div class="col-md-4">
+                        <label class="mb-0" for="RiskId">
+                            {{ "Risk" }}
+                        </label>
+                        <select formControlName="RiskId" class="form-control form-control-sm col-md-12" id="RiskId">
+                            <option *ngFor="let item of RiskList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="row  mt-1 mx-2">
+                    <div class="col-md-4">
+                        <label class="mb-0" for="EacodeId">
+                            {{ "EA Code" }}
+                        </label>
+                        <select formControlName="EacodeId" class="form-control form-control-sm col-md-12" id="EacodeId">
+                            <option *ngFor="let item of EACodeList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="NaceCodeId">
+                            {{ "Nace Code" }}
+                        </label>
+                        <select formControlName="NaceCodeId" class="form-control form-control-sm col-md-12"
+                            id="NaceCodeId">
+                            <option *ngFor="let item of NaceCodeList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="mb-0" for="ConsultantId">
+                            {{ "Consultant" }}
+                        </label>
+                        <select formControlName="ConsultantId" class="form-control form-control-sm col-md-12"
+                            id="ConsultantId">
+                            <option *ngFor="let item of ConsultantList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row  mt-1 mx-2">
+                    <div class="col-md-4">
+                        <label class="mb-0" for="AccreditationId">
+                            {{ "Select Accreditation" }}
+                        </label>
+
+                        <select formControlName="AccreditationId" class="form-control form-control-sm col-md-12"
+                            id="AccreditationId">
+                            <option *ngFor="let item of AccreditationList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="col-md-8">
+                        <label class="mb-0" for="Scope">Scope</label>
+                        <textarea type="text" formControlName="Scope" class="form-control form-control-sm col-md-12"
+                            id="Scope"></Textarea>
+                    </div>
+                </div>
+
+
+                <br>
+
+            </div>
+
+
+            <div class="card">
+                <div class="card-header">
+
+                    <!-- <div class="input-group">
+                                <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn bg-blue">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    
+                                </div>
+                            </div> -->
+                    <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                            role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                            aria-selected="false">PLANNING: </a></b>
+                    <div class="container-fluid mb-2">
+                        <div class="row mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0" for="PreAuditDuration">Pre-Audit Duration</label>
+                                <input type="text" formControlName="PreAuditDuration"
+                                    class="form-control form-control-sm col-md-12" id="PreAuditDuration" />
+
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="DurationStage1">Duration Stage 1</label>
+                                <input type="text" formControlName="DurationStage1"
+                                    class="form-control form-control-sm col-md-12" id="DurationStage1" />
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="mb-0" for="DurationStage2">Duration Stage 2</label>
+                                <input type="text" formControlName="DurationStage2"
+                                    class="form-control form-control-sm col-md-12" id="DurationStage2" />
+
+                            </div>
+
+
+                        </div>
+                        <div class="row  mt-1 mx-2">
+                            <div class="col-md-4">
+                                <label class="mb-0">
+                                    {{ "Surveillance visit frequency" }}
+                                </label>
+                                <select formControlName="SurveillanceVisitFrequencyId"
+                                    class="form-control form-control-sm col-md-12" id="SurveillanceVisitFrequencyId">
+                                    <option *ngFor="let item of SurveillanceVisitFrequencyList" [value]="item.id">
+                                        {{ item.name }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="SurveillanceMethodId">
+                                    {{ "Surveillance Method" }}
+                                </label>
+                                <select formControlName="SurveillanceMethodId"
+                                    class="form-control form-control-sm col-md-12" id="SurveillanceMethodId">
+                                    <option *ngFor="let item of SurveillanceMethodList" [value]="item.id">
+                                        {{ item.name }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="mb-0" for="NoOfSurveillanceVisits">
+                                    {{ "No.of Surveillance Visits" }}
+                                </label>
+                                <input type="text" formControlName="NoOfSurveillanceVisits"
+                                    class="form-control form-control-sm col-md-12" id="NoOfSurveillanceVisits" />
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- <div class="input-group">
+                                    <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn bg-blue">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                        
+                                    </div>
+                                </div> -->
+                            <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                                    aria-controls="nav-profile" aria-selected="false">FINANCIAL:</a></b>
+                            <div class="container-fluid mb-2">
+                                <div class="row mx-2">
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="Applicatonfee">Applicaton fee </label>
+                                        <input formControlName="Applicatonfee" type="number"
+                                            class="form-control form-control-sm col-md-12" id="Applicatonfee" />
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="PreAuditfee">Pre-Audit fee </label>
+                                        <input formControlName="PreAuditfee" type="number"
+                                            class="form-control form-control-sm col-md-12" id="PreAuditfee" />
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="Assessmentfee">Assessment fee</label>
+                                        <input formControlName="Assessmentfee" type="number"
+                                            class="form-control form-control-sm col-md-12" id="Assessmentfee" />
+
+                                    </div>
+
+
+                                </div>
+                                <div class="row  mt-1 mx-2">
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="Survfee">Surv fee</label>
+                                        <input formControlName="Survfee" type="number"
+                                            class="form-control form-control-sm col-md-12" id="Survfee" />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="denomination">
+                                            {{ "Expenses" }}
+                                        </label>
+                                        <select formControlName="ExpensesId"
+                                            class="form-control form-control-sm col-md-12" id="ExpensesId">
+                                            <option *ngFor="let item of ExpensesList" [value]="item.id">
+                                                {{ item.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4" *ngIf="savebtn">
+
+
+                                        <label for="file"> Application Form (.pdf/.doc/.docx)</label>
+
+                                        <input type="file" id="File" (change)="handlefileInput($event)" name="File">
+
+                                    </div>
+
+                                </div>
+                                <!-- <div class="row  mt-1 mx-2">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group" *ngIf="!authorizer">
+
+                                            <label for="file"> Contract(.pdf/.doc/.docx)</label>
+
+                                            <input type="file" id="ContractFile" (change)="handlefileInput($event)"
+                                                name="ContractFile">
+                                        </div>
+                                    </div>
+
+                                </div> -->
+                                <div class="row mx-2">
+
+
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="Remarks">Remarks</label>
+                                        <textarea type="text" formControlName="Remarks"
+                                            class="form-control form-control-sm col-md-12" id="Remarks"></textarea>
+                                    </div>
+                                    <!-- <div class="col-md-4"  >
+                                <label class="mb-0" for="Remarks">Authorizer Remarks</label>
+                                <textarea type="text" formControlName="Remarks"class="form-control form-control-sm col-md-12" id="Remarks"></textarea>
+                                  
+
+                                  
+                               
+                               
+                            </div> -->
+                                    <div class="col-md-4" *ngIf="authorizer">
+                                        <label class="mb-0" for="ApprovalStatusId">
+                                            {{ "Status" }}
+                                        </label>
+                                        <select formControlName="ApprovalStatusId"
+                                            class="form-control form-control-sm col-md-12" id="ApprovalStatusId">
+                                            <option *ngFor="let item of ApprovalList" [value]="item.id">
+                                                {{ item.name }}
+                                            </option>
+                                        </select>
+
+
+                                        <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+
+
+                                    </div>
+
+                                    <!-- <div class="col-md-4" *ngIf="!authorizer">
+                                <div  *ngIf="savebtn">
+                            
+                                <button class="btn-sm btn-success btn col-md-4 ml-1 mt-4 float-right"   (click)="onSubmit()">
+                                    Save
+                                </button>
+                               
+                           </div>
+    
+                            </div> -->
+                                </div>
+                                <div class="row  mt-1 mx-2">
+                                    <button type="button" class="btn-sm btn btn-dark float-right "
+                                    (click)="dashboard()"><i class="fa fa-arrow-circle-left"></i> Go To Dashboard</button>
+                                    <button type="button" class="btn-sm btn btn-dark float-right col-md-1 ml-1 mt-3"
+                                        (click)="Back()"><i class="fa fa-arrow-circle-left"></i> Back</button>
+                                    <div class="col-md-2" *ngIf="savedownload">
+                                        <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                                            (click)="DownloadApplicationForm()">
+                                            <i class="fa fa-download"></i> Application Form
+                                        </button>
+                                    </div>
+                                    <div class="col-md-2" *ngIf="authorizer">
+                                        <div *ngIf="btnApproval">
+                                            <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+
+                                            <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                                                (click)="OnApprovalSubmit()">
+                                                <i class="fa fa-save"></i> Approved / Reject
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" *ngIf="savebtn">
+                                        <div *ngIf="Inserted">
+
+                                            <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+                                            <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                                                (click)="onSubmit()">
+                                                Project Save
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2" *ngIf="deletebtn">
+                                        <button class="btn-sm btn-danger btn col-md-12 ml-1 mt-3 float-left"
+                                            (click)="delete()">
+                                            Delete Record
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- <button class="btn-sm btn-danger col-md-4 ml-1 mt-3 float-left" icon="download" (click)=" Pdf()" >
+                           Contract Template  
+                        </button> -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <b> <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" data-toggle="tab"
+                        role="tab" style="text-decoration: underline" aria-controls="nav-profile"
+                        aria-selected="false">Client Contract </a></b>
+
+                <div class="row mt-1 mx-2" *ngIf="btnContract">
+                    <div class="col-md-6">
+                        <label class="mb-0" for="ContractRemarks">Contract Remarks</label>
+                        <textarea type="text" formControlName="ContractRemarks"
+                            class="form-control form-control-sm col-md-12" id="ContractRemarks"></textarea>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label class="mb-0" for="ContractStatusId">
+                            {{ "Status" }}
+                        </label>
+                        <select formControlName="ContractStatusId" class="form-control form-control-sm col-md-12"
+                            id="ContractStatusId">
+                            <option *ngFor="let item of ContractApprovalList" [value]="item.id">
+                                {{ item.name }}
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row mt-1 mx-2">
+                    <div class="col-md-4" *ngIf="IsContract">
+
+
+                        <label for="file"> Contract(.pdf/.doc/.docx)</label>
+
+                        <input type="file" id="ContractFile" (change)="handlefileInput($event)" name="ContractFile">
+
+                    </div>
+
+                    <div class="col-md-2" *ngIf="btnContractDownload">
+                        <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                            (click)="contractDownload()">
+                            View Contract
+                        </button>
+
+                    </div>
+                    <div class="col-md-4" *ngIf="IsContract">
+                        <button class="btn-sm btn-danger col-md-5 ml-1 mt-3 float-right" icon="download"
+                            (click)="openPopup()">
+                            Contract Template
+                        </button>
+                        <button class="btn-sm btn-success btn col-md-5 ml-1 mt-3 float-right"
+                            (click)="onContractSubmit()">
+                            Contract Submit
+                        </button>
+                    </div>
+                    <div class="col-md-2" *ngIf="btnContractSave">
+                        <button class="btn-sm btn-success btn col-md-12 ml-1 mt-3 float-left"
+                            (click)="contractApproved()">
+                            Submit
+                        </button>
+
+
+
+                        <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="card mx-2 pt-3 pb-2">
+                                        <div class="row">
+                                            <!-- <div class="col-sm-12"> -->
+
+                                            <div class="col-md-6">
+                                                <label class="mb-0" for="ApplicationFee">Application Fee</label>
+                                                <input type="number" formControlName="ApplicationFee"
+                                                    class="form-control float-right  form-control-sm col-md-12"
+                                                    id="ApplicationFee" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="mb-0" for="AuditFee">Audit Fee</label>
+                                                <input type="number" autocomplete="off" formControlName="AuditFee"
+                                                    class="form-control float-right form-control-sm col-md-12"
+                                                    id="AuditFee" />
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                                <label class="mb-0" for="SurveillanceAudits">Cost of each Annual
+                                                    Surveillance Audits</label>
+                                                <input type="number" autocomplete="off"
+                                                    formControlName="SurveillanceAudits"
+                                                    class="form-control float-right px-2 form-control-sm col-md-12"
+                                                    id="SurveillanceAudits" />
+                                            </div>
+                                            <div class="col-md-6 pt-4">
+                                                <label class="mb-0" for="tax">GST/Local tax</label>
+                                                <input type="number" autocomplete="off" formControlName="tax"
+                                                    class="form-control float-right pt-0 px-2 form-control-sm col-md-12"
+                                                    id="tax" />
+                                            </div>
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" (click)="closePopup()">
+                                    Close
+                                </button>
+                                <button type="button" class=" btn-success btn " (click)="Pdf()">Create Template</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+            </div>
+        </div>
+    </section>
+</form>
+<br><br>

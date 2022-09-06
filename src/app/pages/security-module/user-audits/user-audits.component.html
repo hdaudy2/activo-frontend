@@ -1,0 +1,309 @@
+<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <!-- <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-remarks?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Authorizer Remarks </a> -->
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-standards?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Standards </a>
+
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-declaration?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Declaration </a>
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-academic?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false"> Academic</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-professional?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Professional </a>
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-employment?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Employment </a>
+
+
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-cpd?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">CPD </a>
+
+
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-consultancy?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Consultancy </a>
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home"
+            aria-selected="true"> Audits</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" href="#"
+            style=" color: white;background-color: #304570;border-color: whitesmoke;"
+            (click)="editRecord('/app/pages/security-module/user-auditor?')" data-toggle="tab" role="tab"
+            aria-controls="nav-profile" aria-selected="false">Auditor Nace </a>
+    </div>
+</nav>
+
+
+<section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+    <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+        <!-- <div class="row md-0 mb-1 mt-0">
+            <div class="col-sm-12 px-0">
+                <div class="alert alert-info alert-dismissible">
+                    <h6><i class="fa fa-database"></i> Task Board</h6>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>
+<form [formGroup]="UserAuditForm" #userAuditForm="ngForm">
+    <section class="content pt-0 pb-0 mt-3 mx-2 mb-0 md-0">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+                            <div class="container-fluid mb-2">
+                                <div class="row mx-2">
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="StandardId">
+                                            {{ "Standards" }}
+                                        </label>
+                                        <select formControlName="StandardId"
+                                            class="form-control form-control-sm col-md-12" required
+                                            [ngClass]="{ 'is-invalid': submitted && f.StandardId.errors }"
+                                            id="StandardId">
+                                            <option *ngFor="let item of StandardList" [value]="item.id">
+                                                {{ item.name }}
+                                            </option>
+                                        </select><div *ngIf="submitted && f.StandardId.errors" class="invalid-feedback">
+                                            <div *ngIf="f.StandardId.errors.required">Standard is required</div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label class="mb-0" for="Organization">Organisation</label>
+                                        <input type="text" required id="Organization" formControlName="Organization"
+                                            class="form-control form-control-sm col-md-12" id="Organization" required
+                                            [ngClass]="{ 'is-invalid': submitted && f.Organization.errors }" />
+
+                                        <div *ngIf="submitted && f.Organization.errors" class="invalid-feedback">
+                                            <div *ngIf="f.Organization.errors.required">Organization is required</div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row  mt-1 mx-2">
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="EacodeId">
+                                            {{ "EA Code" }}
+                                        </label>
+
+                                        <select formControlName="EacodeId"
+                                            class="form-control form-control-sm col-md-12" id="EacodeId">
+                                            <option *ngFor="let item of EAcodeList" [value]="item.id">
+                                                {{ item.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="NaceCodeId">
+                                            {{ "Nace Code" }}
+                                        </label>
+
+                                        <select formControlName="NaceCodeId"
+                                            class="form-control form-control-sm col-md-12" id="NaceCodeId">
+                                            <option *ngFor="let item of NaceCodeList" [value]="item.id">
+                                                {{ item.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="AuditTypeId">
+                                            {{ "Audit Type" }}
+                                        </label>
+
+                                        <select formControlName="AuditTypeId"
+                                            class="form-control form-control-sm col-md-12" id="NaceCodeId">
+                                            <option *ngFor="let item of AuditTypeList" [value]="item.id">
+                                                {{ item.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row  mt-1 mx-2">
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="Duration">Duration(Days)</label>
+                                        <input type="number" formControlName="Duration"
+                                            class="form-control form-control-sm col-md-12" id="Duration" />
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="Year">Year</label>
+                                        <input type="number" formControlName="Year"
+                                            onKeyPress="if(this.value.length==4) return false;"
+                                            class="form-control form-control-sm col-md-12" id="Year" />
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="mb-0" for="CertificationBodyId">
+                                            {{ "Certification Body" }}
+                                        </label>
+
+                                        <select formControlName="CertificationBodyId"
+                                            class="form-control form-control-sm col-md-12" id="CertificationBodyId">
+                                            <option *ngFor="let item of CertificationBodyList" [value]="item.id">
+                                                {{ item.body }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="row  mt-1 mx-2">
+                                    <div class="col-md-4">
+                                    <label class="mb-0" for="AuditLevel">
+                                        {{ "Audit Level" }}
+                                    </label>
+
+                                   
+                                        <input type="text"  id="AuditLevel" formControlName="AuditLevel"
+                                        class="form-control form-control-sm col-md-12" id="AuditLevel"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                        <div class="col-md-4"> </div>
+                                </div>
+                                <div class="row  mt-1 mx-2">
+                                    <div class="col-md-12">
+
+                                        <!-- <input  class="form-control form-control-sm col-md-12" id="indent" /> -->
+                                        <button class="btn-sm btn-success btn col-md-1  float-right"
+                                            style="margin: 5px;" (click)="onSubmit()">
+                                            Save
+                                        </button>
+
+                                        <button class="btn-sm btn btn-dark col-md-1 float-right" style="margin: 5px;"
+                                            (click)="NewRecord()">
+                                            Cancel
+                                        </button>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mt-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body table-responsive p-0">
+
+
+
+                            <dx-data-grid id="dataGrid" [rowAlternationEnabled]="true" [showRowLines]="true"
+                                [showColumnLines]="true" [allowColumnReordering]="true" [dataSource]="UserAuditList | paginate
+                        : {
+                            id: 'server',
+                            itemsPerPage: this.pagedDto.pageSize,
+                            currentPage: this.pagedDto.page,
+                            totalItems: this.totalCount
+                          }" keyExpr="id">
+                                <dxo-scrolling mode="virtual"></dxo-scrolling>
+
+                                <!-- <dxo-search-panel [visible]="true" [width]="240" placeholder="Search...">
+                        </dxo-search-panel> -->
+                                <dxi-column dataField="organization" caption="Organization"></dxi-column>
+                                <dxi-column dataField="standardName" caption="Standard"></dxi-column>
+                                <dxi-column dataField="duration" caption="Duration Days"></dxi-column>
+
+                                <dxi-column dataField="year" alignment='left' caption="Year"></dxi-column>
+                                <dxi-column dataField="eacodeName" alignment='left' caption="EA Code"></dxi-column>
+                                <dxi-column dataField="nacecodeName" caption="Nace Code"></dxi-column>
+                                <dxi-column dataField="certificationBodyName" caption="Certification Body"></dxi-column>
+
+                                <dxi-column dataField="auditTypeName" caption="Audit Type"></dxi-column>
+                                <dxi-column   dataField="auditLevel"  
+                                caption="Audit Level" ></dxi-column>
+                                <dxi-column type="buttons" caption="Action">
+                                    <dxi-button icon="edit"   hint="Edit" [onClick]="edit" [(visible)]="isAddShown"></dxi-button>
+
+                                    <dxi-button icon="deleterow"  hint="Delete" [onClick]="delete" [(visible)]="isAddShown">
+                                    </dxi-button>
+
+                                </dxi-column>
+
+
+
+
+
+
+                            </dx-data-grid>
+                            <div class="card-footer table-card-footer pb-0 border-top">
+                                <div class="row">
+                                    <div class="col-sm-2 col-12 text-sm-left text-center">
+                                        <button class="btn btn-sm">
+                                            <i class="fas fa-redo text-info" (click)="reloadGrid()"></i>
+
+
+                                        </button>
+
+                                    </div>
+                                    <div class="col-sm-6 col-12">
+                                        <!-- <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                </pagination-controls> -->
+                                    </div>
+                                    <div class="col-sm-4 col-12">
+                                        <pagination-controls id="server" (pageChange)="onTableDataChange($event)">
+                                        </pagination-controls>
+                                    </div>
+                                    <!-- <div class="col-sm-2 col-12 ">
+    
+                                <div class="d-flex flex-row-reverse bd-highlight mb-2">
+                                    <div class="p-2 bd-highlight">
+                                        <select (change)="onTableSizeChange($event)" class="custom-select">
+                                            <option *ngFor="let size of tableSizes" [ngValue]="size">
+                                                {{ size }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                                </div>
+                            </div>
+                            <!-- <dx-tree-list>
+                        <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]"
+                            [showNavigationButtons]="true">
+                        </dxo-pager>
+                    </dx-tree-list> -->
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form><br><br>

@@ -1,0 +1,326 @@
+<form [formGroup]="UserForm" #userForm="ngForm">
+    <!-- <form> -->
+    <section class="content-header pt-0 pb-0 mt-0 mx-0 mb-0 md-0">
+        <div class="container-fluid mx-0 px-0 mx-0 mb-0">
+
+            <div class="row md-0 mb-1 mt-0">
+                <div class="col-sm-12 px-0">
+                    <div class="alert alert-info alert-dismissible">
+                        <h6>Tenants Registration Form</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content pt-0 pb-0 mx-2 mb-0 md-0">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <!-- <div class="input-group">
+                            <input type="text" class="form-control" name="keyword" [placeholder]="'Search'" />
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn bg-blue">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                
+                            </div>
+                        </div> -->
+
+                            <div class="row mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="PrefixId">
+                                        {{ "Prefix" }}
+                                    </label>
+                                    <!-- <select class="form-control form-control-sm col-md-12" id="denomination">
+                    <option value="volvo">Mr</option>
+                  </select> -->
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="PrefixId"
+                                        id="PrefixId" required
+                                        [ngClass]="{ 'is-invalid': submitted && f.PrefixId.errors }">
+                                        <option *ngFor="let item of PrefixList" [value]="item.id">
+                                            {{ item.name }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.PrefixId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.PrefixId.errors.required">Prefix is required</div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="FullName">First Name</label>
+                                    <input type="text" formControlName="FullName"
+                                        class="form-control form-control-sm col-md-12" id="FullName"
+                                        placeholder="First Name" required
+                                        [ngClass]="{ 'is-invalid': submitted && f.FullName.errors }">
+                                    <div *ngIf="submitted && f.FullName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.FullName.errors.required">Full Name is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="UserName">Last Name</label>
+                                    <input type="text" formControlName="FirstName"
+                                        class="form-control form-control-sm col-md-12" id="FirstName"
+                                        placeholder="Last Name" required
+                                        [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }" />
+                                    <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback">
+                                        <div *ngIf="f.FirstName.errors.required">Last Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="Email">Email Address</label>
+                                    <!-- <input type="text" class="form-control form-control-sm col-md-12" id="indent" /> -->
+                                    <input type="email" autocomplete="false" formControlName="Email"
+                                        class="form-control form-control-sm col-md-12" id="Email"
+                                        (focusout)="onFocusOutEvent($event)" placeholder="Email Address" required
+                                        [ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+                                    <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.Email.errors.required">Email is required</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="indent">Telephone-No</label>
+                                    <input type="text" formControlName="Telephone" (keypress)="KeyPress($event)"
+                                        class="form-control form-control-sm col-md-12" maxlength="12"
+                                        placeholder="000-000-0000" id="Telephone" />
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="indent">Mobile-No</label>
+                                    <input type="text" formControlName="Mobile"
+                                        class="form-control form-control-sm col-md-12" (keypress)="KeyPress($event)"
+                                        maxlength="12" placeholder="000-000-0000" id="Mobile" />
+                                </div>
+                                <!-- <div class="col-md-4">
+                    <label class="mb-0" for="Address1">Address-1</label>
+                    <input type="text" formControlName="Address1" class=" form-control form-control-sm col-md-12"
+                      id="Address1" required [ngClass]="{ 'is-invalid': submitted && f.Address1.errors }" />
+                    <div *ngIf="submitted && f.Address1.errors" class="invalid-feedback">
+                      <div *ngIf="f.Address1.errors.required">Address-1 is required</div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="mb-0" for="Address2">Address-2</label>
+                    <input type="email" formControlName="Address2" class="form-control form-control-sm col-md-12"
+                      id="Address2" />
+                  </div> -->
+                            </div>
+                            <div class="row  mt-1 mx-2">
+
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="BuildingId">
+                                        {{ "Building" }}
+                                    </label>
+                                    <select formControlName="BuildingId" class="form-control form-control-sm col-md-12"
+                                        id="BuildingId" (change)="loadFloors($event.target.value)">
+                                        <option *ngFor="let item of BuildingList" [value]="item.id">
+                                            {{ item.name }}
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="FloorId">
+                                        {{ "Floor" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="FloorId"
+                                        id="FloorId" required
+                                        [ngClass]="{ 'is-invalid': submitted && f.StateId.errors }"
+                                        (change)="loadFlats($event.target.value)">
+                                        <option *ngFor="let item of floorList" [value]="item.id">
+                                            {{ item.name }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.FloorId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.FloorId.errors.required">FloorId is required</div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="FlatId">
+                                        {{ "Flat" }}
+                                    </label>
+                                    <select class="form-control form-control-sm col-md-12 " formControlName="FlatId"
+                                        id="FlatId" required
+                                        [ngClass]="{ 'is-invalid': submitted && f.FloorId.errors }">
+                                        <option *ngFor="let item of flatsList" [value]="item.id">
+                                            {{ item.name }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.FlatId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.FlatId.errors.flatsList">Flat is required</div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="col-md-4">
+                    <label class="mb-0" for="ParentUserId">
+                      {{ "Parent User" }}
+                    </label>
+                    <select formControlName="ParentUserId" class="form-control form-control-sm col-md-12"
+                      id="ParentUserId">
+                      <option *ngFor="let item of UsersList" [value]="item.id">
+                        {{ item.fullName }}
+                      </option>
+                    </select>
+  
+                  </div> -->
+
+
+
+                            </div>
+                            <div class="row  mt-1 mx-2">
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="CountryName">Country Name</label>
+                                    <input type="text" formControlName="CountryName"
+                                        class="form-control form-control-sm col-md-12" id="CountryName"
+                                        placeholder="Country Name" disabled>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="StateName">State Name</label>
+                                    <input type="text" formControlName="StateName"
+                                        class="form-control form-control-sm col-md-12" id="StateName"
+                                        placeholder="State Name" disabled>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="mb-0" for="CityName">City Name</label>
+                                    <input type="text" formControlName="CityName"
+                                        class="form-control form-control-sm col-md-12" id="CityName"
+                                        placeholder="City Name" disabled>
+
+                                </div>
+
+
+                               
+
+
+                            </div>
+                            <br>
+                            <b>
+
+                                <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab"
+                                    data-toggle="tab" role="tab" style="text-decoration: underline"
+                                    aria-controls="nav-profile" aria-selected="false">Login
+                                    Details:</a></b>
+
+                            <div class="row mt-1 px-2">
+                                <div class="col-md-4">
+
+                                    <label class="mb-0" for="UserName">Email Address</label>
+                                    <input type="text" formControlName="UserName"
+                                        class="form-control form-control-sm col-md-12" id="UserName" disabled
+                                        placeholder="Email Address"
+                                        [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }" />
+                                    <div *ngIf="submitted && f.UserName.errors" class="invalid-feedback">
+                                        <!-- <div *ngIf="f.UserName.errors.required">Active is required</div> -->
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                    <label class="mb-0" for="Password">Password</label>
+                                    <input type="password" formControlName="Password"
+                                        class="form-control form-control-sm col-md-12" id="Password"
+                                        placeholder="Password"/>
+                                </div>
+
+                                <div class="col-md-4">
+
+                                    <label class="mb-0" for="Password">Confirm Password</label>
+                                    <input type="password" class="form-control form-control-sm col-md-12"
+                                        formControlName="ConfirmPassword" id="ConfirmPassword"
+                                        placeholder="Confirm Password">
+                                   
+                                </div>
+
+
+                            </div>
+                          
+                            <div class="row mt-1 px-2">
+
+                                <div class="col-md-12">
+                                    <button type="button"
+                                        class="btn-sm btn-primary btn float-right mx-1 px-3 mt-3 pt-2 pb-2"
+                                        (click)="onRecordSubmit()">Submit</button>
+                                    <button [routerLink]="['/account/login']" data-toggle="tab" role="tab" type="button"
+                                        class="btn-sm btn btn-dark float-right mx-1 px-4 mt-3 pt-2 pb-2">Back</button>
+
+                                    <!-- <button type="button" (click)="openPopup()"
+                      class="btn-sm btn-danger float-right btn mx-1 px-2 mt-3 pt-2 pb-2">Reset Password
+                    </button> -->
+                                </div>
+                            </div>
+                            <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Reset Password</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-fluid">
+                                                <div class="card mx-2 pt-3 pb-2">
+                                                    <div class="row mx-1">
+                                                        <!-- <div class="col-sm-12"> -->
+
+                                                        <div class="col-md-11">
+                                                            <label class="mb-0" for="EmailForgotPassword">Email</label>
+                                                            <input type="text" formControlName="EmailForgotPassword"
+                                                                class="form-control float-right  form-control-sm col-md-12"
+                                                                id="EmailForgotPassword" />
+                                                        </div>
+                                                        <div class="col-md-11">
+                                                            <label class="mb-0" for="NewPassword">Password</label>
+                                                            <input type="text" autocomplete="off"
+                                                                formControlName="NewPassword"
+                                                                class="form-control float-right form-control-sm col-md-12"
+                                                                id="NewPassword" />
+                                                        </div>
+
+
+                                                        <div class="col-md-11">
+                                                            <label class="mb-0"
+                                                                for="NewConfirmPassword">ConfirmPassword</label>
+                                                            <input type="text" autocomplete="off"
+                                                                formControlName="NewConfirmPassword"
+                                                                class="form-control float-right px-2 form-control-sm col-md-12"
+                                                                id="NewConfirmPassword" />
+                                                        </div>
+                                                        <!-- </div> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" (click)="closePopup()">
+                                                Close
+                                            </button>
+                                            <button type="button" class=" btn-success btn "
+                                                (click)="UserSubmit()">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</form><br><br>
